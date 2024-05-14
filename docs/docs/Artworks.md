@@ -7,8 +7,11 @@ hide:
 
 ## ✨ Meet Ayaha Hideri, the official anime mascot of Hysteria ⚡️
 
-![Ayaha Hideri](../assets/artworks/hc_name.png)
+### Official artworks
 
-![Ayaha Hideri Q](../assets/artworks/hc_q.png)
+<div class="artworks-gal">
+    <img src="/assets/artworks/hc_name.png">
+    <img src="/assets/artworks/hc_q.png">
+    <img src="/assets/artworks/ebiblue.png">
+</div>
 
-![Ayaha Hideri Dark](../assets/artworks/ebiblue.png)
