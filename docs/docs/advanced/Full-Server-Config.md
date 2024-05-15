@@ -133,7 +133,41 @@ ignoreClientBandwidth: false
 
 This feature is primarily useful for server owners who prefer congestion fairness over other network traffic, or who do not trust users to accurately set their own bandwidth values.
 
-### Bandwidth behavior explained
+### Bandwidth negotiation process
+
+The following diagram shows the process of negotiating which congestion control algorithm and bandwidth value to use between the client and server under various configurations.
+
+```mermaid
+graph TD;
+    ICB{{"Is the server configured with ignoreClientBandwidth: true?"}} -- "Yes" --> BBR[/"Use BBR"/];
+    ICB -- "No" --> C_has_BW;
+    C_has_BW{{"Is the client configured with bandwidth?"}} -- "No" --> BBR;
+    C_has_BW -- "Yes" --> Brutal;
+    Brutal["Use Brutal"] --> S_has_BW;
+    S_has_BW{{"Is the server configured with bandwidth?"}} -- "No" --> Brutal_C[/"Use client's value"/];
+    S_has_BW -- "Yes" --> S_C_CMP;
+    S_C_CMP{{"Compare server and client bandwidth values"}} -- "Server greater" --> Brutal_C;
+    S_C_CMP -- "Client greater" --> Brutal_S[/"Use server's value"/];
+
+    style BBR fill:#dc322f;
+    style Brutal fill:#268bd2;
+    style Brutal_C fill:#2aa198;
+    style Brutal_S fill:#2aa198;
+```
+
+If you are setting up a Hysteria server for personal use, you can simplify it by removing `bandwidth` and `ignoreClientBandwidth` from the server configuration, only specifying the bandwidth in the client configuration:
+
+```mermaid
+graph TD;
+    S_no_BW["`Ensure the server is **NOT** configured with bandwidth and ignoreClientBandwidth`"] --> C_has_BW;
+    C_has_BW{{"Is the client configured with bandwidth?"}} -- "No" --> BBR[/"BBR"/];
+    C_has_BW -- "Yes" --> Brutal_C[/"Use Brutal and use client's value"/];
+
+    style BBR fill:#dc322f;
+    style Brutal_C fill:#2aa198;
+```
+
+### Congestion control details
 
 **(The information in this section is considered internal implementation details of Hysteria and may change between versions)**
 
