@@ -162,7 +162,7 @@ graph TD;
 ```mermaid
 graph TD;
     S_no_BW["`确保服务端 **没有** 配置 bandwidth 与 ignoreClientBandwidth`"] --> C_has_BW;
-    C_has_BW{{"客户端是否配置带宽？"}} -- "否" --> BBR;
+    C_has_BW{{"客户端是否配置带宽？"}} -- "否" --> BBR[/"BBR"/];
     C_has_BW -- "是" -->  Brutal_C[/"Brutal 且以客户端配置的带宽为准"/];
 
     style BBR fill:#dc322f;
