@@ -126,7 +126,7 @@ bandwidth:
   down: 200 mbps
 ```
 
-Hysteria 内置了两套拥塞控制算法（BBR 与 Brutal），**使用哪个由是否提供了带宽值决定。** 如果希望使用 BBR 而不是 Brutal，可以删除整个 `bandwidth` 部分。详细信息请参见 [带宽行为详解](../advanced/Full-Server-Config.md#_6)。
+Hysteria 内置了两套拥塞控制算法（BBR 与 Brutal），**使用哪个由是否提供了带宽值决定。** 如果希望使用 BBR 而不是 Brutal，可以删除整个 `bandwidth` 部分。详细信息请参见 [带宽协商细节](../advanced/Full-Server-Config.md#_6) 与 [带宽行为详解](../advanced/Full-Server-Config.md#_7)。
 
 > **⚠️ 警告** 带宽值并非越大越好，请务必不要超过你当前网络环境所能达到的最大带宽。否则只会适得其反，导致网络拥塞，连接不稳定。
 

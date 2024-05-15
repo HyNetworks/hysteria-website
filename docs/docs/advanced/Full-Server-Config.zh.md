@@ -135,6 +135,40 @@ ignoreClientBandwidth: false
 
 这个功能主要为不希望让用户自己设置带宽的服务器提供。
 
+### 带宽协商细节
+
+下图展示了在各种配置下，客户端和服务端关于拥塞控制算法与带宽的协商细节。
+
+```mermaid
+graph TD;
+    ICB{{"服务端是否配置 ignoreClientBandwidth: true ？"}} -- "是" --> BBR[/"使用 BBR"/];
+    ICB -- "否" --> C_has_BW;
+    C_has_BW{{"客户端是否配置带宽？"}} -- "否" --> BBR;
+    C_has_BW -- "是" --> Brutal;
+    Brutal["使用 Brutal"] --> S_has_BW;
+    S_has_BW{{"服务端是否配置带宽？"}} -- "否" --> Brutal_C[/"以客户端配置的带宽为准"/];
+    S_has_BW -- "是" --> S_C_CMP;
+    S_C_CMP{{"比较服务端和客户端配置的带宽"}} -- "服务端更大" --> Brutal_C;
+    S_C_CMP -- "客户端更大" --> Brutal_S[/"以服务端配置的带宽为准"/];
+
+    style BBR fill:#dc322f;
+    style Brutal fill:#268bd2;
+    style Brutal_C fill:#2aa198;
+    style Brutal_S fill:#2aa198;
+```
+
+如果你自建 Hysteria 服务器并且只给你自己使用， 可以直接删除服务端配置中的 `bandwidth` 与 `ignoreClientBandwidth`， 使用客户端配置中的 `bandwidth` 指定带宽， 从而将上述流程简化为：
+
+```mermaid
+graph TD;
+    S_no_BW["`确保服务端 **没有** 配置 bandwidth 与 ignoreClientBandwidth`"] --> C_has_BW;
+    C_has_BW{{"客户端是否配置带宽？"}} -- "否" --> BBR;
+    C_has_BW -- "是" -->  Brutal_C[/"Brutal 且以客户端配置的带宽为准"/];
+
+    style BBR fill:#dc322f;
+    style Brutal_C fill:#2aa198;
+```
+
 ### 带宽行为详解
 
 **(本节中的信息是 Hysteria 的内部实现细节，可能会在不同版本之间发生变化)**
