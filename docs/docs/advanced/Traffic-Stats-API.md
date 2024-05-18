@@ -36,3 +36,16 @@ Request:
 ```
 
 > **NOTE:** Due to the reconnect logic built into the client, it will attempt to reconnect after being kicked. To avoid having to repeatedly kick the same client, you should also block the user in your authentication backend.
+
+### GET `/online`
+
+This endpoint returns a JSON map of online clients to the number of connections they have. The connection count here refers to the number of Hysteria client instances ("devices"), NOT the number of active proxy connections.
+
+Response:
+
+```json
+{
+  "wang": 2,
+  "joe": 1
+}
+```

@@ -4,6 +4,14 @@ hide:
   - navigation
 ---
 
+## 2.4.4
+
+> This release contains important fixes and we strongly encourage everyone to upgrade.
+
+- Fixed a memory leak in quic-go between 2.4.2 and 2.4.3
+- Added a new GET `/online` endpoint to the traffic stats API for retrieving current online users and their connection counts
+- The client now gracefully closes the QUIC connection when exiting
+
 ## 2.4.3
 
 > This release contains important fixes and we strongly encourage everyone to upgrade.
