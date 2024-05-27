@@ -71,23 +71,11 @@ Like any proxy software, Hysteria consists of a server and a client. Our precomp
 
 We provide a bash script that automatically downloads the latest version of Hysteria and configures a systemd service on common Linux distributions.
 
-Install or update to the latest version:
-
 ```bash
 bash <(curl -fsSL https://get.hy2.sh/)
 ```
 
-Install or update to a specific version (skips version check):
-
-```bash
-bash <(curl -fsSL https://get.hy2.sh/) --version v2.4.4
-```
-
-Remove Hysteria:
-
-```bash
-bash <(curl -fsSL https://get.hy2.sh/) --remove
-```
+For more help on this script, see [Server Installation Script](./Server-Installation-Script.md).
 
 ## Docker images
 
