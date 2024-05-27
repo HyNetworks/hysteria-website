@@ -75,7 +75,7 @@
 bash <(curl -fsSL https://get.hy2.sh/)
 ```
 
-关于此脚本的更多帮助， 请参阅 [服务端安装脚本](./Server-Install-Script.md)。
+关于此脚本的更多帮助， 请参阅 [服务端安装脚本](./Server-Installation-Script.md)。
 
 ## Docker 镜像
 
