@@ -8,30 +8,29 @@ Hysteria 项目提供了一个 bash 脚本， 可以在常见的 Linux 发行版
 > 如需能够一键安装、配置、启动 Hysteria 服务端的「傻瓜式」脚本， 请通过搜索引擎寻找第三方的「Hysteria 2 一键脚本」。
 
 
-## 选择发行版
+## 环境要求
 
-对于新购 VPS 的用户， 推荐使用常见发行版近 2 年内发布的稳定版本。
+Hysteria 本身并无 Linux 发行版相关的要求，
+但安装脚本在设计上仅在满足下列条件的 Linux 系统上运行：
 
-如果对 Linux 发行版完全没有了解， 可按照下表选择：
-
-+ Debian 11 或者更高版本。
-+ Ubuntu 22.04 LTS 或者更高的 LTS 版本。
-+ Rocky Linux 8 或者更高版本。
-+ CentOS Stream 8 或者更高版本。
-+ Fedora 37 或者更高版本。
-
-如无特殊需求， **请避免使用 CentOS 7**。
-
-对于已经拥有 VPS 的用户， 满足以下条件的 Linux 发行版， 通常也可以正常使用安装脚本：
-
-+ 基于 systemd （通过 `systemctl` 命令管理服务）
-+ 安装有以下必需程序， 并且不是由 busybox 提供实现。
++ 基于 systemd 管理服务（通过 `systemctl` 命令）
++ 安装有以下程序， 并且不是通过 busybox 提供。
     + [GNU Coreutils 工具集](https://zh.wikipedia.org/wiki/GNU%E6%A0%B8%E5%BF%83%E5%B7%A5%E5%85%B7%E7%BB%84)
     + `bash`
     + `grep`
     + `curl`
 
-特别地， 以下 Linux 发行版 **不受** 安装脚本支持：
+对于新购 VPS 的用户，建议使用发布不超过 2 年的主流发行版稳定版本。 **请避免使用 CentOS 7**。
+
+如果不熟悉 Linux 发行版， 推荐以下选择：
+
++ Debian 11 或更高版本
++ Ubuntu 22.04 LTS 或更高的 LTS 版本
++ Rocky Linux 8 或更高版本
++ CentOS Stream 8 或更高版本
++ Fedora 37 或更高版本
+
+**不支持** 的发行版：
 
 + OpenWrt
 + Alpine Linux
@@ -40,21 +39,23 @@ Hysteria 项目提供了一个 bash 脚本， 可以在常见的 Linux 发行版
 
 ## 常用操作
 
-### 安装或升级到最新版本
+### 安装或升级
+
+安装或升级到最新版本。
 
 ```sh
 bash <(curl -fsSL https://get.hy2.sh/)
 ```
 
-### 安装或升级为指定版本
-
-绕过版本检查。
+安装或升级为指定版本，不进行版本检查。
 
 ```sh
 bash <(curl -fsSL https://get.hy2.sh/) --version v2.4.4
 ```
 
-### 移除 Hysteria 及相关服务
+### 卸载
+
+移除 Hysteria 及相关服务。
 
 ```sh
 bash <(curl -fsSL https://get.hy2.sh/) --remove
@@ -103,7 +104,7 @@ HYSTERIA_USER=hysteria bash <(curl -fsSL https://get.hy2.sh/)
 nano /etc/hysteria/config.yaml
 ```
 
-### 启用服务
+### 服务管理
 
 设置开机自启， 并立即启动服务。
 
@@ -111,21 +112,21 @@ nano /etc/hysteria/config.yaml
 systemctl enable --now hysteria-server.service
 ```
 
-### 重启服务
-
-通常在修改配置文件后执行。
+重启服务， 通常在修改配置文件后执行。
 
 ```sh
 systemctl restart hysteria-server.service
 ```
 
-### 查询服务状态
+查询服务状态。
 
 ```sh
 systemctl status hysteria-server.service
 ```
 
-### 查询服务端日志
+### 日志
+
+查询服务端日志。
 
 ```sh
 journalctl --no-pager -e -u hysteria-server.service
