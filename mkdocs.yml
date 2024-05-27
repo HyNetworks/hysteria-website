@@ -74,6 +74,7 @@ plugins:
                 - 进阶:
                     - 完整服务端配置: docs/advanced/Full-Server-Config.md
                     - 完整客户端配置: docs/advanced/Full-Client-Config.md
+                    - ACME DNS 配置: docs/advanced/ACME-DNS-Config.zh.md
                     - ACL: docs/advanced/ACL.md
                     - 流量统计 API: docs/advanced/Traffic-Stats-API.md
                     - FD Control 协议: docs/advanced/FD-Control.md
@@ -134,6 +135,7 @@ nav:
       - Advanced:
           - Full Server Config: docs/advanced/Full-Server-Config.md
           - Full Client Config: docs/advanced/Full-Client-Config.md
+          - ACME DNS Config: docs/advanced/ACME-DNS-Config.md
           - ACL: docs/advanced/ACL.md
           - Traffic Stats API: docs/advanced/Traffic-Stats-API.md
           - FD Control Protocol: docs/advanced/FD-Control.md
