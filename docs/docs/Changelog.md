@@ -4,6 +4,12 @@ hide:
   - navigation
 ---
 
+## 2.4.5
+
+- Fixed some logic issues in BBR, and added `HYSTERIA_BBR_DEBUG` environment variable for printing debug information
+- Fixed compatibility issues of the HTTP proxy with certain programs
+- Updated quic-go to v0.44.0
+
 ## 2.4.4
 
 > This release contains important fixes and we strongly encourage everyone to upgrade.
