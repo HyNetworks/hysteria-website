@@ -41,7 +41,7 @@ The rankings are random and change with each refresh.
 
 - [狗狗加速](https://狗狗加速.com) - high-performance overseas VPN, free trial, unlock streaming services/ChatGPT, the world's first to support Hysteria, currently fully supporting Hysteria 2
 - Asahi (Individual Donor)
-- [modimobeikete](https://space.bilibili.com/375736195) (Individual Donor)
+- [modimobeikete](https://space.bilibili.com/152313349) (Individual Donor)
 - [洋葱游戏盾](https://youxidun.vip/) - Security products based on modern anti-censorship protocols, inspired by Hysteria 2's anti-censorship designs and optimizations for unstable networks
 - [PlayerCatboy](https://github.com/Catboy96) (Individual Donor)
 - [Nachoneko](https://nacho.lol/) - High-speed proxy service, unlock streaming/ChatGPT, full support for the Hysteria2 protocol and various clients
