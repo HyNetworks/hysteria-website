@@ -38,9 +38,9 @@ The Hysteria server does not have built-in support for listening on multiple por
 
     ```bash
     # IPv4
-    iptables -t nat -A PREROUTING -i eth0 -p udp --dport 20000:50000 -j DNAT --to-destination :443
+    iptables -t nat -A PREROUTING -i eth0 -p udp --dport 20000:50000 -j REDIRECT --to-ports 443
     # IPv6
-    ip6tables -t nat -A PREROUTING -i eth0 -p udp --dport 20000:50000 -j DNAT --to-destination :443
+    ip6tables -t nat -A PREROUTING -i eth0 -p udp --dport 20000:50000 -j REDIRECT --to-ports 443
     ```
 
 === "nftables"
@@ -53,7 +53,7 @@ The Hysteria server does not have built-in support for listening on multiple por
     table inet hysteria_porthopping {
       chain prerouting {
         type nat hook prerouting priority dstnat; policy accept;
-        iifname $INGRESS_INTERFACE udp dport $PORT_RANGE counter dnat to :$HYSTERIA_SERVER_PORT
+        iifname $INGRESS_INTERFACE udp dport $PORT_RANGE counter redirect to :$HYSTERIA_SERVER_PORT
       }
     }
     ```
