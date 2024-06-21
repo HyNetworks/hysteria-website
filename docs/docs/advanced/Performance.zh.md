@@ -56,8 +56,8 @@ quic:
 ```service
 [Service]
 ExecStartPost=/usr/bin/chrt -r -p 99 $MAINPID
-CapabilityBoundingSet= CAP_SYS_NICE # (1)!
-AmbientCapabilities= CAP_SYS_NICE # (1)!
+CapabilityBoundingSet= CAP_SYS_NICE
+AmbientCapabilities= CAP_SYS_NICE
 ```
 `CAP_SYS_NICE` 应追加在对应两行的后方，**不要删除前面原有的内容！**
 
