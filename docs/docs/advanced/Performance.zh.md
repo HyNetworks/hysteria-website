@@ -59,6 +59,6 @@ ExecStartPost=/usr/bin/chrt -r -p 99 $MAINPID
 CapabilityBoundingSet= CAP_SYS_NICE # (1)!
 AmbientCapabilities= CAP_SYS_NICE # (1)!
 ```
-CAP_SYS_NICE 应追加在对应的2行后方，**不要删除前面原有的内容！**
+`CAP_SYS_NICE` 应追加在对应的2行后方，**不要删除前面原有的内容！**
 
 
