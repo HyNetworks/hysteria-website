@@ -60,5 +60,5 @@ CapabilityBoundingSet= CAP_SYS_NICE
 AmbientCapabilities= CAP_SYS_NICE
 ```
 `CAP_SYS_NICE` 应追加在对应两行的后方，**不要删除前面原有的内容！**
-
+注意：本操作为实验性的，可能导致 Hysteria 服务端被分配过激的性能调度策略，**请留意服务器负载！**
 
