@@ -51,7 +51,7 @@ quic:
 
 ## 进程优先级
 
-在 `/etc/systemd/system/hysteria-server.service` 中添加以下内容以修改 Hysteria 服务的优先级：
+在 `/etc/systemd/system/hysteria-server.service` 中添加以下内容，即可将 Hysteria 服务设为最高实时优先级：
 
 ```service
 [Service]
