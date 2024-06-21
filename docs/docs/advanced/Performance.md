@@ -59,6 +59,6 @@ ExecStartPost=/usr/bin/chrt -r -p 99 $MAINPID
 CapabilityBoundingSet= CAP_SYS_NICE
 AmbientCapabilities= CAP_SYS_NICE
 ```
-`CAP_SYS_NICE` should be appended after the corresponding two lines. **Do not delete the original content! **
+`CAP_SYS_NICE` should be appended after the corresponding two lines. **Do not delete the original content!**
 
 > Note: This operation is currently experimental. If it performs well, it may become the default configuration of Hysteria and be removed from the documentation.
