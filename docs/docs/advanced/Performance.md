@@ -6,6 +6,7 @@ The following factors are common contributors to bottlenecks in your transfer sp
 - The processing power of your CPU, NIC, etc.
 - System buffer sizes
 - Flow control receive window sizes
+- Server process priority
 
 > It's worth noting that QUIC, being a much newer and more complex protocol running in userspace, will inherently require more processing power than the mature, highly optimized kernel-level implementation of TCP. If you want to achieve high transfer speeds, you should not host your server on low-power hardware such as a Raspberry Pi or an extremely low-cost, CPU-throttled VPS.
 
@@ -47,3 +48,17 @@ quic:
 4. There is an auto-tuning mechanism for the receive window size that will increase the window size as needed, but will not exceed this value. The default is 20 MB.
 
 You can increase these values if they are too low for your use case, or decrease them if you need to save memory. **We strongly recommend that you maintain a stream-to-connection receive window ratio close to 2/5.** This prevents one or two blocked streams from hogging the entire connection.
+
+## Server process priority
+
+Add the following content to the server's `/etc/systemd/system/hysteria-server.service` to set the Hysteria server to the highest real-time priority:
+
+```service
+[Service]
+ExecStartPost=/usr/bin/chrt -r -p 99 $MAINPID
+CapabilityBoundingSet= CAP_SYS_NICE
+AmbientCapabilities= CAP_SYS_NICE
+```
+`CAP_SYS_NICE` should be appended after the corresponding two lines. **Do not delete the original content! **
+
+> Note: This operation is currently experimental. If it performs well, it may become the default configuration of Hysteria and be removed from the documentation.
