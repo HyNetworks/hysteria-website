@@ -49,7 +49,7 @@ quic:
 
 You can increase these values if they are too low for your use case, or decrease them if you need to save memory. **We strongly recommend that you maintain a stream-to-connection receive window ratio close to 2/5.** This prevents one or two blocked streams from hogging the entire connection.
 
-## Server High Load
+## Server high load
 
 Setting Hysteria to real-time highest priority can effectively reduce connection fluctuations under high server load.
 
