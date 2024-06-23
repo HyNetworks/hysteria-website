@@ -6,11 +6,11 @@
 - CPU、网卡等的处理能力
 - 系统缓冲区大小
 - 流控制接收窗口大小
-- 服务器高负载
+- 进程优先级
 
 > QUIC 作为一种更新、更复杂、在用户态执行的协议，自然会比成熟、高度优化的内核 TCP 实现需要更多的处理能力。如果想提高传输速度，不要运行在树莓派或极便宜的 VPS 上。
 
-前两点超出了本文档的范围，但后两点可以通过调优来提高性能。
+前两点超出了本文档的范围，但后三点可以通过调优来提高性能。
 
 ## 系统缓冲区大小
 
@@ -49,20 +49,38 @@ quic:
 
 可以根据你的使用情景提高或者降低这些值。**强烈建议保持接近 2/5 的流/连接接收窗口比例。** 这样可以防止一个或两个阻塞的流卡死整个连接。
 
-## 服务器高负载
+## 进程优先级
 
-将 Hysteria 设置为实时最高优先级，可有效减少服务器高负载下的连接波动。
+在 CPU 资源紧缺的设备上， 高负载下可能会出现延迟抖动， 可通过提高进程优先级来缓解。
 
-在服务器终端输入 `systemctl edit hysteria-server.service` 并将以下代码添加在下文上下注释之间：
+### 通过 systemd
 
-```service
-### Anything between here and the comment below will become the new contents of the file
+适用于 Linux。
+
+创建 `/etc/systemd/system/hysteria-server.service.d/priority.conf` 并填入以下内容。
+
+```ini
 [Service]
-ExecStartPost=/usr/bin/chrt -r -p 99 $MAINPID
-CapabilityBoundingSet= CAP_SYS_NICE
-AmbientCapabilities= CAP_SYS_NICE
-### Lines below this comment will be discarded
+CPUSchedulingPolicy=rr
+CPUSchedulingPriority=99
 ```
 
-> 注意：本操作目前为实验性的，如果表现良好，后续可能成为 Hysteria 的默认配置，并从文档中移除。
+使用以下命令重载 systemd 配置文件并重启服务。
+
+```bash
+systemctl daemon-reload
+systemctl restart hysteria-server.service
+```
+
+### 通过 chrt
+
+适用于 Linux 和 FreeBSD。 在 FreeBSD 上需安装 `util-linux` 且最高优先级为 31 而不是 99。
+
+```bash
+# 在每次服务启动之后执行
+chrt -r 99 $(pidof hysteria)
+
+# 或者， 使用下面的命令启动服务
+chrt -r 99 hysteria server -c /path/to/config.yaml
+```
 
