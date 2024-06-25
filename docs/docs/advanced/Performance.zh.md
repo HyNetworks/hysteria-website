@@ -83,4 +83,3 @@ chrt -r 99 $(pidof hysteria)
 # 或者， 使用下面的命令启动服务
 chrt -r 99 hysteria server -c /path/to/config.yaml
 ```
-
