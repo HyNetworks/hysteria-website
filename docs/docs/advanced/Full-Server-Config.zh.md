@@ -50,24 +50,29 @@ listen: :443 # (1)!
         - domain2.org
       email: your@email.net
       ca: zerossl # (1)!
-      disableHTTP: false # (2)!
-      disableTLSALPN: false # (3)!
-      altHTTPPort: 80 # (4)!
-      altTLSALPNPort: 443 # (5)!
-      dir: my_acme_dir # (6)!
-      listenHost: 0.0.0.0 # (7)!
-
+      listenHost: 0.0.0.0 # (2)!
+      dir: my_acme_dir # (3)!
+      type: http # (4)!
+      http:
+        altPort: 8888 # (5)!
+      tls:
+        altPort: 44333 # (6)!
+      dns:
+        name: gomommy # (7)!
+        config:
+          key1: value1
+          key2: value2
     ```
 
     1. 要使用的 CA。可以是 `letsencrypt` 或 `zerossl`。
-    2. 禁用 HTTP 挑战。
-    3. 禁用 TLS-ALPN 挑战。
-    4. 用于 HTTP 挑战的监听端口。
+    2. 用于 ACME 服务器验证的监听地址（不含端口）。默认监听所有可用的地址。
+    3. 存储 ACME 账户密钥和证书的目录。
+    4. ACME 验证类型。可以是 `http`, `tls` 或 `dns`。
+    5. 用于 HTTP 挑战的监听端口。
        （注意： 改为非 80 需要另行配置端口转发或者 HTTP 反向代理，否则证书会签署失败！）
-    5. 用于 TLS-ALPN 挑战的监听端口。
+    6. 用于 TLS-ALPN 挑战的监听端口。
        （注意： 改为非 443 需要另行配置端口转发或者 SNI Proxy，否则证书会签署失败！）
-    6. 存储 ACME 账户密钥和证书的目录。
-    7. 用于 ACME 服务器验证的监听地址（不含端口）。默认监听所有可用的地址。
+    7. DNS 提供商。详细信息请参考 [ACME DNS 配置](ACME-DNS-Config.md)。
 
 ## 混淆
 
