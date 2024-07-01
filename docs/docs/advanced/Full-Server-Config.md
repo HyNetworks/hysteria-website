@@ -315,6 +315,33 @@ resolver:
 
 If omitted, Hysteria will use the system's default resolver.
 
+## Protocol Sniffing
+
+Due to factors such as the client's inbound (e.g., TUN mode) and configuration, Hysteria sometimes can't get the domain name of the destination address and only gets the IP. But the IP the client and server get for the same domain might be different, and the ACL's domain rules can't match IP requests. By enabling protocol sniffing, the server can use DPI to extract the domain name from the connection (for supported protocols) and convert the IP request to a domain one.
+
+Currently supported protocols are:
+
+- HTTP - Host in the header
+- TLS (HTTPS) - SNI
+- QUIC (HTTP/3) - SNI
+
+```yaml
+sniff:
+  enable: true # (1)!
+  timeout: 2s # (2)!
+  rewriteDomain: false # (3)!
+  tcpPorts: 80,443,8000-9000 # (4)!
+  udpPorts: all # (5)!
+```
+
+1. Whether to enable protocol sniffing.
+2. Sniffing timeout. If the protocol/domain cannot be determined within this time, the original address will be used to initiate the connection.
+3. Whether to rewrite requests that are already in domain name form. If enabled, requests with the target address already in domain name form will still be sniffed.
+4. List of TCP ports. Only TCP requests on these ports will be sniffed.
+5. List of UDP ports. Only UDP requests on these ports will be sniffed.
+
+> **Note:** If no port list is provided, all ports will be sniffed by default. The format of the port list is the same as port hopping, supporting multiple single ports and port ranges (inclusive) separated by commas.
+
 ## ACL
 
 ACL, often used in combination with outbounds, is a very powerful feature of the Hysteria server that allows you to customize the way client's requests are handled. For example, you can use ACL to block certain addresses, or to use different outbounds for different websites.

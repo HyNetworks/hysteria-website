@@ -48,7 +48,7 @@ bash <(curl -fsSL https://get.hy2.sh/)
 安装或升级为指定版本，不进行版本检查。
 
 ```sh
-bash <(curl -fsSL https://get.hy2.sh/) --version v2.4.5
+bash <(curl -fsSL https://get.hy2.sh/) --version v2.5.0
 ```
 
 ### 卸载

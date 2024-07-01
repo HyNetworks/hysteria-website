@@ -4,6 +4,12 @@ hide:
   - navigation
 ---
 
+## 2.5.0
+
+- Added support for ACME DNS challenge, including several common providers such as Cloudflare, GoDaddy, and Name.com
+- Added server-side protocol sniffing, supporting HTTP, TLS (HTTPS), and QUIC (HTTP/3)
+- Fixed the issue with inaccurate unit conversion in the speed test command (1024 -> 1000)
+
 ## 2.4.5
 
 - Fixed some logic issues in BBR, and added `HYSTERIA_BBR_DEBUG` environment variable for printing debug information

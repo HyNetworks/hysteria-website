@@ -4,6 +4,12 @@ hide:
   - navigation
 ---
 
+## 2.5.0
+
+- 新增 ACME DNS 验证支持，支持 Cloudflare, GoDaddy, Name.com 等多个常见服务商
+- 新增服务端协议嗅探 (Sniff)，支持 HTTP, TLS (HTTPS) 和 QUIC (HTTP/3) 协议
+- 修复测速命令中速度显示单位转换不准确的问题 (1024 -> 1000)
+
 ## 2.4.5
 
 - 修复 BBR 中的一些逻辑问题，并新增 `HYSTERIA_BBR_DEBUG` 环境变量用于输出 BBR 调试信息
