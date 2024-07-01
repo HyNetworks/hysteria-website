@@ -6,10 +6,11 @@
 - CPU、网卡等的处理能力
 - 系统缓冲区大小
 - 流控制接收窗口大小
+- 进程优先级
 
 > QUIC 作为一种更新、更复杂、在用户态执行的协议，自然会比成熟、高度优化的内核 TCP 实现需要更多的处理能力。如果想提高传输速度，不要运行在树莓派或极便宜的 VPS 上。
 
-前两点超出了本文档的范围，但后两点可以通过调优来提高性能。
+前两点超出了本文档的范围，但后三点可以通过调优来提高性能。
 
 ## 系统缓冲区大小
 
@@ -47,3 +48,38 @@ quic:
 4. 接收窗口大小有一个自动调节机制，该机制会根据需要增加窗口大小，但不会超过此值。默认值是 20 MB。
 
 可以根据你的使用情景提高或者降低这些值。**强烈建议保持接近 2/5 的流/连接接收窗口比例。** 这样可以防止一个或两个阻塞的流卡死整个连接。
+
+## 进程优先级
+
+在 CPU 资源紧缺的设备上， 高负载下可能会出现延迟抖动， 可通过提高进程优先级来缓解。
+
+### 通过 systemd
+
+适用于 Linux。
+
+创建 `/etc/systemd/system/hysteria-server.service.d/priority.conf` 并填入以下内容。
+
+```ini
+[Service]
+CPUSchedulingPolicy=rr
+CPUSchedulingPriority=99
+```
+
+使用以下命令重载 systemd 配置文件并重启服务。
+
+```bash
+systemctl daemon-reload
+systemctl restart hysteria-server.service
+```
+
+### 通过 chrt
+
+适用于 Linux 和 FreeBSD。 在 FreeBSD 上需安装 `util-linux` 且最高优先级为 31 而不是 99。
+
+```bash
+# 在每次服务启动之后执行
+chrt -r 99 $(pidof hysteria)
+
+# 或者， 使用下面的命令启动服务
+chrt -r 99 hysteria server -c /path/to/config.yaml
+```

@@ -92,3 +92,57 @@
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
 }
+
+.spcard {
+  display: flex;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  flex-direction: row;
+}
+.spcard img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
+.spcard-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.spcard-title {
+  font-size: 24px;
+  margin: 0 0 10px;
+}
+.spcard-text {
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+@media (max-width: 800px) {
+  .spcard {
+    flex-direction: column;
+    text-align: center;
+  }
+  .spcard img {
+    align-self: center;
+    max-width: 250px;
+    height: auto;
+  }
+  .spcard-content {
+    padding: 20px;
+  }
+}
+
+.spbutton {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 2px 0;
+  font-size: 16px;
+  background-color: #bbd1ea;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}

@@ -68,6 +68,7 @@ plugins:
             - 文档:
                 - 快速开始:
                     - 安装: docs/getting-started/Installation.md
+                    - 服务端安装脚本: docs/getting-started/Server-Installation-Script.md
                     - 服务端: docs/getting-started/Server.md
                     - 客户端: docs/getting-started/Client.md
                     - 第三方应用: docs/getting-started/3rd-party-apps.md
@@ -129,6 +130,7 @@ nav:
   - Docs:
       - Getting Started:
           - Installation: docs/getting-started/Installation.md
+          - Server Installation Script: docs/getting-started/Server-Installation-Script.md
           - Server: docs/getting-started/Server.md
           - Client: docs/getting-started/Client.md
           - 3rd-party apps: docs/getting-started/3rd-party-apps.md
