@@ -1,6 +1,6 @@
 # ACME DNS Config
 
-> ACME DNS can obtain certificates through the DNS service provider API. This function does not rely on specific ports (does not occupy 80/443) and external access.
+ACME DNS can obtain certificates through the DNS service provider API. This function does not rely on specific ports (does not occupy 80/443) and external access.
 
 ## Service Provider Support
 
@@ -15,9 +15,8 @@ acme:
   domains:
     - "*.example.com"
   email: your@email.address
-  disableHTTP: true
-  disableTLSALPN: true
-  dnsProvider:
+  type: dns
+  dns:
     name: cloudflare
     config:
       cloudflare_api_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
@@ -30,9 +29,8 @@ acme:
   domains:
     - "*.example.com"
   email: your@email.address
-  disableHTTP: true
-  disableTLSALPN: true
-  dnsProvider:
+  type: dns
+  dns:
     name: duckdns
     config:
       duckdns_api_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
@@ -46,9 +44,8 @@ acme:
   domains:
     - "*.example.com"
   email: your@email.address
-  disableHTTP: true
-  disableTLSALPN: true
-  dnsProvider:
+  type: dns
+  dns:
     name: gandi
     config:
       gandi_api_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
@@ -61,9 +58,8 @@ acme:
   domains:
     - "*.example.com"
   email: your@email.address
-  disableHTTP: true
-  disableTLSALPN: true
-  dnsProvider:
+  type: dns
+  dns:
     name: godaddy
     config:
       godaddy_api_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
@@ -76,9 +72,8 @@ acme:
   domains:
     - "*.example.com"
   email: your@email.address
-  disableHTTP: true
-  disableTLSALPN: true
-  dnsProvider:
+  type: dns
+  dns:
     name: namedotcom
     config:
       namedotcom_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
@@ -93,18 +88,17 @@ acme:
   domains:
     - "*.example.com"
   email: your@email.address
-  disableHTTP: true
-  disableTLSALPN: true
-  dnsProvider:
+  type: dns
+  dns:
     name: vultr
     config:
       vultr_api_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
 ```
 
-## Domain Name Matching
+## Handling Multiple Domains
 
 Currently ACME DNS is configured to work for all domains in `domains`, i.e. **if you are using ACME DNS to apply for a certificate, please ensure that all domains in `domains` are using the same domain name service provider.**
 
-## Unsupported Service Providers
+## Unsupported Providers
 
 If you are using a DNS provider that is not currently supported, you can still point your domain's DNS management servers to a supported provider, such as Cloudflare; this means: **you can purchase a domain name from Provider A and manage it through Provider B, and still use ACME DNS functionality.**

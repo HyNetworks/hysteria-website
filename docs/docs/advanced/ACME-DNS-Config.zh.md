@@ -1,6 +1,6 @@
 # ACME DNS 配置
 
-> ACME DNS 可以实现通过 DNS 服务商 API 来获取证书, 该功能不依赖特定端口(不占用 80/443)和外部访问.
+ACME DNS 可以实现通过 DNS 服务商 API 来获取证书, 该功能不依赖特定端口 (不占用 80/443) 和外部访问。
 
 ## 服务商支持
 
@@ -15,9 +15,8 @@ acme:
   domains:
     - "*.example.com"
   email: your@email.address
-  disableHTTP: true
-  disableTLSALPN: true
-  dnsProvider:
+  type: dns
+  dns:
     name: cloudflare
     config:
       cloudflare_api_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
@@ -30,9 +29,8 @@ acme:
   domains:
     - "*.example.com"
   email: your@email.address
-  disableHTTP: true
-  disableTLSALPN: true
-  dnsProvider:
+  type: dns
+  dns:
     name: duckdns
     config:
       duckdns_api_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
@@ -46,9 +44,8 @@ acme:
   domains:
     - "*.example.com"
   email: your@email.address
-  disableHTTP: true
-  disableTLSALPN: true
-  dnsProvider:
+  type: dns
+  dns:
     name: gandi
     config:
       gandi_api_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
@@ -61,9 +58,8 @@ acme:
   domains:
     - "*.example.com"
   email: your@email.address
-  disableHTTP: true
-  disableTLSALPN: true
-  dnsProvider:
+  type: dns
+  dns:
     name: godaddy
     config:
       godaddy_api_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
@@ -76,9 +72,8 @@ acme:
   domains:
     - "*.example.com"
   email: your@email.address
-  disableHTTP: true
-  disableTLSALPN: true
-  dnsProvider:
+  type: dns
+  dns:
     name: namedotcom
     config:
       namedotcom_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
@@ -93,9 +88,8 @@ acme:
   domains:
     - "*.example.com"
   email: your@email.address
-  disableHTTP: true
-  disableTLSALPN: true
-  dnsProvider:
+  type: dns
+  dns:
     name: vultr
     config:
       vultr_api_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
@@ -108,26 +102,3 @@ acme:
 ## 未支持的服务商
 
 如果您正在使用当前尚未支持的 DNS 服务商, 您仍然可以将域名的 DNS 管理服务器指向已支持的服务商, 例如 Cloudflare; 这意味着: **您可以在 A 服务商购买域名并通过 B 服务商管理, 这样就仍然可以使用 ACME DNS 功能.**
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

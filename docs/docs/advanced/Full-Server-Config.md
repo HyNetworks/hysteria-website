@@ -50,22 +50,29 @@ You can have either `tls` or `acme`, but not both.
         - domain2.org
       email: your@email.net
       ca: zerossl # (1)!
-      disableHTTP: false # (2)!
-      disableTLSALPN: false # (3)!
-      altHTTPPort: 80 # (4)!
-      altTLSALPNPort: 443 # (5)!
-      dir: my_acme_dir # (6)!
-      listenHost: 0.0.0.0 # (7)!
-
+      listenHost: 0.0.0.0 # (2)!
+      dir: my_acme_dir # (3)!
+      type: http # (4)!
+      http:
+        altPort: 8888 # (5)!
+      tls:
+        altPort: 44333 # (6)!
+      dns:
+        name: gomommy # (7)!
+        config:
+          key1: value1
+          key2: value2
     ```
 
-    1. The CA to use. Can be `letsencrypt` or `zerossl`.
-    2. Disable HTTP challenge.
-    3. Disable TLS-ALPN challenge.
-    4. Alternate HTTP challenge port. (Note: If you want to use anything other than 80, you must set up port forward/HTTP reverse proxy from 80 to that port, otherwise ACME will not be able to issue the certificate.)
-    5. Alternate TLS-ALPN challenge port. (Note: If you want to use anything other than 443, you must set up port forward/SNI proxy from 443 to that port, otherwise ACME will not be able to issue the certificate.)
-    6. The directory to store the ACME account key and certificates.
-    7. The host address (not including the port) to listen on for the ACME challenge. If omitted, the server will listen on all interfaces.
+    1. CA to use. Can be `letsencrypt` or `zerossl`.
+    2. Listening address for ACME verification (no port). Defaults to listening on all available interfaces.
+    3. Directory to store ACME credentials.
+    4. ACME challenge type. Can be `http`, `tls`, or `dns`.
+    5. Listening port for HTTP challenges.
+       (Note: Changing to a port other than 80 requires port forwarding or HTTP reverse proxy, or the challenge will fail!)
+    6. Listening port for TLS-ALPN challenges.
+       (Note: Changing to a port other than 443 requires port forwarding or TLS reverse proxy, or the challenge will fail!)
+    7. DNS provider. For details, refer to [ACME DNS Configuration](ACME-DNS-Config.md).
 
 ## Obfuscation
 
