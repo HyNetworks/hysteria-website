@@ -48,6 +48,7 @@ The rankings are random and change with each refresh.
 - Easton Tech (Individual Donor) - Be the brightest spark in a dark night
 - [棜先生](https://bio.link/yuxiansheng) (Individual Donor)
 - [Integral](https://integral.codeberg.page/about/) (Individual Donor)
+- [TekLan Hosting](https://teklanhosting.co.uk) - UK web hosting company with global locations
 
 **👀 Will you be next?**
 
