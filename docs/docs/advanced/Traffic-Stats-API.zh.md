@@ -1,5 +1,13 @@
 # 流量统计 API
 
+如果配置中加入 API secret，调用时需要在请求头加上 `Authorization` 标头。
+
+请求：
+
+```shell
+curl -H 'Authorization: secret' http://ip:port/path
+```
+
 ### GET `/traffic`
 
 此接口返回一个 JSON map，是每个用户的流量信息。
