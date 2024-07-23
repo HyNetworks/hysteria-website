@@ -22,6 +22,8 @@ hysteria2://[auth@]hostname[:port]/?[key=value]&[key=value]...
 
 服务器的地址和可选端口。如果省略端口，则默认为 443。
 
+端口部分支持 [端口跳跃](../advanced/Port-Hopping.md) 的「多端口地址格式」。
+
 ### 参数
 
 - `obfs`：要使用的混淆类型。目前只支持 `salamander`。
@@ -37,7 +39,7 @@ hysteria2://[auth@]hostname[:port]/?[key=value]&[key=value]...
 ## 示例
 
 ```
-hysteria2://letmein@example.com/?insecure=1&obfs=salamander&obfs-password=gawrgura&pinSHA256=deadbeef&sni=real.example.com
+hysteria2://letmein@example.com:123,5000-6000/?insecure=1&obfs=salamander&obfs-password=gawrgura&pinSHA256=deadbeef&sni=real.example.com
 ```
 
 ## 注意事项

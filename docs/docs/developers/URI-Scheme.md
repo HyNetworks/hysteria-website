@@ -22,6 +22,8 @@ The authentication credentials should be specified in the `auth` component of th
 
 The hostname and optional port of the server. If the port is omitted, it defaults to 443.
 
+The port part supports the "multi-port" format mentioned in [Port Hopping](../advanced/Port-Hopping.md).
+
 ### Query parameters
 
 - `obfs`: The type of obfuscation to be used. Current only `salamander` is supported.
@@ -37,7 +39,7 @@ The hostname and optional port of the server. If the port is omitted, it default
 ## Example
 
 ```
-hysteria2://letmein@example.com/?insecure=1&obfs=salamander&obfs-password=gawrgura&pinSHA256=deadbeef&sni=real.example.com
+hysteria2://letmein@example.com:123,5000-6000/?insecure=1&obfs=salamander&obfs-password=gawrgura&pinSHA256=deadbeef&sni=real.example.com
 ```
 
 ## Implementation notes
