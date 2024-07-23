@@ -39,7 +39,7 @@ The port part supports the "multi-port" format mentioned in [Port Hopping](../ad
 ## Example
 
 ```
-hysteria2://letmein@example.com/?insecure=1&obfs=salamander&obfs-password=gawrgura&pinSHA256=deadbeef&sni=real.example.com
+hysteria2://letmein@example.com:123,5000-6000/?insecure=1&obfs=salamander&obfs-password=gawrgura&pinSHA256=deadbeef&sni=real.example.com
 ```
 
 ## Implementation notes
