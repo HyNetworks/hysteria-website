@@ -1,5 +1,13 @@
 # Traffic Stats API
 
+If an API secret is set in your configuration, you will need to add the `Authorization` header when making a request.
+
+Example:
+
+```shell
+curl -H 'Authorization: secret' http://ip:port/path
+```
+
 ### GET `/traffic`
 
 This endpoint returns a JSON map of client IDs to their traffic statistics.
