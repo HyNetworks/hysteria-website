@@ -1,6 +1,6 @@
 # 流量统计 API
 
-如果配置中加入 API secret，调用时需要在请求头加上 `Authorization` 标头。
+如果配置中设置了 API secret，调用时需要在请求头加上 `Authorization` 标头。
 
 请求：
 
