@@ -67,7 +67,7 @@ You can have either `tls` or `acme`, but not both.
     1. CA to use. Can be `letsencrypt` or `zerossl`.
     2. Listening address for ACME verification (no port). Defaults to listening on all available interfaces.
     3. Directory to store ACME credentials.
-    4. ACME challenge type. Please read the instructions at the top of the page regarding the "type selector".
+    4. ACME challenge type. Please read the instructions regarding the "type selector" at the top of this page.
     5. Listening port for HTTP challenges.
        (Note: Changing to a port other than 80 requires port forwarding or HTTP reverse proxy, or the challenge will fail!)
     6. Listening port for TLS-ALPN challenges.
@@ -88,7 +88,7 @@ obfs:
 ```
 
 1. Replace with a strong password of your choice.
-2. Please read the instructions at the top of the page regarding the "type selector".
+2. Please read the instructions regarding the "type selector" at the top of this page.
 
 ## QUIC parameters
 
@@ -236,7 +236,7 @@ auth:
 3. The URL of the backend server that handles authentication.
 4. Disable TLS verification for the backend server (only applies to HTTPS URLs).
 5. The path to the command that handles authentication.
-6. Please read the instructions at the top of the page regarding the "type selector".
+6. Please read the instructions regarding the "type selector" at the top of this page.
 
 ### HTTP authentication
 
@@ -314,7 +314,7 @@ resolver:
 5. The SNI to use for the TLS resolver.
 6. Disable TLS verification for the TLS resolver.
 7. The address of the HTTPS resolver.
-8. Please read the instructions at the top of the page regarding the "type selector".
+8. Please read the instructions regarding the "type selector" at the top of this page.
 
 If omitted, Hysteria will use the system's default resolver.
 
@@ -428,7 +428,7 @@ outbounds:
 4. Optional. The password for the SOCKS5 proxy, if authentication is required.
 5. The URL of the HTTP/HTTPS proxy. (Can be `http://` or `https://`)
 6. Optional. Whether to disable TLS verification. Applies to HTTPS proxies only.
-7. Please read the instructions at the top of the page regarding the "type selector".
+7. Please read the instructions regarding the "type selector" at the top of this page.
 
 ### Customizing `direct` outbound
 
@@ -509,7 +509,7 @@ masquerade:
 4. The string to return.
 5. Optional. The headers to return.
 6. Optional. The status code to return. 200 by default.
-7. Please read the instructions at the top of the page regarding the "type selector".
+7. Please read the instructions regarding the "type selector" at the top of this page.
 
 You can test your masquerade configuration by starting Chrome with a special flag (to force QUIC):
 

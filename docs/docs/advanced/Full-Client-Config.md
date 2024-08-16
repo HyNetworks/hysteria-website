@@ -70,7 +70,7 @@ transport:
 ```
 
 1. The port hopping interval. This is only relevant if you're using a port hopping address. See [Port Hopping](Port-Hopping.md) for more information.
-2. Please read the instructions at the top of the page regarding the "type selector".
+2. Please read the instructions regarding the "type selector" at the top of this page.
 
 ## Obfuscation
 
@@ -86,7 +86,7 @@ obfs:
 ```
 
 1. Replace with a strong password of your choice.
-2. Please read the instructions at the top of the page regarding the "type selector".
+2. Please read the instructions regarding the "type selector" at the top of this page.
 
 ## QUIC parameters
 
