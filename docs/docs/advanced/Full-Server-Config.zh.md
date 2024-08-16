@@ -52,7 +52,7 @@ listen: :443 # (1)!
       ca: zerossl # (1)!
       listenHost: 0.0.0.0 # (2)!
       dir: my_acme_dir # (3)!
-      type: http # (4)!
+      type: http | tls | dns # (4)!
       http:
         altPort: 8888 # (5)!
       tls:
@@ -67,7 +67,7 @@ listen: :443 # (1)!
     1. 要使用的 CA。可以是 `letsencrypt` 或 `zerossl`。
     2. 用于 ACME 服务器验证的监听地址（不含端口）。默认监听所有可用的地址。
     3. 存储 ACME 账户密钥和证书的目录。
-    4. ACME 验证类型。可以是 `http`, `tls` 或 `dns`。
+    4. ACME 验证类型。 请阅读页面最上方关于 "类型选择" 配置格式的说明。
     5. 用于 HTTP 挑战的监听端口。
        （注意： 改为非 80 需要另行配置端口转发或者 HTTP 反向代理，否则证书会签署失败！）
     6. 用于 TLS-ALPN 挑战的监听端口。
@@ -82,12 +82,13 @@ listen: :443 # (1)!
 
 ```yaml
 obfs:
-  type: salamander
+  type: salamander # (2)!
   salamander:
     password: cry_me_a_r1ver # (1)!
 ```
 
 1. 替换为你的混淆密码。
+2. 混淆类型。 请阅读页面最上方关于 "类型选择" 配置格式的说明。
 
 ## QUIC 参数
 
@@ -218,7 +219,7 @@ udpIdleTimeout: 60s
 
 ```yaml
 auth:
-  type: password
+  type: password | userpass | http | command # (6)!
   password: your_password # (1)!
   userpass: # (2)!
     user1: pass1
@@ -235,6 +236,7 @@ auth:
 3. 处理验证的后端 URL。
 4. 禁用后端服务器的 TLS 验证（仅适用于 HTTPS）。
 5. 处理验证的命令路径。
+6. 验证类型。 请阅读页面最上方关于 "类型选择" 配置格式的说明。
 
 ### HTTP 验证
 
@@ -286,7 +288,7 @@ auth:
 
 ```yaml
 resolver:
-  type: udp
+  type: udp | tcp | tls | https # (8)!
   tcp:
     addr: 8.8.8.8:53 # (1)!
     timeout: 4s # (2)!
@@ -312,6 +314,7 @@ resolver:
 5. DNS over TLS 服务器的 SNI。
 6. 禁用 TLS 证书验证。
 7. DNS over HTTPS 服务器地址。
+8. 解析协议类型。 请阅读页面最上方关于 "类型选择" 配置格式的说明。
 
 如果省略，Hysteria 将使用系统默认的 DNS 服务器。
 
@@ -405,7 +408,7 @@ ACL 是 Hysteria 服务端中一个非常强大的功能，可以用来自定义
 ```yaml
 outbounds:
   - name: my_outbound_1 # (1)!
-    type: direct
+    type: direct # (7)!
   - name: my_outbound_2
     type: socks5
     socks5:
@@ -425,6 +428,7 @@ outbounds:
 4. 可选。SOCKS5 代理密码。
 5. HTTP/HTTPS 代理 URL。(可以是 `http://` 或 `https://` 开头)
 6. 可选。禁用 TLS 证书验证。仅适用于 HTTPS 代理。
+7. 请阅读页面最上方关于 "类型选择" 配置格式的说明。
 
 ### 关于 `direct` 出站
 
@@ -485,7 +489,7 @@ Hysteria 抵抗审查的关键之一就是它能伪装成标准的 HTTP/3 流量
 
 ```yaml
 masquerade:
-  type: proxy
+  type: file | proxy | string # (7)!
   file:
     dir: /www/masq # (1)!
   proxy:
@@ -505,6 +509,7 @@ masquerade:
 4. 要返回的字符串。
 5. 可选。要返回的 HTTP 头列表。
 6. 可选。要返回的 HTTP 状态码。默认为 200。
+7. 伪装类型。 请阅读页面最上方关于 "类型选择" 配置格式的说明。
 
 可以通过特定参数启动 Chrome 以强制使用 QUIC，测试你的伪装配置：
 

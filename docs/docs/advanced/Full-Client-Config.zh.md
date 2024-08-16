@@ -64,12 +64,13 @@ tls:
 
 ```yaml
 transport:
-  type: udp
+  type: udp # (2)!
   udp:
     hopInterval: 30s # (1)!
 ```
 
 1. 端口跳跃间隔。这只在使用多端口地址时才有效。更多信息请参见 [端口跳跃](Port-Hopping.md)。
+2. 传输类型。 请阅读页面最上方关于 "类型选择" 配置格式的说明。
 
 ## 混淆
 
@@ -79,12 +80,13 @@ transport:
 
 ```yaml
 obfs:
-  type: salamander
+  type: salamander # (2)!
   salamander:
     password: cry_me_a_r1ver # (1)!
 ```
 
 1. 替换为你的混淆密码。
+2. 混淆类型。 请阅读页面最上方关于 "类型选择" 配置格式的说明。
 
 ## QUIC 参数
 

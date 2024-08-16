@@ -64,12 +64,13 @@ The `transport` section is for customizing the underlying protocol used by the Q
 
 ```yaml
 transport:
-  type: udp
+  type: udp # (2)!
   udp:
     hopInterval: 30s # (1)!
 ```
 
 1. The port hopping interval. This is only relevant if you're using a port hopping address. See [Port Hopping](Port-Hopping.md) for more information.
+2. Please read the instructions regarding the "type selector" at the top of this page.
 
 ## Obfuscation
 
@@ -79,12 +80,13 @@ By default, the Hysteria protocol mimics HTTP/3. If your network specifically bl
 
 ```yaml
 obfs:
-  type: salamander
+  type: salamander # (2)!
   salamander:
     password: cry_me_a_r1ver # (1)!
 ```
 
 1. Replace with a strong password of your choice.
+2. Please read the instructions regarding the "type selector" at the top of this page.
 
 ## QUIC parameters
 
