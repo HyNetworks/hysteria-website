@@ -52,7 +52,7 @@ You can have either `tls` or `acme`, but not both.
       ca: zerossl # (1)!
       listenHost: 0.0.0.0 # (2)!
       dir: my_acme_dir # (3)!
-      type: http # (4)!
+      type: http | tls | dns # (4)!
       http:
         altPort: 8888 # (5)!
       tls:
@@ -67,7 +67,7 @@ You can have either `tls` or `acme`, but not both.
     1. CA to use. Can be `letsencrypt` or `zerossl`.
     2. Listening address for ACME verification (no port). Defaults to listening on all available interfaces.
     3. Directory to store ACME credentials.
-    4. ACME challenge type. Can be `http`, `tls`, or `dns`.
+    4. ACME challenge type. Please read the instructions at the top of the page regarding the "type selector".
     5. Listening port for HTTP challenges.
        (Note: Changing to a port other than 80 requires port forwarding or HTTP reverse proxy, or the challenge will fail!)
     6. Listening port for TLS-ALPN challenges.
@@ -82,12 +82,13 @@ By default, the Hysteria protocol mimics HTTP/3. If your network specifically bl
 
 ```yaml
 obfs:
-  type: salamander
+  type: salamander # (2)!
   salamander:
     password: cry_me_a_r1ver # (1)!
 ```
 
 1. Replace with a strong password of your choice.
+2. Please read the instructions at the top of the page regarding the "type selector".
 
 ## QUIC parameters
 
@@ -218,7 +219,7 @@ udpIdleTimeout: 60s
 
 ```yaml
 auth:
-  type: password
+  type: password | userpass | http | command # (6)!
   password: your_password # (1)!
   userpass: # (2)!
     user1: pass1
@@ -235,6 +236,7 @@ auth:
 3. The URL of the backend server that handles authentication.
 4. Disable TLS verification for the backend server (only applies to HTTPS URLs).
 5. The path to the command that handles authentication.
+6. Please read the instructions at the top of the page regarding the "type selector".
 
 ### HTTP authentication
 
@@ -286,7 +288,7 @@ You can specify what resolver (DNS server) to use to resolve domain names in cli
 
 ```yaml
 resolver:
-  type: udp
+  type: udp | tcp | tls | https # (8)!
   tcp:
     addr: 8.8.8.8:53 # (1)!
     timeout: 4s # (2)!
@@ -312,6 +314,7 @@ resolver:
 5. The SNI to use for the TLS resolver.
 6. Disable TLS verification for the TLS resolver.
 7. The address of the HTTPS resolver.
+8. Please read the instructions at the top of the page regarding the "type selector".
 
 If omitted, Hysteria will use the system's default resolver.
 
@@ -405,7 +408,7 @@ Currently, Hysteria supports the following outbound types:
 ```yaml
 outbounds:
   - name: my_outbound_1 # (1)!
-    type: direct
+    type: direct # (7)!
   - name: my_outbound_2
     type: socks5
     socks5:
@@ -425,6 +428,7 @@ outbounds:
 4. Optional. The password for the SOCKS5 proxy, if authentication is required.
 5. The URL of the HTTP/HTTPS proxy. (Can be `http://` or `https://`)
 6. Optional. Whether to disable TLS verification. Applies to HTTPS proxies only.
+7. Please read the instructions at the top of the page regarding the "type selector".
 
 ### Customizing `direct` outbound
 
@@ -485,7 +489,7 @@ Currently, Hysteria provides the following masquerade modes:
 
 ```yaml
 masquerade:
-  type: proxy
+  type: file | proxy | string # (7)!
   file:
     dir: /www/masq # (1)!
   proxy:
@@ -505,6 +509,7 @@ masquerade:
 4. The string to return.
 5. Optional. The headers to return.
 6. Optional. The status code to return. 200 by default.
+7. Please read the instructions at the top of the page regarding the "type selector".
 
 You can test your masquerade configuration by starting Chrome with a special flag (to force QUIC):
 
