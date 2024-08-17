@@ -4,6 +4,12 @@ hide:
   - navigation
 ---
 
+## 2.5.1
+
+- Fixed a bug in HTTP sniffing that caused all connections to non-standard ports (non-80) to fail
+- Fixed a bug in the client where the authentication password was not escaped when parsing sharing links
+- Updated quic-go to v0.46.0
+
 ## 2.5.0
 
 - Added support for ACME DNS challenge, including several common providers such as Cloudflare, GoDaddy, and Name.com
