@@ -218,7 +218,7 @@ ip -6 route add local default dev lo table 100
 
         # Bypass traffic already handled by TProxy (1)
         meta l4proto $TPROXY_L4PROTO socket transparent 1 counter mark set $TPROXY_MARK
-        socket transparent 0 counter return
+        socket transparent 0 socket wildcard 0 counter return
 
         # Bypass private and special IP addresses
         ip daddr $BYPASS_IPV4 counter return
