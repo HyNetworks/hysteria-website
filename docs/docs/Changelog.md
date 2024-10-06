@@ -4,6 +4,12 @@ hide:
   - navigation
 ---
 
+## 2.5.2
+
+- By default, the server now terminates the TLS handshake if the SNI sent by a client does not match the certificate. A new `sniGuard` option has been added to the `tls` section to control this behavior
+- Fixed the issue where sniffing could not recognize fragmented QUIC packets
+- Updated quic-go to v0.47.0
+
 ## 2.5.1
 
 - Fixed a bug in HTTP sniffing that caused all connections to non-standard ports (non-80) to fail
