@@ -37,9 +37,14 @@ listen: :443 # (1)!
     tls: # (1)!
       cert: some.crt
       key: some.key
+      sniGuard: strict | disable | dns-san # (2)!
     ```
 
     1. 每次 TLS 握手时都会读取证书。可以原地更新证书文件而无需重启服务端。
+    2. 验证客户端发送的 SNI。 与证书信息匹配时才建立连接， 否则终止 TLS 握手。<br>
+       设置为 `strict` 以启用该功能。<br>
+       设置为 `disable` 以禁用该功能。<br>
+       默认为 `dns-san`， 仅当证书中包含「证书主题背景的备用名称」扩展且该扩展中包含域名时才启用该功能。
 
 === "ACME"
 

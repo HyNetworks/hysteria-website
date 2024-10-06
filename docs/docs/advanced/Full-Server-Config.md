@@ -37,9 +37,14 @@ You can have either `tls` or `acme`, but not both.
     tls: # (1)!
       cert: some.crt
       key: some.key
+      sniGuard: strict | disable | dns-san # (2)!
     ```
 
     1. Certificates are read on every TLS handshake. This means you can update the files without restarting the server.
+    2. Verify the SNI provided by the client. Accept the connection only when it matches what's in the certificate. Terminate the TLS handshake otherwise. <br>
+       Set to `strict` to enforce this behavior. <br>
+       Set to `disable` to disable this entirely. <br>
+       The default is `dns-san`, which enables this feature only when the certificate contains the "Subject Alternative Name" extension with a domain name in it.
 
 === "ACME"
 
