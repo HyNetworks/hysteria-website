@@ -16,7 +16,9 @@ hysteria2://[auth@]hostname[:port]/?[key=value]&[key=value]...
 
 ### 验证
 
-验证密码应在 URI 的 `auth` 中指定。特殊情况是服务器使用 `userpass` 验证时，`auth` 应格式化为 `username:password`。
+验证密码应在 URI 的 `auth` 中指定。这部分实际上就是标准 URI 格式中的用户名部分，因此如果包含特殊字符，需要进行 [百分号编码](https://datatracker.ietf.org/doc/html/rfc3986#section-2.1)。
+
+一种特殊情况是服务器使用 `userpass` 验证时，`auth` 应格式化为 `username:password`。
 
 ### 地址
 

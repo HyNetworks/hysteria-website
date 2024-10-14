@@ -16,7 +16,9 @@ hysteria2://[auth@]hostname[:port]/?[key=value]&[key=value]...
 
 ### Auth
 
-The authentication credentials should be specified in the `auth` component of the URI. A special case is when the server uses the `userpass` authentication, in which case the `auth` component should be formatted as `username:password`.
+Authentication credentials should be specified in the `auth` component of the URI. This is essentially the username part of the standard URI format, and therefore needs to be [percent-encoded](https://datatracker.ietf.org/doc/html/rfc3986#section-2.1) if it contains special characters.
+
+A special case is when the server uses the `userpass` authentication, in which case the `auth` component should be formatted as `username:password`.
 
 ### Hostname
 
