@@ -100,4 +100,4 @@ If you see the log message "connected to server" and no errors, congratulations 
 
 You will also see a log message "use this URI to share your server" with a URI. This URI can be used as the `server` value in the client's configuration file. Since it already contains the password and a few other settings, you won't need to specify them separately. For more information on the URI format, please refer to [URI Scheme](../developers/URI-Scheme.md).
 
-This tutorial won't cover the details of how to use an HTTP or SOCKS5 proxy, as there are plenty of resources available online. For those completely new to proxies, we recommend the [Proxy SwitchyOmega browser extension](https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif) for Chrome and Firefox as a good starting point.
+This tutorial won't cover the details of how to use an HTTP or SOCKS5 proxy, as there are plenty of resources available online. For those completely new to proxies, we recommend the [ZeroOmega browser extension](https://github.com/zero-peak/ZeroOmega) for Chrome and Firefox as a good starting point.

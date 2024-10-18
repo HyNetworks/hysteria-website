@@ -100,4 +100,4 @@ Hysteria 内置了两套拥塞控制算法（BBR 与 Brutal），**使用哪个�
 
 你还会看到一个日志信息 "use this URI to share your server" 包含一个 URI。这个 URI 可以用作客户端配置文件中的 `server` 值。由于它已经包含了密码和一些其他设置，因此不再需要单独指定它们。有关 URI 格式的更多信息，请参考 [URI 格式](../developers/URI-Scheme.md)。
 
-本教程不会详细介绍如何使用 HTTP 或 SOCKS5 代理，因为网上已有大量的教程。对于完全不了解代理的人，我们推荐使用 [Proxy SwitchyOmega 浏览器插件](https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif) 作为一个起点。
+本教程不会详细介绍如何使用 HTTP 或 SOCKS5 代理，因为网上已有大量的教程。对于完全不了解代理的人，我们推荐使用 [ZeroOmega 浏览器插件](https://github.com/zero-peak/ZeroOmega) 作为一个起点。
