@@ -4,6 +4,17 @@ hide:
   - navigation
 ---
 
+## 2.6.0
+
+> 此版本包含重要修复，强烈建议更新
+
+- 修复一个端口跳跃范围包含 65535 时客户端启动会卡死的 bug
+- 流量统计 API 新增 `/dump/streams` 接口，用于获取当前所有 QUIC 流的信息
+- quic-go 更新到 v0.48.1
+- `version` 子命令新增工具链和 quic-go 版本信息
+- 客户端新增 `share` 子命令，用于生成分享链接和二维码
+- 服务端现在会验证 `masquerade.proxy.url` 字段是否为有效的 HTTP 或 HTTPS URL
+
 ## 2.5.2
 
 - 服务端现在默认会在客户端发送的 SNI 与证书不匹配时终止 TLS 握手，并在 `tls` 中新增了 `sniGuard` 选项用于控制此行为

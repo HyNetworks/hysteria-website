@@ -4,6 +4,17 @@ hide:
   - navigation
 ---
 
+## 2.6.0
+
+> This release contains important fixes and we strongly encourage everyone to upgrade.
+
+- Fixed a bug where the client would freeze on startup if the port hopping range contained 65535
+- Added a new `/dump/streams` endpoint to the traffic stats API for retrieving information on active QUIC streams
+- Updated quic-go to v0.48.1
+- The `version` subcommand now includes the toolchain & quic-go version information
+- Added a new `share` subcommand to the client for generating sharing links & QR codes
+- The server now validates the `masquerade.proxy.url` field to ensure it's a valid HTTP or HTTPS URL
+
 ## 2.5.2
 
 - By default, the server now terminates the TLS handshake if the SNI sent by a client does not match the certificate. A new `sniGuard` option has been added to the `tls` section to control this behavior
