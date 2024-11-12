@@ -58,7 +58,7 @@ curl -H 'Authorization: secret' http://ip:port/path
 }
 ```
 
-### GET `dump/streams`
+### GET `/dump/streams`
 
 此接口返回一个 JSON 对象， 反映当前由 Hysteria 代理的 TCP 流的详细信息。
 

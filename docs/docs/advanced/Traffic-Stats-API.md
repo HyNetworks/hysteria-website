@@ -58,7 +58,7 @@ Response:
 }
 ```
 
-### GET `dump/streams`
+### GET `/dump/streams`
 
 This endpoint returns a JSON object containing information about each QUIC stream of a Hysteria TCP proxy connection.
 
