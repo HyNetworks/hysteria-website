@@ -4,6 +4,16 @@ hide:
   - navigation
 ---
 
+## 2.6.1
+
+- 服务端 direct outbound 支持 TCP Fast Open
+- `version` 子命令的输出中将 `LibVersion` 改为 `Libraries`
+- 伪装代理网站回源支持禁用 TLS 验证 (`insecure`)
+- 修复在 Linux 上 `ipv6.disable=1` 时 tun 无法正常工作的 bug
+- 添加对 `LoongArch64` 的支持 (64 位龙芯)
+- quic-go 更新到 v0.49.0
+- `userpass` 认证中的用户名不再区分大小写
+
 ## 2.6.0
 
 > 此版本包含重要修复，强烈建议更新

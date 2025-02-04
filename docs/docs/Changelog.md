@@ -4,6 +4,16 @@ hide:
   - navigation
 ---
 
+## 2.6.1
+
+- The server's direct outbound now supports TCP Fast Open
+- Changed `LibVersion` to `Libraries` in the output of the `version` subcommand
+- Added support to disable TLS verification (`insecure`) for the masquerade proxy website
+- Fixed issues with tun not functioning on Linux when `ipv6.disable=1` is set
+- Added support for `LoongArch64`
+- Updated quic-go to version 0.49.0
+- Made the username in `userpass` authentication case-insensitive
+
 ## 2.6.0
 
 > This release contains important fixes and we strongly encourage everyone to upgrade.

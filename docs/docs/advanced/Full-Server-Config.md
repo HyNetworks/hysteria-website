@@ -450,12 +450,14 @@ outbounds:
       bindIPv4: 2.4.6.8 # (2)!
       bindIPv6: 0:0:0:0:0:ffff:0204:0608 # (3)!
       bindDevice: eth233 # (4)!
+      fastOpen: false # (5)!
 ```
 
 1. See the explanation below.
 2. The local IPv4 address to bind to.
 3. The local IPv6 address to bind to.
 4. The local network interface to bind to.
+5. Enable TCP fast open.
 
 The available `mode` values are:
 
@@ -500,21 +502,23 @@ masquerade:
   proxy:
     url: https://some.site.net # (2)!
     rewriteHost: true # (3)!
+    insecure: false # (4)!
   string:
-    content: hello stupid world # (4)!
-    headers: # (5)!
+    content: hello stupid world # (5)!
+    headers: # (6)!
       content-type: text/plain
       custom-stuff: ice cream so good
-    statusCode: 200 # (6)!
+    statusCode: 200 # (7)!
 ```
 
 1. The directory to serve files from.
 2. The URL of the website to proxy.
 3. Whether to rewrite the `Host` header to match the proxied website. This is required if the target web server uses `Host` to determine which site to serve.
-4. The string to return.
-5. Optional. The headers to return.
-6. Optional. The status code to return. 200 by default.
-7. Please read the instructions regarding the "type selector" at the top of this page.
+4. Disable TLS verification for the proxied website.
+5. The string to return.
+6. Optional. The headers to return.
+7. Optional. The status code to return. 200 by default.
+8. Please read the instructions regarding the "type selector" at the top of this page.
 
 You can test your masquerade configuration by starting Chrome with a special flag (to force QUIC):
 

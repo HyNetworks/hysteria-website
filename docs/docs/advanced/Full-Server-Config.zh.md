@@ -450,12 +450,14 @@ outbounds:
       bindIPv4: 2.4.6.8 # (2)!
       bindIPv6: 0:0:0:0:0:ffff:0204:0608 # (3)!
       bindDevice: eth233 # (4)!
+      fastOpen: false # (5)!
 ```
 
 1. 详细解释见下文。
 2. 要绑定的本地 IPv4 地址。
 3. 要绑定的本地 IPv6 地址。
 4. 要绑定的本地网卡。
+5. 启用 TCP 快速打开。
 
 支持的 `mode` 值包括：
 
@@ -500,21 +502,23 @@ masquerade:
   proxy:
     url: https://some.site.net # (2)!
     rewriteHost: true # (3)!
+    insecure: false # (4)!
   string:
-    content: hello stupid world # (4)!
-    headers: # (5)!
+    content: hello stupid world # (5)!
+    headers: # (6)!
       content-type: text/plain
       custom-stuff: ice cream so good
-    statusCode: 200 # (6)!
+    statusCode: 200 # (7)!
 ```
 
 1. 用于提供文件的目录。
 2. 要代理的网站的 URL。
 3. 是否重写 `Host` 头以匹配被代理的网站。如果目标网站通过 `Host` 识别请求的网站，这个选项是必须的。
-4. 要返回的字符串。
-5. 可选。要返回的 HTTP 头列表。
-6. 可选。要返回的 HTTP 状态码。默认为 200。
-7. 伪装类型。 请阅读页面最上方关于 "类型选择" 配置格式的说明。
+4. 禁用对代理网站的 TLS 验证。
+5. 要返回的字符串。
+6. 可选。要返回的 HTTP 头列表。
+7. 可选。要返回的 HTTP 状态码。默认为 200。
+8. 伪装类型。 请阅读页面最上方关于 "类型选择" 配置格式的说明。
 
 可以通过特定参数启动 Chrome 以强制使用 QUIC，测试你的伪装配置：
 

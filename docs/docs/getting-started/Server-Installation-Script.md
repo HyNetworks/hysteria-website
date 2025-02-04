@@ -48,7 +48,7 @@ bash <(curl -fsSL https://get.hy2.sh/)
 Install or upgrade to a specified version.
 
 ```sh
-bash <(curl -fsSL https://get.hy2.sh/) --version v2.6.0
+bash <(curl -fsSL https://get.hy2.sh/) --version v2.6.1
 ```
 
 ### Uninstall
