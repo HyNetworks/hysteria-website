@@ -47,7 +47,7 @@ Hysteria 是一个旨在打破审查高墙的纯公益开源项目。如果你�
 - [Nachoneko](https://nacho.lol/) - 甘城猫高速机场，解锁流媒体/ChatGPT，全面支持 Hysteria2 协议和多种客户端
 - Easton Tech (个人捐赠) - 做黑夜中最明亮的星星之火
 - [棜先生](https://bio.link/yuxiansheng) (个人捐赠)
-- [Integral](https://integral.codeberg.page/about/) (个人捐赠)
+- Integral (个人捐赠)
 - [TekLan Hosting](https://teklanhosting.co.uk) - 拥有全球多个地点的英国网络托管公司
 - [二次元论坛](https://www.ecylt.top/) - 按下 F 逃离世界！
 - [新狮云机场](https://my.cloudlion.me/) - 优质机场领先者，畅享极速网络
