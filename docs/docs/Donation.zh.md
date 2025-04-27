@@ -53,6 +53,7 @@ Hysteria 是一个旨在打破审查高墙的纯公益开源项目。如果你�
 - [TekLan Hosting](https://teklanhosting.co.uk) - 拥有全球多个地点的英国网络托管公司
 - [二次元论坛](https://www.ecylt.top/) - 按下 F 逃离世界！
 - [新狮云机场](https://my.cloudlion.me/) - 优质机场领先者，畅享极速网络
+- [Xeovo](https://xeovo.com/) - 打破审查，保护隐私，自由访问网络。Xeovo VPN 每月仅需 2.99 欧元起。
 
 **👀 虚位以待**
 
