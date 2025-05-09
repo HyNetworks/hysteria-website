@@ -17,8 +17,8 @@ hide:
   }
 </style>
 
-![Hysteria 2 Logo Banner](./assets/banner_light.svg#logo-light){: style="width: 90%; margin: 0 auto;" id="wiggle-logo" class="skip-lightbox"}
-![Hysteria 2 Logo Banner](./assets/banner_dark.svg#logo-dark){: style="width: 90%; margin: 0 auto;" id="wiggle-logo" class="skip-lightbox"}
+![Hysteria 2 Logo Banner](./assets/banner_light_nover.svg#logo-light){: style="width: 90%; margin: 0 auto;" id="wiggle-logo" class="skip-lightbox"}
+![Hysteria 2 Logo Banner](./assets/banner_dark_nover.svg#logo-dark){: style="width: 90%; margin: 0 auto;" id="wiggle-logo" class="skip-lightbox"}
 
 <h2 style="text-align: center;">Hysteria is a powerful, lightning fast and censorship resistant proxy.</h2>
 
