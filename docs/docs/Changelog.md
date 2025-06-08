@@ -4,6 +4,12 @@ hide:
   - navigation
 ---
 
+## 2.6.2
+
+- Updated quic-go to v0.52.0
+  - ClientHello is now fragmented during TLS handshake, which can bypass some firewalls' SNI filtering.
+- The `--qr` option in client mode is deprecated; use the `share` subcommand to generate links and QR codes instead.
+
 ## 2.6.1
 
 - The server's direct outbound now supports TCP Fast Open

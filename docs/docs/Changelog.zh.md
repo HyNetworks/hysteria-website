@@ -4,6 +4,12 @@ hide:
   - navigation
 ---
 
+## 2.6.2
+
+- quic-go 更新到 v0.52.0
+  - 现在 TLS 握手时会对 ClientHello 进行分片，可绕过部分防火墙的 SNI 过滤
+- 客户端模式的 `--qr` 参数已不推荐使用，可用 share 子命令生成共享链接与二维码
+
 ## 2.6.1
 
 - 服务端 direct outbound 支持 TCP Fast Open
