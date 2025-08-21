@@ -24,6 +24,7 @@
 | [Stash](https://apps.apple.com/us/app/stash-rule-based-proxy/id1596063349) | Simple & Powerful Network Tool (2.5.0 后支持 Hysteria 2)                                                           | macOS, iOS                          | 客户端          |
 | [Streisand](https://apps.apple.com/us/app/streisand/id6450534064)          | Flexible Proxy Client (1.5.6 后支持 Hysteria 2)                                                                    | macOS, iOS                          | 客户端          |
 | [Surge](https://nssurge.com)                                               | Advanced Network Toolbox (5.8.0 后支持 Hysteria 2)                                                                 | macOS, iOS                          | 客户端          |
+| [V2Box](https://play.google.com/store/apps/details?id=dev.hexasoftware.v2box&hl=en) | MultiProtocol Proxy Client (2.6.1 后支持 Hysteria 2)                                                                 | Android                          | 客户端         |
 
 > 我们并不直接控制第三方应用的开发。它们未必包括官方版本的最新功能和修复，并可能存在特有的 bug。如遇到任何问题，请先反馈给这些项目对应的开发者。
 
