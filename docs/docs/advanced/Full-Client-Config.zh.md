@@ -51,12 +51,16 @@ tls:
   insecure: false # (2)!
   pinSHA256: BA:88:45:17:A1... # (3)!
   ca: custom_ca.crt # (4)!
+  clientCertificate: client.crt # (5)!
+  clientKey: client.key # (6)!
 ```
 
 1. 用于 TLS 验证的服务器名称。如果省略，服务器名称将从 `server` 字段中提取。
 2. 禁用 TLS 验证。
 3. 验证服务器的证书指纹。可以通过 openssl 获取证书指纹：`openssl x509 -noout -fingerprint -sha256 -in your_cert.crt`
 4. 使用自定义 CA。
+5. 使用客户端证书进行 mTLS 验证。
+6. 使用客户端密钥进行 mTLS 验证。
 
 ## 传输 (Transport)
 

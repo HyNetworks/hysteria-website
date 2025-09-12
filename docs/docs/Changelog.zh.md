@@ -4,6 +4,15 @@ hide:
   - navigation
 ---
 
+## 2.6.3
+
+- 新增 mTLS 客户端证书验证
+- 修复 tun 模式下一个内存泄漏问题
+- 修复使用 systemd-resolved 的 Linux 设备上 tun 模式 DNS 解析失败的问题
+- 修复一个 ACL 中协议/端口不匹配的规则被错误应用到其他连接的 bug
+- 移除许可协议不兼容的 DoH 库，改为自行实现
+- 修复一个 UDP session 处理的线程安全问题
+
 ## 2.6.2
 
 - quic-go 更新到 v0.52.0

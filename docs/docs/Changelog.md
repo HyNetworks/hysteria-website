@@ -4,6 +4,15 @@ hide:
   - navigation
 ---
 
+## 2.6.3
+
+- Added mTLS support for client certificate authentication
+- Fixed a memory leak issue in tun mode
+- Fixed an issue where DNS resolution failed in tun mode on Linux systems using systemd-resolved
+- Fixed a bug in the ACL cache that caused rules with different ports or protocols to be applied to irrelevant connections
+- Removed the license-conflicted DoH library and replaced it with an in-house implementation
+- Fixed a race condition in UDP session handling
+
 ## 2.6.2
 
 - Updated quic-go to v0.52.0

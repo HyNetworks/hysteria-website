@@ -38,6 +38,7 @@ You can have either `tls` or `acme`, but not both.
       cert: some.crt
       key: some.key
       sniGuard: strict | disable | dns-san # (2)!
+      clientCA: client.crt # (3)!
     ```
 
     1. Certificates are read on every TLS handshake. This means you can update the files without restarting the server.
@@ -45,6 +46,7 @@ You can have either `tls` or `acme`, but not both.
        Set to `strict` to enforce this behavior. <br>
        Set to `disable` to disable this entirely. <br>
        The default is `dns-san`, which enables this feature only when the certificate contains the "Subject Alternative Name" extension with a domain name in it.
+    3. Use a client CA for mTLS verification.
 
 === "ACME"
 

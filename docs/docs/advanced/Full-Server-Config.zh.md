@@ -38,6 +38,7 @@ listen: :443 # (1)!
       cert: some.crt
       key: some.key
       sniGuard: strict | disable | dns-san # (2)!
+      clientCA: client.crt # (3)!
     ```
 
     1. 每次 TLS 握手时都会读取证书。可以原地更新证书文件而无需重启服务端。
@@ -45,6 +46,7 @@ listen: :443 # (1)!
        设置为 `strict` 以启用该功能。<br>
        设置为 `disable` 以禁用该功能。<br>
        默认为 `dns-san`， 仅当证书中包含「证书主题背景的备用名称」扩展且该扩展中包含域名时才启用该功能。
+    3. 使用客户端 CA 进行 mTLS 验证。
 
 === "ACME"
 

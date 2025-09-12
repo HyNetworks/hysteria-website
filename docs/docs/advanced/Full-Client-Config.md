@@ -51,12 +51,16 @@ tls:
   insecure: false # (2)!
   pinSHA256: BA:88:45:17:A1... # (3)!
   ca: custom_ca.crt # (4)!
+  clientCertificate: client.crt # (5)!
+  clientKey: client.key # (6)!
 ```
 
 1. Server name to use for TLS verification. If omitted, the server name will be extracted from the `server` field.
 2. Disable TLS verification.
 3. Verify the server's certificate fingerprint. You can obtain the fingerprint of your certificate using openssl: `openssl x509 -noout -fingerprint -sha256 -in your_cert.crt`
 4. Use a custom CA certificate for TLS verification.
+5. Use a client certificate for mTLS verification.
+6. Use a client key for mTLS verification.
 
 ## Transport
 
