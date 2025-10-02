@@ -4,6 +4,14 @@ hide:
   - navigation
 ---
 
+## 2.6.4
+
+> This release contains important fixes and we strongly encourage everyone to upgrade.
+
+- Security fix & behavior change: `tls.pinSHA256` now matches only the fingerprint of the leaf certificate, instead of any certificate in the chain. This change mitigates MITM risks in cases where `insecure=true` by preventing 1) user accidentally pinning a CA certificate, which would allow any certificate issued by that CA to be accepted, and 2) attacker constructing a forged certificate chain by combining their own leaf certificate with the user server's certificate.
+- Fix tun mode UDP packet AF corruption
+- Updated quic-go to v0.54.0
+
 ## 2.6.3
 
 - Added mTLS support for client certificate authentication
