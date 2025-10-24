@@ -4,6 +4,12 @@ hide:
   - navigation
 ---
 
+## 2.6.5
+
+> This release contains important fixes and we strongly encourage everyone to upgrade.
+
+- Fixed a server-side memory leak issue that accumulates with each client connection
+
 ## 2.6.4
 
 > This release contains important fixes and we strongly encourage everyone to upgrade.
