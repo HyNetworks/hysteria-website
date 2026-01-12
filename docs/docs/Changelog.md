@@ -4,6 +4,14 @@ hide:
   - navigation
 ---
 
+## 2.7.0
+
+> This release contains important fixes and we strongly encourage everyone to upgrade.
+
+- Updated quic-go to v0.57.1
+- Fixed a long-standing bug in BBR that caused the connection to send faster than the available bandwidth in some cases
+- Minor performance improvements
+
 ## 2.6.5
 
 > This release contains important fixes and we strongly encourage everyone to upgrade.
