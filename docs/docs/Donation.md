@@ -54,6 +54,7 @@ The rankings are random and change with each refresh.
 - [二次元论坛](https://www.ecylt.top/) - Press F to flee the world!
 - [新狮云机场](https://my.cloudlion.me/) - Premium proxy leader, enjoy ultra-fast network
 - [Xeovo](https://xeovo.com/) - Silence censorship. Protect your privacy and bypass restrictions with Xeovo VPN. Starting from 2,99€/mo.
+- [刘华强](https://huaqiang.pro/) - You sure this melon is ripe?
 
 **👀 Will you be next?**
 
