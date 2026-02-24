@@ -4,6 +4,12 @@ hide:
   - navigation
 ---
 
+## 2.7.1
+
+- Updated quic-go to v0.59.0, QUIC protocol level improvements
+- Speed test now defaults to time-based mode, testing download and upload for 10 seconds each. Use `--duration` to customize. The previous size-based behavior is still available via `--data-size`.
+- Minor code cleanup
+
 ## 2.7.0
 
 > This release contains important fixes and we strongly encourage everyone to upgrade.
