@@ -100,6 +100,45 @@ plugins:
             - TCP Brutal: https://github.com/apernet/tcp-brutal
             - 艺术创作: docs/Artworks.md
             - 捐赠: docs/Donation.md
+        - locale: ru
+          name: Русский
+          build: true
+          nav:
+            - Главная: index.md
+            - Документация:
+                - Начало работы:
+                    - Установка: docs/getting-started/Installation.md
+                    - Скрипт установки сервера: docs/getting-started/Server-Installation-Script.md
+                    - Сервер: docs/getting-started/Server.md
+                    - Клиент: docs/getting-started/Client.md
+                    - Сторонние приложения: docs/getting-started/3rd-party-apps.md
+                - Продвинутое использование:
+                    - Полная конфигурация сервера: docs/advanced/Full-Server-Config.md
+                    - Полная конфигурация клиента: docs/advanced/Full-Client-Config.md
+                    - Конфигурация ACME DNS: docs/advanced/ACME-DNS-Config.md
+                    - ACL: docs/advanced/ACL.md
+                    - API статистики трафика: docs/advanced/Traffic-Stats-API.md
+                    - Протокол FD Control: docs/advanced/FD-Control.md
+                    - Прозрачный прокси: docs/advanced/TPROXY.md
+                    - Смена портов: docs/advanced/Port-Hopping.md
+                    - Переменные окружения: docs/advanced/Environment-Variables.md
+                    - Тест скорости: docs/advanced/Speed-Test.md
+                    - Производительность: docs/advanced/Performance.md
+                    - Устранение неполадок: docs/advanced/Troubleshooting.md
+                - Разное:
+                    - Hysteria 2 и Hysteria 1: docs/misc/2-vs-1.md
+                    - Не нравится YAML?: docs/misc/Hate-YAML.md
+                    - Об HTTP/3: docs/misc/About-HTTP3.md
+                    - Можно ли использовать CDN?: docs/misc/CDN.md
+                - Разработчикам:
+                    - Сборка: docs/developers/Build.md
+                    - Протокол: docs/developers/Protocol.md
+                    - URI Scheme: docs/developers/URI-Scheme.md
+            - История изменений: docs/Changelog.md
+            - GitHub: https://github.com/apernet/hysteria
+            - TCP Brutal: https://github.com/apernet/tcp-brutal
+            - Творчество: docs/Artworks.md
+            - Пожертвования: docs/Donation.md
 
 markdown_extensions:
   - attr_list
