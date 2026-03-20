@@ -41,7 +41,7 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/apernet/hysteria
 
-copyright: Copyright &copy; 2020 - 2024 The Hysteria Project
+copyright: Copyright &copy; 2020<span id="copyright-year"></span> The Hysteria Project
 
 extra_css:
   - stylesheets/extra.css
@@ -240,6 +240,7 @@ nav:
   - Donation: docs/Donation.md
 
 extra_javascript:
+  - javascripts/copyright_year.js
   - javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
