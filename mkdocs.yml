@@ -139,6 +139,45 @@ plugins:
             - TCP Brutal: https://github.com/apernet/tcp-brutal
             - Творчество: docs/Artworks.md
             - Пожертвования: docs/Donation.md
+        - locale: fa
+          name: فارسی
+          build: true
+          nav:
+            - خانه: index.md
+            - مستندات:
+                - شروع کار:
+                    - نصب: docs/getting-started/Installation.md
+                    - اسکریپت نصب سرور: docs/getting-started/Server-Installation-Script.md
+                    - سرور: docs/getting-started/Server.md
+                    - کلاینت: docs/getting-started/Client.md
+                    - برنامه‌های شخص ثالث: docs/getting-started/3rd-party-apps.md
+                - پیشرفته:
+                    - پیکربندی کامل سرور: docs/advanced/Full-Server-Config.md
+                    - پیکربندی کامل کلاینت: docs/advanced/Full-Client-Config.md
+                    - پیکربندی ACME DNS: docs/advanced/ACME-DNS-Config.md
+                    - ACL: docs/advanced/ACL.md
+                    - API آمار ترافیک: docs/advanced/Traffic-Stats-API.md
+                    - پروتکل FD Control: docs/advanced/FD-Control.md
+                    - پروکسی شفاف: docs/advanced/TPROXY.md
+                    - پرش پورت: docs/advanced/Port-Hopping.md
+                    - متغیرهای محیطی: docs/advanced/Environment-Variables.md
+                    - تست سرعت: docs/advanced/Speed-Test.md
+                    - عملکرد: docs/advanced/Performance.md
+                    - عیب‌یابی: docs/advanced/Troubleshooting.md
+                - متفرقه:
+                    - Hysteria 2 در مقابل 1: docs/misc/2-vs-1.md
+                    - اگر از YAML خوشم نمی‌آید؟: docs/misc/Hate-YAML.md
+                    - درباره HTTP/3: docs/misc/About-HTTP3.md
+                    - آیا می‌توان از CDN استفاده کرد؟: docs/misc/CDN.md
+                - توسعه‌دهندگان:
+                    - ساخت: docs/developers/Build.md
+                    - پروتکل: docs/developers/Protocol.md
+                    - URI Scheme: docs/developers/URI-Scheme.md
+            - تاریخچه تغییرات: docs/Changelog.md
+            - GitHub: https://github.com/apernet/hysteria
+            - TCP Brutal: https://github.com/apernet/tcp-brutal
+            - آثار هنری: docs/Artworks.md
+            - کمک مالی: docs/Donation.md
 
 markdown_extensions:
   - attr_list
