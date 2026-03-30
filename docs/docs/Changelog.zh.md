@@ -4,6 +4,14 @@ hide:
   - navigation
 ---
 
+## 2.8.1
+
+> 此版本包含重要修复，强烈建议更新
+
+- 修复了在使用 BBR/Reno 作为拥塞控制算法时，客户端连接在一些情况下会导致服务端崩溃的问题
+- 修复了服务端端口范围监听时，iptables 调用可能因为竞争条件而失败的问题
+- 新增 `HYSTERIA_FIREWALL_BACKEND` 环境变量，用于指定服务端端口范围监听的防火墙后端 (`iptables` 或 `nftables`)
+
 ## 2.8.0
 
 - 新增[可配置拥塞控制](advanced/Full-Server-Config.md#_6)：可在 BBR 和 Reno 之间选择，并提供标准、保守、激进三种 BBR 预设（`standard`、`conservative`、`aggressive`）用于精细调节拥塞控制行为

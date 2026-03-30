@@ -4,6 +4,14 @@ hide:
   - navigation
 ---
 
+## 2.8.1
+
+> This release contains important fixes and we strongly encourage everyone to upgrade.
+
+- Fixed an issue where client connections could cause the server to crash when using BBR/Reno as the congestion control algorithm
+- Fixed iptables calls potentially failing due to lock contention during server port-range listening
+- Added `HYSTERIA_FIREWALL_BACKEND` environment variable to specify the firewall backend (`iptables` or `nftables`) for server port-range listening
+
 ## 2.8.0
 
 - Added [configurable congestion control](advanced/Full-Server-Config.md#congestion): select between BBR and Reno, with three BBR profiles (`standard`, `conservative`, `aggressive`) for fine-tuning congestion control behavior
