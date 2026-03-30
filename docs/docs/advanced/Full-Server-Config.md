@@ -27,6 +27,16 @@ listen: :443 # (1)!
 
 1. When the IP address is omitted, the server will listen on all interfaces, both IPv4 and IPv6. To listen on IPv4 only, you can use `0.0.0.0:443`. To listen on IPv6 only, you can use `[::]:443`.
 
+The `listen` field also supports port ranges for [port hopping](Port-Hopping.md):
+
+```yaml
+listen: :20000-50000 # (1)!
+```
+
+1. The server will listen on the first port in the range and automatically set up firewall rules (using nftables or iptables) to redirect traffic from all other ports in the range to the first port. The rules are automatically cleaned up when the server shuts down.
+
+> **NOTE:** Server-side port range listening is only supported on Linux. It requires either `nft` (nftables) or `iptables`/`ip6tables` to be available on the system. The server may need to be run with appropriate privileges (e.g. root or `CAP_NET_ADMIN`) to modify firewall rules.
+
 ## TLS
 
 You can have either `tls` or `acme`, but not both.
@@ -144,19 +154,44 @@ Supported units are:
 ignoreClientBandwidth: false
 ```
 
-`ignoreClientBandwidth` is a special option that, when enabled, makes the server to disregard any bandwidth hints set by clients, opting to use a more traditional congestion control algorithm (currently BBR) instead. This effectively overrides any bandwidth values set by clients in both directions.
+`ignoreClientBandwidth` is a special option that, when enabled, makes the server disregard any bandwidth hints set by clients and use the configured non-Brutal controller instead. This effectively overrides any bandwidth values set by clients in both directions.
 
 This feature is primarily useful for server owners who prefer congestion fairness over other network traffic, or who do not trust users to accurately set their own bandwidth values.
 
+## Congestion
+
+```yaml
+congestion:
+  type: bbr
+  bbrProfile: standard # (1)!
+```
+
+1. This field only applies when `type` is `bbr`. The default is `standard`.
+
+This section selects the congestion controller and the behavior profile to use. This only applies when the direction is not using Brutal (see Bandwidth section below).
+
+Supported congestion controller types:
+
+- `bbr`: Google BBR v1 (default)
+- `reno`: New Reno
+
+Supported BBR profiles:
+
+- `standard`: The standard BBR profile (default)
+- `conservative`: A slightly more conservative profile
+- `aggressive`: A slightly more aggressive profile
+
+The `congestion` section is local to this endpoint and is not negotiated in the protocol. In most deployments, you may want to set matching congestion options on both client and server.
+
 ### Bandwidth negotiation process
 
-The following diagram shows the process of negotiating which congestion control algorithm and bandwidth value to use between the client and server under various configurations.
+The following diagram shows the process of deciding whether a direction uses Brutal or a non-Brutal controller under various configurations. When Brutal is not selected, that endpoint uses its local `congestion.type` setting (`bbr` by default, or `reno` if configured).
 
 ```mermaid
 graph TD;
-    ICB{{"Is the server configured with ignoreClientBandwidth: true?"}} -- "Yes" --> BBR[/"Use BBR"/];
+    ICB{{"Is the server configured with ignoreClientBandwidth: true?"}} -- "Yes" --> NonBrutal[/"Use configured non-Brutal controller"/];
     ICB -- "No" --> C_has_BW;
-    C_has_BW{{"Is the client configured with bandwidth?"}} -- "No" --> BBR;
+    C_has_BW{{"Is the client configured with bandwidth?"}} -- "No" --> NonBrutal;
     C_has_BW -- "Yes" --> Brutal;
     Brutal["Use Brutal"] --> S_has_BW;
     S_has_BW{{"Is the server configured with bandwidth?"}} -- "No" --> Brutal_C[/"Use client's value"/];
@@ -164,7 +199,7 @@ graph TD;
     S_C_CMP{{"Compare server and client bandwidth values"}} -- "Server greater" --> Brutal_C;
     S_C_CMP -- "Client greater" --> Brutal_S[/"Use server's value"/];
 
-    style BBR fill:#dc322f;
+    style NonBrutal fill:#dc322f;
     style Brutal fill:#268bd2;
     style Brutal_C fill:#2aa198;
     style Brutal_S fill:#2aa198;
@@ -175,10 +210,10 @@ If you are setting up a Hysteria server for personal use, you can simplify it by
 ```mermaid
 graph TD;
     S_no_BW["`Ensure the server is **NOT** configured with bandwidth and ignoreClientBandwidth`"] --> C_has_BW;
-    C_has_BW{{"Is the client configured with bandwidth?"}} -- "No" --> BBR[/"BBR"/];
+    C_has_BW{{"Is the client configured with bandwidth?"}} -- "No" --> NonBrutal[/"Use configured non-Brutal controller"/];
     C_has_BW -- "Yes" --> Brutal_C[/"Use Brutal and use client's value"/];
 
-    style BBR fill:#dc322f;
+    style NonBrutal fill:#dc322f;
     style Brutal_C fill:#2aa198;
 ```
 
@@ -186,19 +221,21 @@ graph TD;
 
 **(The information in this section is considered internal implementation details of Hysteria and may change between versions)**
 
-Currently, Hysteria has 2 congestion control algorithms:
+Currently, Hysteria has 3 congestion control modes:
 
 **BBR:** Originally developed by Google for TCP, we adapted this algorithm for QUIC with minor modifications. BBR is a typical congestion control algorithm, including slow start phases and bandwidth estimation based on RTT variations. It works on its own and does not require bandwidth settings.
+
+**Reno:** This is the default congestion controller provided by `quic-go`. It is simpler and generally more conservative than BBR. Select it with `congestion.type: reno`.
 
 **Brutal:** This is Hysteria's custom congestion control algorithm. Unlike BBR, Brutal operates on a fixed rate model and does not reduce its speed in response to packet loss or RTT changes. If it fails to meet the predetermined target rate, the algorithm calculates the rate of packet loss and compensates by increasing speed. This only works if you know (and accurately specify) the theoretical maximum speed of your current connection. It's particularly effective at seizing bandwidth in congested, best-effort delivery networks, hence its name.
 
 > Brutal will also work if you set your bandwidth values below your connection's maximum speed; it will simply serve as a speed limiter. However, DO NOT set it higher than what's possible, as this will result in a slow, unstable connection and wasted data.
 
-Congestion control algorithms controls the sending of data. From the client's point of view, if the user doesn't provide his bandwidth value for download (but provides it for upload), the Hysteria server will send data to the client using BBR, but the client will upload data to the server using Brutal, and vice versa. The client can provide both, so both directions will use Brutal, or neither, so both will use BBR.
+Congestion control algorithms control the sending of data. From the client's point of view, if the user doesn't provide a bandwidth value for download (but provides one for upload), the Hysteria server will send data to the client using its configured non-Brutal controller, while the client will upload data to the server using Brutal, and vice versa. The client can provide both, so both directions will use Brutal, or neither, so both directions will use the configured non-Brutal controller (default: BBR).
 
-The special case, as mentioned above, is when the server has `ignoreClientBandwidth` enabled, in which case both sides will always use BBR, no matter what the client's bandwidth values are.
+The special case, as mentioned above, is when the server has `ignoreClientBandwidth` enabled, in which case both sides will ignore bandwidth hints and use their local non-Brutal controller settings instead.
 
-**The server's bandwidth limit only applies to Brutal at the moment. It has no effect on BBR.**
+**The server's bandwidth limit only applies to Brutal at the moment. It has no effect on BBR or Reno.**
 
 ## Speed Test
 
@@ -498,13 +535,14 @@ Currently, Hysteria provides the following masquerade modes:
 
 ```yaml
 masquerade:
-  type: file | proxy | string # (7)!
+  type: file | proxy | string
   file:
     dir: /www/masq # (1)!
   proxy:
     url: https://some.site.net # (2)!
     rewriteHost: true # (3)!
     insecure: false # (4)!
+    xForwarded: false # (8)!
   string:
     content: hello stupid world # (5)!
     headers: # (6)!
@@ -520,7 +558,7 @@ masquerade:
 5. The string to return.
 6. Optional. The headers to return.
 7. Optional. The status code to return. 200 by default.
-8. Please read the instructions regarding the "type selector" at the top of this page.
+8. Optional. Whether to set `X-Forwarded-For`, `X-Forwarded-Host`, and `X-Forwarded-Proto` headers when proxying requests. Disabled by default.
 
 You can test your masquerade configuration by starting Chrome with a special flag (to force QUIC):
 

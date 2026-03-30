@@ -48,7 +48,7 @@ bash <(curl -fsSL https://get.hy2.sh/)
 Установить или обновить до указанной версии.
 
 ```sh
-bash <(curl -fsSL https://get.hy2.sh/) --version v2.7.1
+bash <(curl -fsSL https://get.hy2.sh/) --version v2.8.0
 ```
 
 ### Удаление

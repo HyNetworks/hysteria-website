@@ -40,7 +40,9 @@ http:
 
 ### پهنای باند
 
-Hysteria دو الگوریتم کنترل ازدحام داخلی دارد (BBR و Brutal). **انتخاب الگوریتم به این بستگی دارد که آیا اطلاعات پهنای باند ارائه شده یا نه.** اگر می‌خواهید از BBR به جای Brutal استفاده کنید، کل بخش `bandwidth` را حذف کنید. برای جزئیات بیشتر به [فرآیند مذاکره پهنای باند](../advanced/Full-Server-Config.md#bandwidth-negotiation-process) و [جزئیات کنترل ازدحام](../advanced/Full-Server-Config.md#congestion-control-details) مراجعه کنید.
+Hysteria می‌تواند از Brutal، BBR یا Reno استفاده کند. **بخش `bandwidth` همچنان تعیین می‌کند که آیا برای آن جهت از Brutal استفاده شود یا نه.** اگر بخش `bandwidth` را حذف کنید، کلاینت از کنترل‌کننده غیر Brutal تنظیم‌شده در `congestion` استفاده می‌کند که به‌صورت پیش‌فرض BBR با پروفایل `standard` است.
+
+برای جزئیات بیشتر به [فرآیند مذاکره پهنای باند](../advanced/Full-Server-Config.md#bandwidth-negotiation-process)، [جزئیات کنترل ازدحام](../advanced/Full-Server-Config.md#congestion-control-details) و [پیکربندی کامل کلاینت](../advanced/Full-Client-Config.md) مراجعه کنید.
 
 > **⚠️ هشدار** مقادیر بالاتر پهنای باند همیشه بهتر نیستند؛ بسیار مراقب باشید که از حداکثر پهنای باندی که شبکه فعلی شما پشتیبانی می‌کند فراتر نروید. در غیر این صورت نتیجه معکوس خواهد شد و باعث ازدحام شبکه و اتصال ناپایدار می‌شود.
 

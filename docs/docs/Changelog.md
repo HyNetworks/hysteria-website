@@ -4,6 +4,15 @@ hide:
   - navigation
 ---
 
+## 2.8.0
+
+- Added [configurable congestion control](advanced/Full-Server-Config.md#congestion): select between BBR and Reno, with three BBR profiles (`standard`, `conservative`, `aggressive`) for fine-tuning congestion control behavior
+- Added [server-side UDP port range listening](advanced/Port-Hopping.md#built-in-port-range-linux) (Linux only): the server can now listen on a port range and automatically set up nftables/iptables redirect rules
+- Added [random port hopping interval](advanced/Port-Hopping.md#client): use `minHopInterval`/`maxHopInterval` for a randomized hopping pattern instead of a fixed interval
+- Added `xForwarded` option to [masquerade proxy](advanced/Full-Server-Config.md#masquerade) for setting `X-Forwarded-For`/`Host`/`Proto` headers
+- Minor BBR fixes and improvements
+- Minor port hopping fixes and improvements
+
 ## 2.7.1
 
 - Updated quic-go to v0.59.0, QUIC protocol level improvements

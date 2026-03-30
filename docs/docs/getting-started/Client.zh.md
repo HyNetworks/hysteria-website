@@ -34,13 +34,15 @@ http:
 
 1. 替换为你服务器的地址
 2. 替换为你在服务器上设置的密码
-3. 有关带宽的更多信息，请参见[下面](#_4)
+3. 有关带宽的更多信息，请参见下方 “带宽” 一节
 4. 替换为你希望 SOCKS5 代理监听的地址
 5. 替换为你希望 HTTP 代理监听的地址
 
 ### 带宽
 
-Hysteria 内置了两套拥塞控制算法（BBR 与 Brutal），**使用哪个由是否提供了带宽值决定。** 如果希望使用 BBR 而不是 Brutal，可以删除整个 `bandwidth` 部分。详细信息请参见 [带宽协商流程](../advanced/Full-Server-Config.md#_6) 与 [拥塞控制细节](../advanced/Full-Server-Config.md#_7)。
+Hysteria 现在有三种相关的拥塞控制模式：Brutal、BBR 和 Reno。**`bandwidth` 决定该方向是否使用 Brutal。** 如果删除 `bandwidth` 部分，客户端会改用 `congestion` 中配置的非 Brutal 控制器，默认是 BBR 的 `standard` 预设。
+
+更多信息请参见 [完整服务端配置](../advanced/Full-Server-Config.md) 与 [完整客户端配置](../advanced/Full-Client-Config.md)。
 
 > **⚠️ 警告** 带宽值并非越大越好，请务必不要超过你当前网络环境所能达到的最大带宽。否则只会适得其反，导致网络拥塞，连接不稳定。
 

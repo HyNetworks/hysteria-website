@@ -27,6 +27,16 @@ listen: :443 # (1)!
 
 1. 当只有端口没有 IP 地址时，服务器将监听所有可用的 IPv4 和 IPv6 地址。要仅监听 IPv4，可以使用 `0.0.0.0:443`。要仅监听 IPv6，可以使用 `[::]:443`。
 
+`listen` 也支持端口范围，用于[端口跳跃](Port-Hopping.md)：
+
+```yaml
+listen: :20000-50000 # (1)!
+```
+
+1. 服务器将监听范围内的第一个端口，并自动设置防火墙规则（使用 nftables 或 iptables）将其他端口的流量重定向到第一个端口。服务器关闭时会自动清理这些规则。
+
+> **注意：** 服务器端端口范围监听仅支持 Linux。需要系统上有 `nft`（nftables）或 `iptables`/`ip6tables`。服务器可能需要以适当的权限运行（例如 root 或 `CAP_NET_ADMIN`）才能修改防火墙规则。
+
 ## TLS
 
 可以选择使用 `tls` 或 `acme`，但不能同时包含两者。
@@ -144,19 +154,44 @@ bandwidth:
 ignoreClientBandwidth: false
 ```
 
-`ignoreClientBandwidth` 启用后，服务器将忽略客户端设置的任何带宽，永远使用传统的拥塞控制算法（目前为 BBR）。
+`ignoreClientBandwidth` 启用后，服务器将忽略客户端设置的任何带宽，改为使用已配置的非 Brutal 控制器。
 
 这个功能主要为不希望让用户自己设置带宽的服务器提供。
 
+### 拥塞控制
+
+```yaml
+congestion:
+  type: bbr
+  bbrProfile: standard # (1)!
+```
+
+1. 此字段仅在 `type` 为 `bbr` 时生效。默认值为 `standard`。
+
+这一节用于选择拥塞控制器及其行为预设。只有在该方向没有使用 Brutal 时才会生效（详见上方 带宽 一节）。
+
+支持的拥塞控制器类型：
+
+- `bbr`: Google BBR v1（默认）
+- `reno`: New Reno
+
+支持的 BBR 预设：
+
+- `standard`: 标准 BBR 预设（默认）
+- `conservative`: 稍微更保守的预设
+- `aggressive`: 稍微更激进的预设
+
+`congestion` 是每一端各自的本地配置，不会通过协议协商。
+
 ### 带宽协商流程
 
-下图展示了在各种配置下，客户端和服务端协商使用何种拥塞控制算法和多大带宽的流程。
+下图展示了在各种配置下，如何决定某个方向是使用 Brutal，还是使用非 Brutal 控制器。如果没有选中 Brutal，则该端会使用本地 `congestion.type` 中配置的控制器（默认是 `bbr`，也可以改为 `reno`）。
 
 ```mermaid
 graph TD;
-    ICB{{"服务端是否配置 ignoreClientBandwidth: true ？"}} -- "是" --> BBR[/"使用 BBR"/];
+    ICB{{"服务端是否配置 ignoreClientBandwidth: true ？"}} -- "是" --> NonBrutal[/"使用已配置的非 Brutal 控制器"/];
     ICB -- "否" --> C_has_BW;
-    C_has_BW{{"客户端是否配置带宽？"}} -- "否" --> BBR;
+    C_has_BW{{"客户端是否配置带宽？"}} -- "否" --> NonBrutal;
     C_has_BW -- "是" --> Brutal;
     Brutal["使用 Brutal"] --> S_has_BW;
     S_has_BW{{"服务端是否配置带宽？"}} -- "否" --> Brutal_C[/"以客户端配置的带宽为准"/];
@@ -164,7 +199,7 @@ graph TD;
     S_C_CMP{{"比较服务端和客户端配置的带宽"}} -- "服务端更大" --> Brutal_C;
     S_C_CMP -- "客户端更大" --> Brutal_S[/"以服务端配置的带宽为准"/];
 
-    style BBR fill:#dc322f;
+    style NonBrutal fill:#dc322f;
     style Brutal fill:#268bd2;
     style Brutal_C fill:#2aa198;
     style Brutal_S fill:#2aa198;
@@ -175,10 +210,10 @@ graph TD;
 ```mermaid
 graph TD;
     S_no_BW["`确保服务端 **没有** 配置 bandwidth 与 ignoreClientBandwidth`"] --> C_has_BW;
-    C_has_BW{{"客户端是否配置带宽？"}} -- "否" --> BBR[/"BBR"/];
+    C_has_BW{{"客户端是否配置带宽？"}} -- "否" --> NonBrutal[/"使用已配置的非 Brutal 控制器"/];
     C_has_BW -- "是" -->  Brutal_C[/"Brutal 且以客户端配置的带宽为准"/];
 
-    style BBR fill:#dc322f;
+    style NonBrutal fill:#dc322f;
     style Brutal_C fill:#2aa198;
 ```
 
@@ -186,19 +221,21 @@ graph TD;
 
 **(本节中的信息是 Hysteria 的内部实现细节，可能会在不同版本之间发生变化)**
 
-目前，Hysteria 有两种拥塞控制算法：
+目前，Hysteria 有三种拥塞控制模式：
 
 **BBR：** 由 Google 为 TCP 开发，我们对其进行了修改以移植到 QUIC。BBR 是标准的拥塞控制算法，包括慢启动和基于 RTT 变化的带宽估算。BBR 能独立运行，不需要用户手动设置带宽。
+
+**Reno：** 这是 `quic-go` 提供的默认拥塞控制器。比 BBR 更简单，也通常更保守。可以通过 `congestion.type: reno` 启用。
 
 **Brutal：** 这是 Hysteria 自有的拥塞控制算法。与 BBR 不同，Brutal 采用固定速率模型，丢包或 RTT 变化不会降低速度。相反，如果无法达到预定的目标速率，反而会根据计算的丢包率提高发送速率来进行补偿。Brutal 只在你知道（并正确设置了）当前网络的最大速度时才能正常运行。其擅长在拥塞的网络中抢占带宽，因此得名。
 
 > Brutal 如果带宽设置低于实际最大值也能正常运行；相当于限速。重要的是不要将其设置得高于实际最大值，否则会因为补偿机制导致连接速度慢、不稳定，且浪费流量。
 
-拥塞控制算法控制的是数据的发送。从客户端的视角，如果没有设置 down 带宽值（但提供了 up），Hysteria 服务器会使用 BBR 向客户端发送数据，但客户端会使用 Brutal 向服务器上传数据，反之亦然。客户端可以提供两者，这样两个方向都会使用 Brutal，或者都不提供，这样两个方向都会使用 BBR。
+拥塞控制算法控制的是数据的发送。从客户端的视角，如果没有设置 down 带宽值（但提供了 up），Hysteria 服务器会使用其本地配置的非 Brutal 控制器向客户端发送数据，而客户端会使用 Brutal 向服务器上传数据，反之亦然。客户端可以提供两者，这样两个方向都会使用 Brutal，或者都不提供，这样两个方向都会使用已配置的非 Brutal 控制器（默认是 BBR）。
 
-如上所述，一个特殊情况是当服务器启用了 `ignoreClientBandwidth` 选项，无论客户端的带宽值如何，双方始终都会使用 BBR。
+如上所述，一个特殊情况是当服务器启用了 `ignoreClientBandwidth` 选项，此时双方都会忽略带宽提示，改用各自本地配置的非 Brutal 控制器。
 
-**目前，服务端的带宽限制限制的只是 Brutal 最大速率。因此在使用 BBR 的情况下并不会生效。**
+**目前，服务端的带宽限制限制的只是 Brutal 最大速率。因此在使用 BBR 或 Reno 的情况下并不会生效。**
 
 ## 速度测试
 
@@ -505,6 +542,7 @@ masquerade:
     url: https://some.site.net # (2)!
     rewriteHost: true # (3)!
     insecure: false # (4)!
+    xForwarded: false # (8)!
   string:
     content: hello stupid world # (5)!
     headers: # (6)!
@@ -520,7 +558,7 @@ masquerade:
 5. 要返回的字符串。
 6. 可选。要返回的 HTTP 头列表。
 7. 可选。要返回的 HTTP 状态码。默认为 200。
-8. 伪装类型。 请阅读页面最上方关于 "类型选择" 配置格式的说明。
+8. 可选。是否在代理请求时设置 `X-Forwarded-For`、`X-Forwarded-Host` 和 `X-Forwarded-Proto` 头。默认禁用。
 
 可以通过特定参数启动 Chrome 以强制使用 QUIC，测试你的伪装配置：
 

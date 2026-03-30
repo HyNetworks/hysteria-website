@@ -90,7 +90,6 @@ plugins:
                     - 我不喜欢 YAML 怎么办？: docs/misc/Hate-YAML.md
                     - 关于 HTTP/3: docs/misc/About-HTTP3.md
                     - 可以套 CDN 吗？: docs/misc/CDN.md
-                    - Hysteria 是多倍发包吗？: docs/misc/Hysteria-Brutal.md
                 - 开发者:
                     - 构建: docs/developers/Build.md
                     - 协议: docs/developers/Protocol.md

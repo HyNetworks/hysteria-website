@@ -68,13 +68,17 @@ tls:
 
 ```yaml
 transport:
-  type: udp # (2)!
+  type: udp
   udp:
     hopInterval: 30s # (1)!
+    # 或使用随机间隔：
+    # minHopInterval: 15s
+    # maxHopInterval: 45s
 ```
 
 1. 端口跳跃间隔。这只在使用多端口地址时才有效。更多信息请参见 [端口跳跃](Port-Hopping.md)。
-2. 传输类型。 请阅读页面最上方关于 "类型选择" 配置格式的说明。
+
+> **注意：** 可以使用 `hopInterval` 设置固定间隔，或使用 `minHopInterval`/`maxHopInterval` 设置随机间隔范围。两者不能同时使用。如果都未设置，默认为固定 30s 间隔。
 
 ## 混淆
 
@@ -124,6 +128,31 @@ quic:
 
 **注意：** `sockopts` 项下的子选项目前仅对出站 QUIC 连接有效，对其它出站连接（例如为解析服务端地址而发送的 DNS 查询）无效。
 
+## 拥塞控制
+
+```yaml
+congestion:
+  type: bbr
+  bbrProfile: standard # (1)!
+```
+
+1. 此字段仅在 `type` 为 `bbr` 时生效。默认值为 `standard`。
+
+这一节用于选择拥塞控制器及其行为预设。只有在该方向没有使用 Brutal 时才会生效（详见下方 带宽 一节）。
+
+支持的拥塞控制器类型：
+
+- `bbr`: Google BBR v1（默认）
+- `reno`: New Reno
+
+支持的 BBR 预设：
+
+- `standard`: 标准 BBR 预设（默认）
+- `conservative`: 稍微更保守的预设
+- `aggressive`: 稍微更激进的预设
+
+`congestion` 是每一端各自的本地配置，不会通过协议协商。
+
 ## 带宽
 
 ```yaml
@@ -132,13 +161,13 @@ bandwidth:
   down: 200 mbps
 ```
 
-Hysteria 内置了两套拥塞控制算法（BBR 与 Brutal），**使用哪个由是否提供了带宽值决定。** 如果希望使用 BBR 而不是 Brutal，可以删除整个 `bandwidth` 部分。详细信息请参见 [带宽协商流程](../advanced/Full-Server-Config.md#_6) 与 [拥塞控制细节](../advanced/Full-Server-Config.md#_7)。
+Hysteria 现在有三种相关的拥塞控制模式：Brutal、BBR 和 Reno。**`bandwidth` 决定某个方向是否使用 Brutal。** 如果该方向没有使用 Brutal，则客户端会使用 `congestion` 中配置的非 Brutal 控制器（默认是 `bbr` + `standard`）。如果你希望使用非 Brutal 控制器，可以删除对应方向的带宽值，或者直接删除整个 `bandwidth` 部分。详细信息请参见 [完整服务端配置](../advanced/Full-Server-Config.md) 中的带宽协商与拥塞控制说明。
 
 > **⚠️ 警告** 带宽值并非越大越好，请务必不要超过你当前网络环境所能达到的最大带宽。否则只会适得其反，导致网络拥塞，连接不稳定。
 
 客户端的实际上传速度将是这里指定的值，和服务器最大下载速度（如果服务器设置中指定了）中最小的值。同理，客户端的实际下载速度将是这里指定的值，和服务器最大上传速度中最小的值。
 
-一个例外是，如果服务器启用了 `ignoreClientBandwidth` 选项，这里指定的值将被忽略。
+一个例外是，如果服务器启用了 `ignoreClientBandwidth` 选项，这里指定的值将被忽略，客户端会改用本地 `congestion` 配置。
 
 支持的单位有：
 

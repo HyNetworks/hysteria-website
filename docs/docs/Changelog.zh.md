@@ -4,6 +4,15 @@ hide:
   - navigation
 ---
 
+## 2.8.0
+
+- 新增[可配置拥塞控制](advanced/Full-Server-Config.md#_6)：可在 BBR 和 Reno 之间选择，并提供标准、保守、激进三种 BBR 预设（`standard`、`conservative`、`aggressive`）用于精细调节拥塞控制行为
+- 新增[服务端 UDP 端口范围监听](advanced/Port-Hopping.md#linux)（仅 Linux）：服务器现在可以监听端口范围并自动设置 nftables/iptables 重定向规则
+- 新增[随机端口跳跃间隔](advanced/Port-Hopping.md#_2)：使用 `minHopInterval`/`maxHopInterval` 实现随机化跳跃模式，替代固定间隔
+- 伪装代理新增 `xForwarded` 选项，用于设置 `X-Forwarded-For`/`Host`/`Proto` 头
+- BBR 小幅修复和改进
+- 端口跳跃小幅修复和改进
+
 ## 2.7.1
 
 - quic-go 更新到 v0.59.0，一些 QUIC 协议级别改进

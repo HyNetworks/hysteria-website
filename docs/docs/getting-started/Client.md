@@ -40,7 +40,9 @@ http:
 
 ### Bandwidth
 
-Hysteria has two built-in congestion control algorithms (BBR & Brutal). **Which one to use depends on whether bandwidth information is provided.** If you want to use BBR instead of Brutal, you can delete the entire `bandwidth` section. For more details, see [Bandwidth negotiation process](../advanced/Full-Server-Config.md#bandwidth-negotiation-process) and [Congestion control details](../advanced/Full-Server-Config.md#congestion-control-details).
+Hysteria can use Brutal, BBR, or Reno congestion controllers. **The `bandwidth` section determines whether Brutal is used for that direction.** If you remove the `bandwidth` section, the client will use the non-Brutal controller configured in `congestion`, which defaults to BBR with the `standard` profile.
+
+For more details, see [Bandwidth negotiation process](../advanced/Full-Server-Config.md#bandwidth-negotiation-process), [Congestion control details](../advanced/Full-Server-Config.md#congestion-control-details), and [Full Client Config](../advanced/Full-Client-Config.md#congestion).
 
 > **⚠️ Warning** Higher bandwidth values are not always better; be very careful not to exceed the maximum bandwidth that your current network can support. Doing so will backfire, causing network congestion and unstable connections.
 

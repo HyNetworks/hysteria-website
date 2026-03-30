@@ -68,13 +68,17 @@ The `transport` section is for customizing the underlying protocol used by the Q
 
 ```yaml
 transport:
-  type: udp # (2)!
+  type: udp
   udp:
     hopInterval: 30s # (1)!
+    # Or use random interval:
+    # minHopInterval: 15s
+    # maxHopInterval: 45s
 ```
 
 1. The port hopping interval. This is only relevant if you're using a port hopping address. See [Port Hopping](Port-Hopping.md) for more information.
-2. Please read the instructions regarding the "type selector" at the top of this page.
+
+> **NOTE:** You can either use `hopInterval` for a fixed interval, or `minHopInterval`/`maxHopInterval` for a random interval within the specified range. You cannot use both. If neither is set, the default is a fixed 30s interval.
 
 ## Obfuscation
 
@@ -124,6 +128,31 @@ The default stream and connection receive window sizes are 8MB and 20MB, respect
 
 **Note:** The options under `sockopts` only applies to outbound QUIC connections, not to other possible outbound connections (e.g. DNS queries to resolve the server address).
 
+## Congestion
+
+```yaml
+congestion:
+  type: bbr
+  bbrProfile: standard # (1)!
+```
+
+1. This field only applies when `type` is `bbr`. The default is `standard`.
+
+This section selects the congestion controller and the behavior profile to use. This only applies when the direction is not using Brutal (see Bandwidth section below).
+
+Supported congestion controller types:
+
+- `bbr`: Google BBR v1 (default)
+- `reno`: New Reno
+
+Supported BBR profiles:
+
+- `standard`: The standard BBR profile (default)
+- `conservative`: A slightly more conservative profile
+- `aggressive`: A slightly more aggressive profile
+
+The `congestion` section is local to this endpoint and is not negotiated in the protocol.
+
 ## Bandwidth
 
 ```yaml
@@ -132,13 +161,13 @@ bandwidth:
   down: 200 mbps
 ```
 
-Hysteria has two built-in congestion control algorithms (BBR & Brutal). **Which one to use depends on whether bandwidth information is provided.** If you want to use BBR instead of Brutal, you can delete the entire `bandwidth` section. For more details, see [Bandwidth negotiation process](../advanced/Full-Server-Config.md#bandwidth-negotiation-process) and [Congestion control details](../advanced/Full-Server-Config.md#congestion-control-details).
+Hysteria can use Brutal, BBR, or Reno. **The `bandwidth` section determines whether Brutal is used for a given direction.** If Brutal is not selected, the client uses the non-Brutal controller configured in `congestion` (default: `bbr` with the `standard` profile). If you want to use a non-Brutal controller instead of Brutal, remove the corresponding bandwidth value or delete the entire `bandwidth` section. For more details, see [Bandwidth negotiation process](../advanced/Full-Server-Config.md#bandwidth-negotiation-process) and [Congestion control details](../advanced/Full-Server-Config.md#congestion-control-details).
 
 > **⚠️ Warning** Higher bandwidth values are not always better; be very careful not to exceed the maximum bandwidth that your current network can support. Doing so will backfire, causing network congestion and unstable connections.
 
 The client's actual upload speed will be the lesser of the value specified here and the server's maximum download speed (if set by the server). Similarly, the client's actual download speed will be the lesser of the value specified here and the server's maximum upload speed (if set by the server).
 
-One exception is that if the server has enabled the `ignoreClientBandwidth` option, the values specified here will be ignored.
+One exception is that if the server has enabled the `ignoreClientBandwidth` option, the values specified here will be ignored and the client will use its local `congestion` setting instead.
 
 Supported units are:
 

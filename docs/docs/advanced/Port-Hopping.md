@@ -20,19 +20,51 @@ There is no limit to the number of ports you can specify.
 
 The client will randomly select one of the specified ports for the initial connection and will periodically switch to a different port. The option for controlling the interval is `hopInterval` in the `transport` section:
 
-```yaml
-transport:
-  udp:
-    hopInterval: 30s # (1)!
-```
+=== "Fixed interval"
 
-1. 30s is the default. It must be at least 5s.
+    ```yaml
+    transport:
+      udp:
+        hopInterval: 30s # (1)!
+    ```
+
+    1. 30s is the default. It must be at least 5s.
+
+=== "Random interval"
+
+    ```yaml
+    transport:
+      udp:
+        minHopInterval: 15s # (1)!
+        maxHopInterval: 45s # (2)!
+    ```
+
+    1. The minimum port hopping interval. Must be at least 5s.
+    2. The maximum port hopping interval.
+
+    Each hop will use a random interval between `minHopInterval` and `maxHopInterval`. This makes the hopping pattern less predictable and harder to detect.
+
+> **NOTE:** You can either use `hopInterval` for a fixed interval, or `minHopInterval`/`maxHopInterval` for a random interval. You cannot use both.
 
 Assuming the server is reachable on all the ports you specified, the hopping process is transparent to the upper layers and should not cause any data loss/disconnection.
 
 ## Server
 
-The Hysteria server does not have built-in support for listening on multiple ports, so you cannot use the above format as a listening address on the server side. **We recommend using iptables or nftables DNAT to forward the ports to the server's listening port.**
+### Built-in port range (Linux)
+
+On Linux, the Hysteria server has built-in support for listening on a port range. Simply specify a port range in the `listen` field:
+
+```yaml
+listen: :20000-50000
+```
+
+The server will listen on the first port in the range and automatically set up firewall rules (using nftables or iptables) to redirect traffic from all other ports to the first port. The rules are automatically cleaned up when the server shuts down.
+
+> **NOTE:** This requires either `nft` (nftables) or `iptables`/`ip6tables` to be available on the system. The server may need to be run with appropriate privileges (e.g. root or `CAP_NET_ADMIN`) to modify firewall rules.
+
+### Manual setup
+
+Usually not needed, but you can use iptables or nftables DNAT to forward the ports manually:
 
 === "iptables"
 

@@ -4,6 +4,15 @@ hide:
   - navigation
 ---
 
+## 2.8.0
+
+- افزودن [کنترل ازدحام قابل تنظیم](advanced/Full-Server-Config.md#_5): انتخاب بین BBR و Reno، با سه پروفایل BBR (`standard`، `conservative`، `aggressive`) برای تنظیم دقیق رفتار کنترل ازدحام
+- افزودن [گوش‌دادن با بازهٔ پورت UDP در سمت سرور](advanced/Port-Hopping.md#_4) (فقط لینوکس): سرور اکنون می‌تواند روی بازهٔ پورت گوش دهد و به‌طور خودکار قوانین هدایت nftables/iptables تنظیم کند
+- افزودن [فاصلهٔ تصادفی پرش پورت](advanced/Port-Hopping.md#_2): از `minHopInterval`/`maxHopInterval` برای الگوی پرش تصادفی به جای فاصلهٔ ثابت استفاده کنید
+- افزودن گزینهٔ `xForwarded` به [پراکسی استتار](advanced/Full-Server-Config.md#masquerade) برای تنظیم هدرهای `X-Forwarded-For`/`Host`/`Proto`
+- رفع اشکالات و بهبودهای جزئی BBR
+- رفع اشکالات و بهبودهای جزئی پرش پورت
+
 ## 2.7.1
 
 - به‌روزرسانی quic-go به v0.59.0، بهبودهای سطح پروتکل QUIC
