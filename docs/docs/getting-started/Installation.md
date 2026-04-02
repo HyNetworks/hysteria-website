@@ -12,8 +12,6 @@ Like any proxy software, Hysteria consists of a server and a client. Our precomp
 
 ## Executable files
 
-> Click on the filename to download. All files are the latest version.
-
 === ":fontawesome-brands-windows: Windows"
 
     | File                                                                                                          | Arch   | Note         |
@@ -66,6 +64,9 @@ Like any proxy software, Hysteria consists of a server and a client. Our precomp
     | [hysteria-freebsd-386](https://download.hysteria.network/app/latest/hysteria-freebsd-386)               | x86    |              |
     | [hysteria-freebsd-arm](https://download.hysteria.network/app/latest/hysteria-freebsd-arm)               | ARMv7  |              |
     | [hysteria-freebsd-arm64](https://download.hysteria.network/app/latest/hysteria-freebsd-arm64)           | ARM64  |              |
+
+> For scripts and other automation:
+> `https://download.hysteria.network/app/latest/[filename]` always redirects to the latest version.
 
 ## Deployment script for Linux servers
 

@@ -12,8 +12,6 @@
 
 ## Исполняемые файлы
 
-> Нажмите на имя файла для скачивания. Все файлы — последней версии.
-
 === ":fontawesome-brands-windows: Windows"
 
     | Файл                                                                                                          | Архитектура | Примечание   |
@@ -66,6 +64,9 @@
     | [hysteria-freebsd-386](https://download.hysteria.network/app/latest/hysteria-freebsd-386)               | x86         |              |
     | [hysteria-freebsd-arm](https://download.hysteria.network/app/latest/hysteria-freebsd-arm)               | ARMv7       |              |
     | [hysteria-freebsd-arm64](https://download.hysteria.network/app/latest/hysteria-freebsd-arm64)           | ARM64       |              |
+
+> Для скриптов и автоматизации:
+> `https://download.hysteria.network/app/latest/[filename]` всегда перенаправляет на последнюю версию.
 
 ## Скрипт установки для Linux-серверов
 

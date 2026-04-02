@@ -12,8 +12,6 @@
 
 ## 下载可执行文件
 
-> 点击文件名下载，版本为目前最新版本。
-
 === ":fontawesome-brands-windows: Windows"
 
     | 文件                                                                                                          | 架构   | 注意            |
@@ -66,6 +64,9 @@
     | [hysteria-freebsd-386](https://download.hysteria.network/app/latest/hysteria-freebsd-386)             | x86    |                 |
     | [hysteria-freebsd-arm](https://download.hysteria.network/app/latest/hysteria-freebsd-arm)             | ARMv7  |                 |
     | [hysteria-freebsd-arm64](https://download.hysteria.network/app/latest/hysteria-freebsd-arm64)         | ARM64  |                 |
+
+> 对于脚本和其他自动化：
+> `https://download.hysteria.network/app/latest/[filename]` 会始终重定向到最新版本。
 
 ## Linux 服务端部署脚本
 
