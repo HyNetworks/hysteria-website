@@ -4,6 +4,15 @@ hide:
   - navigation
 ---
 
+## 2.8.2
+
+> This release contains important security fixes and we strongly encourage everyone to upgrade.
+
+- Fixed a security issue where, when sniff was enabled, an attacker could craft malicious QUIC packets to cause a server OOM crash
+- Fixed a compatibility issue with some older versions of nftables when server port hopping was enabled
+- Fixed a potential thread safety issue in salamander obfs
+- **Important: Due to changes in how some QUIC handshake parameters are handled, UDP forwarding will not work when v2.8.2 clients connect to older servers (TCP is unaffected). New servers are fully compatible with both new and old clients. We strongly recommend upgrading both servers and clients.**
+
 ## 2.8.1
 
 > This release contains important fixes and we strongly encourage everyone to upgrade.
