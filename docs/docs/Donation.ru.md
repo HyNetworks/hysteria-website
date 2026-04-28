@@ -39,25 +39,8 @@ Hysteria — это проект с открытым исходным кодом
 
 Рейтинг случайный и меняется при каждом обновлении страницы.
 
-<div id="hof-start"></div>
-
-- [狗狗加速](https://狗狗加速.com) - высокопроизводительный зарубежный VPN, бесплатная пробная версия, разблокировка стриминговых сервисов/ChatGPT, первый в мире с поддержкой Hysteria, в настоящее время полная поддержка Hysteria 2
-- Asahi (Индивидуальный донор)
-- [modimobeikete](https://space.bilibili.com/152313349) (Индивидуальный донор)
-- [洋葱游戏盾](https://youxidun.vip/) - Продукты безопасности на основе современных протоколов обхода цензуры, вдохновлённые дизайном Hysteria 2
-- [PlayerCatboy](https://github.com/Catboy96) (Индивидуальный донор)
-- [Nachoneko](https://hy.nachoneko.cc/) - Высокоскоростной прокси-сервис, разблокировка стриминга/ChatGPT, полная поддержка протокола Hysteria2
-- Easton Tech (Индивидуальный донор) - Будь самой яркой искрой в тёмной ночи
-- [棜先生](https://bio.link/yuxiansheng) (Индивидуальный донор)
-- Integral (Индивидуальный донор)
-- [TekLan Hosting](https://teklanhosting.co.uk) - Британская веб-хостинговая компания с глобальным присутствием
-- [二次元论坛](https://www.ecylt.top/) - Нажмите F, чтобы сбежать от мира!
-- [新狮云机场](https://my.cloudlion.me/) - Премиум-лидер в области прокси, наслаждайтесь сверхбыстрой сетью
-- [Xeovo](https://xeovo.com/) - Заглушите цензуру. Защитите свою конфиденциальность и обходите ограничения с Xeovo VPN. От 2,99€/мес.
-- [刘华强](https://huaqiang.pro/) - Уверен, что этот арбуз спелый?
-- [Carolyn Sun](https://carolyn.sh/) (Индивидуальный донор)
-- [4free](https://github.com/j4free) (Индивидуальный донор) - Пусть вам достанется достаточно хорошая удача
+<div id="hof-container" class="hof-grid" hidden></div>
 
 **👀 Вы будете следующим?**
 
-<script src="/javascripts/hof_rand.js"></script>
+<script defer src="/javascripts/hof_tiles.js"></script>

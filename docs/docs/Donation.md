@@ -39,25 +39,8 @@ Hysteria is an open-source project born from a passion to connect the world. If 
 
 The rankings are random and change with each refresh.
 
-<div id="hof-start"></div>
-
-- [狗狗加速](https://狗狗加速.com) - high-performance overseas VPN, free trial, unlock streaming services/ChatGPT, the world's first to support Hysteria, currently fully supporting Hysteria 2
-- Asahi (Individual Donor)
-- [modimobeikete](https://space.bilibili.com/152313349) (Individual Donor)
-- [洋葱游戏盾](https://youxidun.vip/) - Security products based on modern anti-censorship protocols, inspired by Hysteria 2's anti-censorship designs and optimizations for unstable networks
-- [PlayerCatboy](https://github.com/Catboy96) (Individual Donor)
-- [Nachoneko](https://hy.nachoneko.cc/) - High-speed proxy service, unlock streaming/ChatGPT, full support for the Hysteria2 protocol and various clients
-- Easton Tech (Individual Donor) - Be the brightest spark in a dark night
-- [棜先生](https://bio.link/yuxiansheng) (Individual Donor)
-- Integral (Individual Donor)
-- [TekLan Hosting](https://teklanhosting.co.uk) - UK web hosting company with global locations
-- [二次元论坛](https://www.ecylt.top/) - Press F to flee the world!
-- [新狮云机场](https://my.cloudlion.me/) - Premium proxy leader, enjoy ultra-fast network
-- [Xeovo](https://xeovo.com/) - Silence censorship. Protect your privacy and bypass restrictions with Xeovo VPN. Starting from 2,99€/mo.
-- [刘华强](https://huaqiang.pro/) - You sure this melon is ripe?
-- [Carolyn Sun](https://carolyn.sh/) (Individual Donor)
-- [4free](https://github.com/j4free) (Individual Donor) - Hope you have sufficiently good fortune
+<div id="hof-container" class="hof-grid" hidden></div>
 
 **👀 Will you be next?**
 
-<script src="/javascripts/hof_rand.js"></script>
+<script defer src="/javascripts/hof_tiles.js"></script>

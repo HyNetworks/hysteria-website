@@ -39,25 +39,8 @@ Hysteria 是一个旨在连接世界的纯公益开源项目。如果你支持�
 
 排名不分先后，顺序每次刷新随机变化。
 
-<div id="hof-start"></div>
-
-- [狗狗加速](https://狗狗加速.com) - 高性能海外 VPN 机场，免费试用，解锁流媒体/ChatGPT，全球首家支持 Hysteria 协议，目前全面支持 Hysteria 2
-- Asahi (个人捐赠)
-- [莫蒂默贝克特](https://space.bilibili.com/152313349) (个人捐赠)
-- [洋葱游戏盾](https://youxidun.vip/) - 基于多种现代化防审查协议的安全产品，参考了 Hysteria 2 在防审查和不稳定网络中传输优化的设计
-- [PlayerCatboy](https://github.com/Catboy96) (个人捐赠)
-- [Nachoneko](https://hy.nachoneko.cc/) - 甘城猫高速机场，解锁流媒体/ChatGPT，全面支持 Hysteria2 协议和多种客户端
-- Easton Tech (个人捐赠) - 做黑夜中最明亮的星星之火
-- [棜先生](https://bio.link/yuxiansheng) (个人捐赠)
-- Integral (个人捐赠)
-- [TekLan Hosting](https://teklanhosting.co.uk) - 拥有全球多个地点的英国网络托管公司
-- [二次元论坛](https://www.ecylt.top/) - 按下 F 逃离世界！
-- [新狮云机场](https://my.cloudlion.me/) - 优质机场领先者，畅享极速网络
-- [Xeovo](https://xeovo.com/) - 打破审查，保护隐私，自由访问网络。Xeovo VPN 每月仅需 2.99 欧元起。
-- [刘华强](https://huaqiang.pro/) - 这瓜保熟吗？
-- [Carolyn Sun](https://carolyn.sh/) (个人捐赠)
-- [4free](https://github.com/j4free) (个人捐赠) - 希望你拥有足够好的运气
+<div id="hof-container" class="hof-grid" hidden></div>
 
 **👀 虚位以待**
 
-<script src="/javascripts/hof_rand.js"></script>
+<script defer src="/javascripts/hof_tiles.js"></script>

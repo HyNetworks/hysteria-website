@@ -146,3 +146,75 @@
   border-radius: 5px;
   transition: background-color 0.3s;
 }
+
+.hof-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 12.5rem), 1fr));
+  gap: 0.6rem;
+  width: 100%;
+  margin: 0 0 1rem;
+}
+
+[data-md-color-scheme="default"] .hof-card {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+[data-md-color-scheme="slate"] .hof-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hof-card {
+  padding: 0.5rem 0.62rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.hof-card--error {
+  grid-column: 1 / -1;
+  color: var(--md-default-fg-color--lighter, #888);
+}
+
+.hof-card__badge {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  line-height: 1.2;
+}
+
+.hof-card__title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.28;
+  margin: 0;
+}
+
+.hof-card__title a {
+  text-decoration: none;
+}
+.hof-card__title a:hover {
+  text-decoration: underline;
+}
+
+.hof-card__desc {
+  font-size: 0.75rem;
+  line-height: 1.35;
+  margin: 0;
+  opacity: 0.92;
+}
+
+.hof-card--individual .hof-card__badge {
+  color: #5c6bc0;
+}
+.hof-card--organization .hof-card__badge {
+  color: #00897b;
+}
+[data-md-color-scheme="slate"] .hof-card--individual .hof-card__badge {
+  color: #9fa8da;
+}
+[data-md-color-scheme="slate"] .hof-card--organization .hof-card__badge {
+  color: #4db6ac;
+}

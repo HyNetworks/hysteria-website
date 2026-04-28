@@ -1,0 +1,199 @@
+{
+  "typeLabels": {
+    "individual": {
+      "en": "Individual",
+      "zh": "个人",
+      "ru": "Индивидуальный",
+      "fa": "فردی"
+    },
+    "organization": {
+      "en": "Organization",
+      "zh": "机构",
+      "ru": "Организация",
+      "fa": "سازمان"
+    }
+  },
+  "donors": [
+    {
+      "name": "狗狗加速",
+      "type": "organization",
+      "link": "https://狗狗加速.com",
+      "description": {
+        "en": "high-performance overseas VPN, free trial, unlock streaming services/ChatGPT, the world's first to support Hysteria, currently fully supporting Hysteria 2",
+        "zh": "高性能海外 VPN 机场，免费试用，解锁流媒体/ChatGPT，全球首家支持 Hysteria 协议，目前全面支持 Hysteria 2",
+        "ru": "высокопроизводительный зарубежный VPN, бесплатная пробная версия, разблокировка стриминговых сервисов/ChatGPT, первый в мире с поддержкой Hysteria, в настоящее время полная поддержка Hysteria 2",
+        "fa": "VPN خارجی با عملکرد بالا، دوره آزمایشی رایگان، باز کردن قفل سرویس‌های استریمینگ/ChatGPT، اولین در جهان با پشتیبانی از Hysteria، در حال حاضر با پشتیبانی کامل از Hysteria 2"
+      }
+    },
+    {
+      "name": "Asahi",
+      "type": "individual",
+      "link": null,
+      "description": {
+        "en": "",
+        "zh": "",
+        "ru": "",
+        "fa": ""
+      }
+    },
+    {
+      "name": {
+        "en": "modimobeikete",
+        "zh": "莫蒂默贝克特",
+        "ru": "modimobeikete",
+        "fa": "modimobeikete"
+      },
+      "type": "individual",
+      "link": "https://space.bilibili.com/152313349",
+      "description": {
+        "en": "",
+        "zh": "",
+        "ru": "",
+        "fa": ""
+      }
+    },
+    {
+      "name": "洋葱游戏盾",
+      "type": "organization",
+      "link": "https://youxidun.vip/",
+      "description": {
+        "en": "Security products based on modern anti-censorship protocols, inspired by Hysteria 2's anti-censorship designs and optimizations for unstable networks",
+        "zh": "基于多种现代化防审查协议的安全产品，参考了 Hysteria 2 在防审查和不稳定网络中传输优化的设计",
+        "ru": "Продукты безопасности на основе современных протоколов обхода цензуры, вдохновлённые дизайном Hysteria 2",
+        "fa": "محصولات امنیتی مبتنی بر پروتکل‌های مدرن ضدسانسور، الهام‌گرفته از طراحی‌های ضدسانسور Hysteria 2"
+      }
+    },
+    {
+      "name": "PlayerCatboy",
+      "type": "individual",
+      "link": "https://github.com/Catboy96",
+      "description": {
+        "en": "",
+        "zh": "",
+        "ru": "",
+        "fa": ""
+      }
+    },
+    {
+      "name": "Nachoneko",
+      "type": "organization",
+      "link": "https://hy.nachoneko.cc/",
+      "description": {
+        "en": "High-speed proxy service, unlock streaming/ChatGPT, full support for the Hysteria2 protocol and various clients",
+        "zh": "甘城猫高速机场，解锁流媒体/ChatGPT，全面支持 Hysteria2 协议和多种客户端",
+        "ru": "Высокоскоростной прокси-сервис, разблокировка стриминга/ChatGPT, полная поддержка протокола Hysteria2",
+        "fa": "سرویس پروکسی پرسرعت، باز کردن قفل استریمینگ/ChatGPT، پشتیبانی کامل از پروتکل Hysteria2"
+      }
+    },
+    {
+      "name": "Easton Tech",
+      "type": "individual",
+      "link": null,
+      "description": {
+        "en": "Be the brightest spark in a dark night",
+        "zh": "做黑夜中最明亮的星星之火",
+        "ru": "Будь самой яркой искрой в тёмной ночи",
+        "fa": "درخشان‌ترین جرقه در شب تاریک باش"
+      }
+    },
+    {
+      "name": "棜先生",
+      "type": "individual",
+      "link": "https://bio.link/yuxiansheng",
+      "description": {
+        "en": "",
+        "zh": "",
+        "ru": "",
+        "fa": ""
+      }
+    },
+    {
+      "name": "Integral",
+      "type": "individual",
+      "link": null,
+      "description": {
+        "en": "",
+        "zh": "",
+        "ru": "",
+        "fa": ""
+      }
+    },
+    {
+      "name": "TekLan Hosting",
+      "type": "organization",
+      "link": "https://teklanhosting.co.uk",
+      "description": {
+        "en": "UK web hosting company with global locations",
+        "zh": "拥有全球多个地点的英国网络托管公司",
+        "ru": "Британская веб-хостинговая компания с глобальным присутствием",
+        "fa": "شرکت وب‌هاستینگ بریتانیایی با مکان‌های جهانی"
+      }
+    },
+    {
+      "name": "二次元论坛",
+      "type": "organization",
+      "link": "https://www.ecylt.top/",
+      "description": {
+        "en": "Press F to flee the world!",
+        "zh": "按下 F 逃离世界！",
+        "ru": "Нажмите F, чтобы сбежать от мира!",
+        "fa": "کلید F را بزنید تا از دنیا فرار کنید!"
+      }
+    },
+    {
+      "name": "新狮云机场",
+      "type": "organization",
+      "link": "https://my.cloudlion.me/",
+      "description": {
+        "en": "Premium proxy leader, enjoy ultra-fast network",
+        "zh": "优质机场领先者，畅享极速网络",
+        "ru": "Премиум-лидер в области прокси, наслаждайтесь сверхбыстрой сетью",
+        "fa": "رهبر پروکسی ممتاز، از شبکه فوق‌سریع لذت ببرید"
+      }
+    },
+    {
+      "name": "Xeovo",
+      "type": "organization",
+      "link": "https://xeovo.com/",
+      "description": {
+        "en": "Silence censorship. Protect your privacy and bypass restrictions with Xeovo VPN. Starting from 2,99€/mo.",
+        "zh": "打破审查，保护隐私，自由访问网络。Xeovo VPN 每月仅需 2.99 欧元起。",
+        "ru": "Заглушите цензуру. Защитите свою конфиденциальность и обходите ограничения с Xeovo VPN. От 2,99€/мес.",
+        "fa": "سانسور را خاموش کنید. از حریم خصوصی خود محافظت کنید و محدودیت‌ها را با Xeovo VPN دور بزنید. از ۲٫۹۹ یورو/ماه."
+      }
+    },
+    {
+      "name": "刘华强",
+      "type": "individual",
+      "link": "https://huaqiang.pro/",
+      "description": {
+        "en": "You sure this melon is ripe?",
+        "zh": "这瓜保熟吗？",
+        "ru": "Уверен, что этот арбуз спелый?",
+        "fa": "مطمئنی این هندوانه رسیده؟"
+      }
+    },
+    {
+      "name": "Carolyn Sun",
+      "type": "individual",
+      "link": "https://carolyn.sh/",
+      "description": {
+        "en": "",
+        "zh": "",
+        "ru": "",
+        "fa": ""
+      }
+    },
+    {
+      "name": "4free",
+      "type": "individual",
+      "link": "https://github.com/j4free",
+      "description": {
+        "en": "Hope you have sufficiently good fortune",
+        "zh": "希望你拥有足够好的运气",
+        "ru": "Пусть вам достанется достаточно хорошая удача",
+        "fa": "امیدوارم خوش‌شانسی به‌اندازه کافی خوبی داشته باشید"
+      }
+    }
+  ]
+}

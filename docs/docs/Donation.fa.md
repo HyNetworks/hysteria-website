@@ -39,25 +39,8 @@ Hysteria یک پروژه متن‌باز است که از شور و اشتیاق
 
 ترتیب فهرست تصادفی است و با هر بارگذاری مجدد تغییر می‌کند.
 
-<div id="hof-start"></div>
-
-- [狗狗加速](https://狗狗加速.com) - VPN خارجی با عملکرد بالا، دوره آزمایشی رایگان، باز کردن قفل سرویس‌های استریمینگ/ChatGPT، اولین در جهان با پشتیبانی از Hysteria، در حال حاضر با پشتیبانی کامل از Hysteria 2
-- Asahi (حامی فردی)
-- [modimobeikete](https://space.bilibili.com/152313349) (حامی فردی)
-- [洋葱游戏盾](https://youxidun.vip/) - محصولات امنیتی مبتنی بر پروتکل‌های مدرن ضدسانسور، الهام‌گرفته از طراحی‌های ضدسانسور Hysteria 2
-- [PlayerCatboy](https://github.com/Catboy96) (حامی فردی)
-- [Nachoneko](https://hy.nachoneko.cc/) - سرویس پروکسی پرسرعت، باز کردن قفل استریمینگ/ChatGPT، پشتیبانی کامل از پروتکل Hysteria2
-- Easton Tech (حامی فردی) - درخشان‌ترین جرقه در شب تاریک باش
-- [棜先生](https://bio.link/yuxiansheng) (حامی فردی)
-- Integral (حامی فردی)
-- [TekLan Hosting](https://teklanhosting.co.uk) - شرکت وب‌هاستینگ بریتانیایی با مکان‌های جهانی
-- [二次元论坛](https://www.ecylt.top/) - کلید F را بزنید تا از دنیا فرار کنید!
-- [新狮云机场](https://my.cloudlion.me/) - رهبر پروکسی ممتاز، از شبکه فوق‌سریع لذت ببرید
-- [Xeovo](https://xeovo.com/) - سانسور را خاموش کنید. از حریم خصوصی خود محافظت کنید و محدودیت‌ها را با Xeovo VPN دور بزنید. از ۲٫۹۹ یورو/ماه.
-- [刘华强](https://huaqiang.pro/) - مطمئنی این هندوانه رسیده؟
-- [Carolyn Sun](https://carolyn.sh/) (حامی فردی)
-- [4free](https://github.com/j4free) (حامی فردی) - امیدوارم خوش‌شانسی به‌اندازه کافی خوبی داشته باشید
+<div id="hof-container" class="hof-grid" hidden></div>
 
 **👀 آیا شما نفر بعدی خواهید بود؟**
 
-<script src="/javascripts/hof_rand.js"></script>
+<script defer src="/javascripts/hof_tiles.js"></script>
