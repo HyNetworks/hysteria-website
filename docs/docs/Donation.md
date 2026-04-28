@@ -56,6 +56,7 @@ The rankings are random and change with each refresh.
 - [Xeovo](https://xeovo.com/) - Silence censorship. Protect your privacy and bypass restrictions with Xeovo VPN. Starting from 2,99€/mo.
 - [刘华强](https://huaqiang.pro/) - You sure this melon is ripe?
 - [Carolyn Sun](https://carolyn.sh/) (Individual Donor)
+- [4free](https://github.com/j4free) (Individual Donor) - Hope you have sufficiently good fortune
 
 **👀 Will you be next?**
 

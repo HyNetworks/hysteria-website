@@ -56,6 +56,7 @@ Hysteria 是一个旨在连接世界的纯公益开源项目。如果你支持�
 - [Xeovo](https://xeovo.com/) - 打破审查，保护隐私，自由访问网络。Xeovo VPN 每月仅需 2.99 欧元起。
 - [刘华强](https://huaqiang.pro/) - 这瓜保熟吗？
 - [Carolyn Sun](https://carolyn.sh/) (个人捐赠)
+- [4free](https://github.com/j4free) (个人捐赠) - 希望你拥有足够好的运气
 
 **👀 虚位以待**
 
