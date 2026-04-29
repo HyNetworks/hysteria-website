@@ -23,11 +23,13 @@
   grid-template-columns: 1fr;
   gap: 20px;
 }
+
 @media (min-width: 600px) {
   .feature-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
+
 @media (min-width: 900px) {
   .feature-grid {
     grid-template-columns: 1fr 1fr 1fr;
@@ -38,15 +40,19 @@
   0% {
     transform: translate(0, 0);
   }
+
   1% {
     transform: translate(-4px, 4px);
   }
+
   2% {
     transform: translate(0, 0);
   }
+
   3% {
     transform: translate(4px, -4px);
   }
+
   4% {
     transform: translate(0, 0);
   }
@@ -54,19 +60,24 @@
   10% {
     transform: translate(0, 0);
   }
+
   11% {
     transform: translate(-4px, -4px);
   }
+
   12% {
     transform: translate(0, 0);
   }
+
   13% {
     transform: translate(4px, 4px);
   }
+
   14% {
     transform: translate(0, 0);
   }
 }
+
 #wiggle-logo {
   animation: wiggle 2s infinite;
 }
@@ -101,35 +112,42 @@
   margin-bottom: 20px;
   flex-direction: row;
 }
+
 .spcard img {
   width: 250px;
   height: 250px;
   object-fit: cover;
 }
+
 .spcard-content {
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
 .spcard-title {
   font-size: 24px;
   margin: 0 0 10px;
 }
+
 .spcard-text {
   font-size: 16px;
   margin: 0 0 10px;
 }
+
 @media (max-width: 800px) {
   .spcard {
     flex-direction: column;
     text-align: center;
   }
+
   .spcard img {
     align-self: center;
     max-width: 250px;
     height: auto;
   }
+
   .spcard-content {
     padding: 20px;
   }
@@ -158,6 +176,7 @@
 [data-md-color-scheme="default"] .hof-card {
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
+
 [data-md-color-scheme="slate"] .hof-card {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -195,6 +214,7 @@
 .hof-card__title a {
   text-decoration: none;
 }
+
 .hof-card__title a:hover {
   text-decoration: underline;
 }
@@ -209,12 +229,206 @@
 .hof-card--individual .hof-card__badge {
   color: #5c6bc0;
 }
+
 .hof-card--organization .hof-card__badge {
   color: #00897b;
 }
+
 [data-md-color-scheme="slate"] .hof-card--individual .hof-card__badge {
   color: #9fa8da;
 }
+
 [data-md-color-scheme="slate"] .hof-card--organization .hof-card__badge {
   color: #4db6ac;
+}
+
+.tpa-root--error {
+  color: var(--md-default-fg-color--lighter, #888);
+}
+
+.tpa-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.5rem 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.tpa-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.tpa-chip {
+  display: inline-block;
+  font-size: 0.72rem;
+  line-height: 1.2;
+  padding: 0.22rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+}
+
+[data-md-color-scheme="slate"] .tpa-chip {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.tpa-chip--toggle[aria-pressed="true"] {
+  background: var(--md-primary-fg-color, #4051b5);
+  color: var(--md-primary-bg-color, #fff);
+  border-color: transparent;
+}
+
+[data-md-color-scheme="slate"] .tpa-chip--toggle[aria-pressed="true"] {
+  color: var(--md-primary-bg-color, #2e303e);
+}
+
+.tpa-chip--static {
+  cursor: default;
+  opacity: 0.85;
+  font-weight: 500;
+}
+
+.tpa-section {
+  margin-bottom: 1.15rem;
+}
+
+.tpa-section__title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0 0 0.45rem;
+  opacity: 0.95;
+}
+
+.tpa-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 12.5rem), 1fr));
+  gap: 0.6rem;
+}
+
+.tpa-card {
+  padding: 0.5rem 0.62rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+}
+
+[data-md-color-scheme="default"] .tpa-card {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-md-color-scheme="slate"] .tpa-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tpa-card__title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.28;
+  margin: 0;
+}
+
+.tpa-card__title a {
+  text-decoration: none;
+}
+
+.tpa-card__title a:hover {
+  text-decoration: underline;
+}
+
+.tpa-card__desc {
+  font-size: 0.75rem;
+  line-height: 1.35;
+  margin: 0;
+  opacity: 0.92;
+}
+
+.tpa-card__platforms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-top: 0.1rem;
+}
+
+.tpa-no-matches {
+  font-size: 0.85rem;
+  opacity: 0.85;
+  margin: 0 0 0.75rem;
+}
+
+.tpa-pr-cta {
+  margin: 0.85rem 0 0;
+}
+
+.tpa-pr-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.62rem 1.2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  text-decoration: none !important;
+  border-radius: 8px;
+  border: 1px solid rgba(27, 31, 36, 0.15);
+  background: linear-gradient(180deg, #343b43 0%, #24292f 90%);
+  color: #f6f8fa !important;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 1px 3px rgba(1, 4, 9, 0.12),
+    0 2px 8px rgba(1, 4, 9, 0.08);
+  transition:
+    background 0.15s ease,
+    box-shadow 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.tpa-pr-btn:hover {
+  color: #fff !important;
+  border-color: rgba(27, 31, 36, 0.22);
+  background: linear-gradient(180deg, #3d444d 0%, #2d333b 90%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 2px 4px rgba(1, 4, 9, 0.14),
+    0 6px 16px rgba(1, 4, 9, 0.12);
+  transform: translateY(-1px);
+}
+
+.tpa-pr-btn:active {
+  transform: translateY(0);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 1px 2px rgba(1, 4, 9, 0.18);
+}
+
+.tpa-pr-btn:focus-visible {
+  outline: 2px solid var(--md-accent-fg-color, #4051b5);
+  outline-offset: 3px;
+}
+
+[data-md-color-scheme="slate"] .tpa-pr-btn {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: linear-gradient(180deg, #454c56 0%, #353b44 90%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 1px 3px rgba(0, 0, 0, 0.28),
+    0 2px 10px rgba(0, 0, 0, 0.22);
+}
+
+[data-md-color-scheme="slate"] .tpa-pr-btn:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: linear-gradient(180deg, #525a64 0%, #3e454e 90%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.1) inset,
+    0 3px 6px rgba(0, 0, 0, 0.32),
+    0 8px 20px rgba(0, 0, 0, 0.25);
 }

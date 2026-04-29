@@ -1,0 +1,394 @@
+{
+  "ui": {
+    "filterLabel": {
+      "en": "Platform",
+      "zh": "平台",
+      "ru": "Платформа",
+      "fa": "پلتفرم"
+    },
+    "all": {
+      "en": "All",
+      "zh": "全部",
+      "ru": "Все",
+      "fa": "همه"
+    },
+    "noMatches": {
+      "en": "No apps match the selected platform.",
+      "zh": "没有符合所选平台的应用。",
+      "ru": "Нет приложений для выбранной платформы.",
+      "fa": "هیچ برنامه‌ای با پلتفرم انتخاب‌شده مطابقت ندارد."
+    }
+  },
+  "typeOrder": [
+    "client",
+    "server",
+    "panel"
+  ],
+  "typeLabels": {
+    "client": {
+      "en": "Clients",
+      "zh": "客户端",
+      "ru": "Клиенты",
+      "fa": "کلاینت‌ها"
+    },
+    "server": {
+      "en": "Servers",
+      "zh": "服务端",
+      "ru": "Серверы",
+      "fa": "سرورها"
+    },
+    "panel": {
+      "en": "Panels",
+      "zh": "管理面板",
+      "ru": "Панели управления",
+      "fa": "پنل‌ها"
+    }
+  },
+  "platformOrder": [
+    "windows",
+    "linux",
+    "macos",
+    "android",
+    "ios"
+  ],
+  "platformLabels": {
+    "windows": {
+      "en": "Windows",
+      "zh": "Windows",
+      "ru": "Windows",
+      "fa": "Windows"
+    },
+    "linux": {
+      "en": "Linux",
+      "zh": "Linux",
+      "ru": "Linux",
+      "fa": "Linux"
+    },
+    "macos": {
+      "en": "macOS",
+      "zh": "macOS",
+      "ru": "macOS",
+      "fa": "macOS"
+    },
+    "android": {
+      "en": "Android",
+      "zh": "Android",
+      "ru": "Android",
+      "fa": "Android"
+    },
+    "ios": {
+      "en": "iOS",
+      "zh": "iOS",
+      "ru": "iOS",
+      "fa": "iOS"
+    }
+  },
+  "apps": [
+    {
+      "name": "Blitz",
+      "link": "https://github.com/ReturnFI/Blitz",
+      "types": [
+        "panel"
+      ],
+      "platforms": [
+        "linux"
+      ],
+      "description": {
+        "en": "Management panel for Hysteria 2 with advanced features",
+        "zh": "Management panel for Hysteria 2 with advanced features",
+        "ru": "Панель управления Hysteria 2 с расширенными возможностями",
+        "fa": "پنل مدیریت Hysteria 2 با ویژگی‌های پیشرفته"
+      }
+    },
+    {
+      "name": "Clash.Meta",
+      "link": "https://github.com/MetaCubeX/Clash.Meta",
+      "types": [
+        "client"
+      ],
+      "platforms": [
+        "windows",
+        "linux",
+        "macos",
+        "android",
+        "ios"
+      ],
+      "description": {
+        "en": "A rule-based tunnel in Go",
+        "zh": "A rule-based tunnel in Go",
+        "ru": "Туннель на Go с поддержкой правил",
+        "fa": "تونل مبتنی بر قوانین در Go"
+      }
+    },
+    {
+      "name": "C³ CELERITY",
+      "link": "https://github.com/ClickDevTech/CELERITY-panel",
+      "types": [
+        "panel"
+      ],
+      "platforms": [
+        "linux"
+      ],
+      "description": {
+        "en": "Web panel for Hysteria 2 with HTTP auth, one-click node setup, server groups, and load balancing",
+        "zh": "Web panel for Hysteria 2 with HTTP auth, one-click node setup, server groups, and load balancing",
+        "ru": "Веб-панель для Hysteria 2: HTTP-авторизация, установка нод в один клик, группы серверов и балансировка",
+        "fa": "پنل وب برای Hysteria 2 با احراز هویت HTTP، راه‌اندازی نود با یک کلیک، گروه‌های سرور و توازن بار"
+      }
+    },
+    {
+      "name": "dae",
+      "link": "https://github.com/daeuniverse/dae",
+      "types": [
+        "client"
+      ],
+      "platforms": [
+        "linux"
+      ],
+      "description": {
+        "en": "eBPF-based Linux high-performance transparent proxy solution",
+        "zh": "eBPF-based Linux high-performance transparent proxy solution",
+        "ru": "Высокопроизводительное решение для прозрачного проксирования на Linux на базе eBPF",
+        "fa": "راه‌حل پروکسی شفاف با عملکرد بالا در لینوکس مبتنی بر eBPF"
+      }
+    },
+    {
+      "name": "daed",
+      "link": "https://github.com/daeuniverse/daed",
+      "types": [
+        "client"
+      ],
+      "platforms": [
+        "linux"
+      ],
+      "description": {
+        "en": "A modern dashboard with dae",
+        "zh": "A modern dashboard with dae",
+        "ru": "Современная панель управления для dae",
+        "fa": "داشبورد مدرن برای dae"
+      }
+    },
+    {
+      "name": "Egern",
+      "link": "https://apps.apple.com/us/app/egern/id1616105820",
+      "types": [
+        "client"
+      ],
+      "platforms": [
+        "ios"
+      ],
+      "description": {
+        "en": "A feature-rich and powerful networking tool",
+        "zh": "A feature-rich and powerful networking tool",
+        "ru": "Многофункциональный и мощный сетевой инструмент",
+        "fa": "ابزار شبکه قدرتمند و پر امکانات"
+      }
+    },
+    {
+      "name": "Furious",
+      "link": "https://github.com/LorenEteval/Furious",
+      "types": [
+        "client"
+      ],
+      "platforms": [
+        "windows",
+        "linux",
+        "macos"
+      ],
+      "description": {
+        "en": "A PySide6-based cross platform GUI client that launches your beloved GFW to outer space",
+        "zh": "A PySide6-based cross platform GUI client that launches your beloved GFW to outer space",
+        "ru": "Кроссплатформенный GUI-клиент на PySide6",
+        "fa": "کلاینت GUI چندسکویی بر پایه PySide6"
+      }
+    },
+    {
+      "name": "H UI",
+      "link": "https://github.com/jonssonyan/h-ui",
+      "types": [
+        "panel"
+      ],
+      "platforms": [
+        "linux"
+      ],
+      "description": {
+        "en": "Just the panel for Hysteria 2",
+        "zh": "仅仅是 Hysteria 2 的面板",
+        "ru": "Панель управления для Hysteria 2",
+        "fa": "پنل مدیریت برای Hysteria 2"
+      }
+    },
+    {
+      "name": "Hiddify Next",
+      "link": "https://github.com/hiddify/hiddify-next",
+      "types": [
+        "client"
+      ],
+      "platforms": [
+        "windows",
+        "linux",
+        "macos",
+        "android",
+        "ios"
+      ],
+      "description": {
+        "en": "Multi-platform auto-proxy client",
+        "zh": "Multi-platform auto-proxy client",
+        "ru": "Мультиплатформенный автоматический прокси-клиент",
+        "fa": "کلاینت پروکسی خودکار چندسکویی"
+      }
+    },
+    {
+      "name": "Loon",
+      "link": "https://apps.apple.com/us/app/loon/id1373567447",
+      "types": [
+        "client"
+      ],
+      "platforms": [
+        "ios"
+      ],
+      "description": {
+        "en": "Loon is a powerful network debugging tool",
+        "zh": "Loon is a powerful network debugging tool",
+        "ru": "Мощный инструмент для отладки сети",
+        "fa": "ابزار قدرتمند دیباگ شبکه"
+      }
+    },
+    {
+      "name": "NekoBox for Android",
+      "link": "https://github.com/MatsuriDayo/NekoBoxForAndroid",
+      "types": [
+        "client"
+      ],
+      "platforms": [
+        "android"
+      ],
+      "description": {
+        "en": "Universal proxy toolchain for Android",
+        "zh": "Universal proxy toolchain for Android",
+        "ru": "Универсальный набор прокси-инструментов для Android",
+        "fa": "مجموعه ابزار پروکسی جهانی برای اندروید"
+      }
+    },
+    {
+      "name": "Pharos Pro",
+      "link": "https://apps.apple.com/app/pharos-pro/id1456610173",
+      "types": [
+        "client"
+      ],
+      "platforms": [
+        "ios"
+      ],
+      "description": {
+        "en": "MultiProtocol Proxy Client for iPhone/iPad",
+        "zh": "MultiProtocol Proxy Client for iPhone/iPad",
+        "ru": "Мультипротокольный прокси-клиент для iPhone/iPad",
+        "fa": "کلاینت پروکسی چندپروتکلی برای iPhone/iPad"
+      }
+    },
+    {
+      "name": "Shadowrocket",
+      "link": "https://apps.apple.com/app/shadowrocket/id932747118",
+      "types": [
+        "client"
+      ],
+      "platforms": [
+        "ios"
+      ],
+      "description": {
+        "en": "Rule based proxy utility client for iPhone/iPad",
+        "zh": "Rule based proxy utility client for iPhone/iPad",
+        "ru": "Прокси-клиент с поддержкой правил для iPhone/iPad",
+        "fa": "کلاینت پروکسی مبتنی بر قوانین برای iPhone/iPad"
+      }
+    },
+    {
+      "name": "sing-box",
+      "link": "https://github.com/SagerNet/sing-box",
+      "types": [
+        "client",
+        "server"
+      ],
+      "platforms": [
+        "windows",
+        "linux",
+        "macos",
+        "android",
+        "ios"
+      ],
+      "description": {
+        "en": "A universal proxy platform",
+        "zh": "A universal proxy platform",
+        "ru": "Универсальная прокси-платформа",
+        "fa": "پلتفرم پروکسی جهانی"
+      }
+    },
+    {
+      "name": "Stash",
+      "link": "https://apps.apple.com/us/app/stash-rule-based-proxy/id1596063349",
+      "types": [
+        "client"
+      ],
+      "platforms": [
+        "macos",
+        "ios"
+      ],
+      "description": {
+        "en": "Simple & Powerful Network Tool",
+        "zh": "Simple & Powerful Network Tool",
+        "ru": "Простой и мощный сетевой инструмент",
+        "fa": "ابزار شبکه ساده و قدرتمند"
+      }
+    },
+    {
+      "name": "Streisand",
+      "link": "https://apps.apple.com/us/app/streisand/id6450534064",
+      "types": [
+        "client"
+      ],
+      "platforms": [
+        "macos",
+        "ios"
+      ],
+      "description": {
+        "en": "Flexible Proxy Client",
+        "zh": "Flexible Proxy Client",
+        "ru": "Гибкий прокси-клиент",
+        "fa": "کلاینت پروکسی انعطاف‌پذیر"
+      }
+    },
+    {
+      "name": "Surge",
+      "link": "https://nssurge.com",
+      "types": [
+        "client"
+      ],
+      "platforms": [
+        "macos",
+        "ios"
+      ],
+      "description": {
+        "en": "Advanced Network Toolbox",
+        "zh": "Advanced Network Toolbox",
+        "ru": "Продвинутый сетевой инструментарий",
+        "fa": "جعبه‌ابزار شبکه پیشرفته"
+      }
+    },
+    {
+      "name": "V2Box",
+      "link": "https://play.google.com/store/apps/details?id=dev.hexasoftware.v2box",
+      "types": [
+        "client"
+      ],
+      "platforms": [
+        "android"
+      ],
+      "description": {
+        "en": "MultiProtocol Proxy Client",
+        "zh": "MultiProtocol Proxy Client",
+        "ru": "Мультипротокольный прокси-клиент",
+        "fa": "کلاینت پروکسی چندپروتکلی"
+      }
+    }
+  ]
+}
