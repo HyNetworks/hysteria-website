@@ -13,7 +13,7 @@ You still need a working outbound UDP path to the rendezvous server and to your 
 
 ## How it works
 
-1. The Hysteria **server** registers a *realm* (a name you choose) with a rendezvous service, advertising the UDP addresses it discovered via STUN.
+1. The Hysteria **server** registers a _realm_ (a name you choose) with a rendezvous service, advertising the UDP addresses it discovered via STUN.
 2. The **client**, given the same realm address, asks the rendezvous to connect. The rendezvous returns the server's addresses to the client, and pushes the client's addresses to the server.
 3. Both sides simultaneously send UDP packets at each other, punching holes through their NATs.
 4. Once a hole is open, the regular Hysteria QUIC handshake proceeds over the direct connection.
@@ -125,18 +125,26 @@ In realm mode the client has no DNS name to validate the server's certificate ag
 
 ## NAT compatibility
 
-UDP hole punching works on most home and mobile networks, but not all of them.
+|                                  | Public IP | Full cone | Restricted / Port-restricted | Sym (predictable) | Sym (random) |
+| -------------------------------- | --------- | --------- | ---------------------------- | ----------------- | ------------ |
+| **Public IP**                    | ✅        | ✅        | ✅                           | ✅                | ✅           |
+| **Full cone**                    | ✅        | ✅        | ✅                           | ✅                | ✅           |
+| **Restricted / Port-restricted** | ✅        | ✅        | ✅                           | ⚠️                | ❌           |
+| **Sym (predictable)**            | ✅        | ✅        | ⚠️                           | ⚠️                | ❌           |
+| **Sym (random)**                 | ✅        | ✅        | ❌                           | ❌                | ❌           |
 
-| NAT type on either side | Works? |
-| --- | --- |
-| Public IP, no NAT | **Yes** |
-| Full cone / endpoint-independent ("open") | **Yes** |
-| Restricted cone, port-restricted cone ("moderate") | **Yes** |
-| Symmetric ("strict") | **Sometimes** |
+- ✅ Works reliably.
+- ⚠️ Works sometimes, depending on whether Hysteria can predict the symmetric peer's next port.
+- ❌ Generally fails.
 
-For symmetric NATs we apply a few heuristics that get connections through in many real-world cases, but there is **no guarantee**. If both sides are behind symmetric NATs the success rate drops further.
+Notes:
 
-Some carrier-grade NAT (CGNAT) deployments behave like symmetric NATs and will be unreliable. If you find Realms doesn't work on your network, the most likely cause is a symmetric NAT on at least one side — fall back to a server with a public IP.
+- The matrix is direction-agnostic: which side is "client" vs "server" doesn't matter.
+- Anything paired with **Public IP** or **Full cone** works because the unrestricted side accepts the peer's first packet from whatever port the peer's NAT chose.
+- The `Sym (predictable)` cases rely on Hysteria observing multiple STUN reflexive addresses that fall within a close port range. The default 3 STUN servers usually expose the pattern; using only one STUN server will defeat the heuristic.
+- Anything paired with `Sym (random)` other than Public IP or Full cone is fundamentally unsolvable. It's a property of UDP hole punching, not a Hysteria limitation.
+
+If you find Realms doesn't work on your network, the most likely cause is a symmetric NAT on at least one side. Fall back to a server with a public IP.
 
 ## STUN servers
 
