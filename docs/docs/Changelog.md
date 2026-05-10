@@ -4,6 +4,11 @@ hide:
   - navigation
 ---
 
+## 2.9.1
+
+- Fixed an issue where the client failed to connect to a server behind symmetric NAT, improving hole punching success rate
+- The `hysteria cert` command now includes `sniGuard: disable` in its sample server config, so self-signed certs work with Realms out of the box
+
 ## 2.9.0
 
 - Added [Hysteria Realms](advanced/Realms.md): No public IP? No problem. Punches through your NAT to let you host a Hysteria server from home, a cellular network, or even a coffee shop. Clients connect directly, peer-to-peer. No port forwarding, no relay.

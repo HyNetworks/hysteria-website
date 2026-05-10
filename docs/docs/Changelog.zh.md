@@ -4,6 +4,11 @@ hide:
   - navigation
 ---
 
+## 2.9.1
+
+- 修复了一个导致服务端位于对称 NAT 后时客户端无法连接的问题，提升打洞成功率
+- `hysteria cert` 命令现在会在示例服务端配置中包含 `sniGuard: disable`，让自签名证书在 Realms 模式下能正常使用
+
 ## 2.9.0
 
 - 新增 [Hysteria Realms](advanced/Realms.md)：没有公网 IP 也没问题！通过 NAT 打洞，让你从家宽、手机流量甚至咖啡店都能运行 Hysteria 服务端。与客户端 P2P 连接，无需配置端口转发或中转。
