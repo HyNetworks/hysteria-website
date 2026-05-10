@@ -37,6 +37,33 @@ listen: :20000-50000 # (1)!
 
 > **توجه:** گوش‌دادن با بازهٔ پورت در سمت سرور فقط در لینوکس پشتیبانی می‌شود. نیاز به `nft` (nftables) یا `iptables`/`ip6tables` در سیستم دارد. سرور ممکن است به مجوزهای مناسب (مثلاً root یا `CAP_NET_ADMIN`) برای تغییر قوانین فایروال نیاز داشته باشد.
 
+فیلد `listen` همچنین یک URI از [Hysteria Realms](Realms.md) را می‌پذیرد تا سرور در حالت P2P پشت NAT اجرا شود:
+
+```yaml
+listen: realm://YOUR-TOKEN@rendezvous.example.com/your-realm-name
+```
+
+## Realm
+
+تنظیمات اختیاری برای حالت [Hysteria Realms](Realms.md). همهٔ فیلدها اختیاری‌اند؛ مقادیر پیش‌فرض برای بیشتر کاربران مناسب است.
+
+```yaml
+realm:
+  stunServers: # (1)!
+    - stun.nextcloud.com:3478
+    - global.stun.twilio.com:3478
+  stunTimeout: 5s # (2)!
+  punchTimeout: 5s # (3)!
+  heartbeatInterval: 30s # (4)!
+  insecure: false # (5)!
+```
+
+1. سرورهای STUN که برای کشف آدرس‌های UDP عمومی سرور استفاده می‌شوند. به‌طور پیش‌فرض از یک فهرست داخلی کوچک استفاده می‌شود.
+2. زمان انتظار برای هر سرور STUN.
+3. حداکثر زمان انتظار برای موفق‌شدن UDP hole punching در یک تلاش اتصال.
+4. هر چند وقت یک‌بار به rendezvous heartbeat فرستاده شود تا realm ثبت‌شده بماند. اگر rendezvous در زمان مقرر heartbeat دریافت نکند، نشست منقضی می‌شود.
+5. فقط زمانی روی `true` بگذارید که می‌خواهید تأیید TLS سرور rendezvous self-signed را رد کنید (فقط برای توسعه).
+
 ## TLS
 
 می‌توانید از `tls` یا `acme` استفاده کنید، اما نه هر دو به طور همزمان.

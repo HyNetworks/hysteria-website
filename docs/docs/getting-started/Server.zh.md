@@ -9,6 +9,8 @@
 - 一个有公网 IP 地址的服务器（IPv4 和 IPv6 均可）
 - 一个指向服务器 IP 地址的域名（顶级域名或子域名均可）
 
+> **没有公网 IP？** 依然可以通过 [Hysteria Realms](../advanced/Realms.md) 在家宽、手机流量或其他 NAT 环境下运行 Hysteria 服务端。通过 UDP 打洞让客户端直连，无需配置端口转发或者中转服务器。本教程的其他部分仍然适用，只需修改 `listen` 字段即可。
+
 ## 创建配置文件
 
 假设你已经将可执行文件下载到了一个目录中，名字是 `hysteria-linux-amd64-avx`。在同目录下创建一个 `config.yaml` 文件。

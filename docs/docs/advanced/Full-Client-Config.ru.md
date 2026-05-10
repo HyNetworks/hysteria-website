@@ -35,6 +35,31 @@ example:
     server: hysteria2://user:pass@example.com/
     ```
 
+Поле `server` также принимает URI [Hysteria Realms](Realms.md), чтобы достучаться до сервера, запущенного в P2P-режиме:
+
+```yaml
+server: realm://YOUR-TOKEN@rendezvous.example.com/your-realm-name
+```
+
+## Realm
+
+Опциональная тонкая настройка режима [Hysteria Realms](Realms.md). Все поля необязательны; значения по умолчанию подходят большинству пользователей.
+
+```yaml
+realm:
+  stunServers: # (1)!
+    - stun.nextcloud.com:3478
+    - global.stun.twilio.com:3478
+  stunTimeout: 5s # (2)!
+  punchTimeout: 5s # (3)!
+  insecure: false # (4)!
+```
+
+1. STUN-серверы, используемые для обнаружения публичных UDP-адресов клиента. По умолчанию используется небольшой встроенный список.
+2. Таймаут запроса к одному STUN-серверу.
+3. Максимальное время ожидания успешного UDP-пробивания.
+4. Установите в `true` только для пропуска проверки TLS у самоподписанного сервера rendezvous (разработка).
+
 ## Аутентификация
 
 ```yaml

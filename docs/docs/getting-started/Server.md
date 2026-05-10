@@ -9,6 +9,8 @@ The steps were performed in a Linux environment, but should be similar on other 
 - A server with a public IP address (both IPv4 and IPv6 are ok)
 - A domain name pointing to the server's IP address (both top-level and subdomains are ok)
 
+> **No public IP?** You can still host a Hysteria server from home, a cellular network, or any NATted environment using [Hysteria Realms](../advanced/Realms.md). It uses UDP hole punching to let clients connect directly, with no port forwarding and no traffic relayed through anyone else. The rest of this tutorial still applies — only the `listen` field changes.
+
 ## Creating configuration file
 
 Assuming you have already downloaded the executable for your platform into a directory, say `hysteria-linux-amd64-avx`. Create a `config.yaml` file in the same directory.

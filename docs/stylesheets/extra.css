@@ -2,6 +2,15 @@
   --md-primary-fg-color: #707598;
 }
 
+.md-banner a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.md-banner a:hover {
+  opacity: 0.85;
+}
+
 [data-md-color-scheme="default"] img[src$="#logo-dark"] {
   display: none;
 }

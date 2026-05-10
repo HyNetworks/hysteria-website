@@ -3,6 +3,7 @@ site_url: https://v2.hysteria.network/
 
 theme:
   name: material
+  custom_dir: overrides
   palette:
     - scheme: default
       primary: white
@@ -81,6 +82,7 @@ plugins:
                     - FD Control 协议: docs/advanced/FD-Control.md
                     - 透明代理: docs/advanced/TPROXY.md
                     - 端口跳跃: docs/advanced/Port-Hopping.md
+                    - Hysteria Realms: docs/advanced/Realms.md
                     - 环境变量: docs/advanced/Environment-Variables.md
                     - 速度测试: docs/advanced/Speed-Test.md
                     - 性能优化: docs/advanced/Performance.md
@@ -120,6 +122,7 @@ plugins:
                     - Протокол FD Control: docs/advanced/FD-Control.md
                     - Прозрачный прокси: docs/advanced/TPROXY.md
                     - Смена портов: docs/advanced/Port-Hopping.md
+                    - Hysteria Realms: docs/advanced/Realms.md
                     - Переменные окружения: docs/advanced/Environment-Variables.md
                     - Тест скорости: docs/advanced/Speed-Test.md
                     - Производительность: docs/advanced/Performance.md
@@ -159,6 +162,7 @@ plugins:
                     - پروتکل FD Control: docs/advanced/FD-Control.md
                     - پروکسی شفاف: docs/advanced/TPROXY.md
                     - پرش پورت: docs/advanced/Port-Hopping.md
+                    - Hysteria Realms: docs/advanced/Realms.md
                     - متغیرهای محیطی: docs/advanced/Environment-Variables.md
                     - تست سرعت: docs/advanced/Speed-Test.md
                     - عملکرد: docs/advanced/Performance.md
@@ -219,6 +223,7 @@ nav:
           - FD Control Protocol: docs/advanced/FD-Control.md
           - TProxy: docs/advanced/TPROXY.md
           - Port Hopping: docs/advanced/Port-Hopping.md
+          - Hysteria Realms: docs/advanced/Realms.md
           - Environment Variables: docs/advanced/Environment-Variables.md
           - Speed Test: docs/advanced/Speed-Test.md
           - Performance: docs/advanced/Performance.md

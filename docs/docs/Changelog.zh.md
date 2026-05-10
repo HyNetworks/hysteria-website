@@ -4,6 +4,10 @@ hide:
   - navigation
 ---
 
+## 2.9.0
+
+- 新增 [Hysteria Realms](advanced/Realms.md)：没有公网 IP 也没问题！通过 NAT 打洞，让你从家宽、手机流量甚至咖啡店都能运行 Hysteria 服务端。与客户端 P2P 连接，无需配置端口转发或中转。
+
 ## 2.8.2
 
 > 此版本包含重要安全修复，强烈建议更新

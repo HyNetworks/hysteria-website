@@ -35,6 +35,31 @@ You also have the option to use a Hysteria 2 URI (`hysteria2://`). In this case,
     server: hysteria2://user:pass@example.com/
     ```
 
+The `server` field also accepts a [Hysteria Realms](Realms.md) URI to reach a server hosted in P2P mode:
+
+```yaml
+server: realm://YOUR-TOKEN@rendezvous.example.com/your-realm-name
+```
+
+## Realm
+
+Optional tuning for [Hysteria Realms](Realms.md) mode. All fields are optional; defaults work for most users.
+
+```yaml
+realm:
+  stunServers: # (1)!
+    - stun.nextcloud.com:3478
+    - global.stun.twilio.com:3478
+  stunTimeout: 5s # (2)!
+  punchTimeout: 5s # (3)!
+  insecure: false # (4)!
+```
+
+1. STUN servers used to discover the client's public UDP addresses. Defaults to a small built-in list.
+2. Per-server timeout for STUN discovery.
+3. Maximum time to wait for UDP hole punching to succeed.
+4. Set to `true` only to skip TLS verification of a self-signed rendezvous server (development).
+
 ## Authentication
 
 ```yaml

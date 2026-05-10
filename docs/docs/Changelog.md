@@ -4,6 +4,10 @@ hide:
   - navigation
 ---
 
+## 2.9.0
+
+- Added [Hysteria Realms](advanced/Realms.md): No public IP? No problem. Punches through your NAT to let you host a Hysteria server from home, a cellular network, or even a coffee shop. Clients connect directly, peer-to-peer. No port forwarding, no relay.
+
 ## 2.8.2
 
 > This release contains important security fixes and we strongly encourage everyone to upgrade.

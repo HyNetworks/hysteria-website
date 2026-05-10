@@ -35,6 +35,31 @@ example:
     server: hysteria2://user:pass@example.com/
     ```
 
+`server` 字段还接受 [Hysteria Realms](Realms.md) URI，用于连接以 P2P 模式运行的服务端：
+
+```yaml
+server: realm://YOUR-TOKEN@rendezvous.example.com/your-realm-name
+```
+
+## Realm
+
+[Hysteria Realms](Realms.md) 模式的可选调优项。所有字段均为可选；默认值通常已经够用。
+
+```yaml
+realm:
+  stunServers: # (1)!
+    - stun.nextcloud.com:3478
+    - global.stun.twilio.com:3478
+  stunTimeout: 5s # (2)!
+  punchTimeout: 5s # (3)!
+  insecure: false # (4)!
+```
+
+1. 用于发现客户端公网 UDP 地址的 STUN 服务器。默认会使用一个内置的小列表。
+2. 单个 STUN 服务器的查询超时。
+3. 等待 UDP 打洞成功的最大时间。
+4. 仅在跳过对自签牵线服务器的 TLS 校验时（开发用途）设为 `true`。
+
 ## 验证
 
 ```yaml

@@ -37,6 +37,33 @@ listen: :20000-50000 # (1)!
 
 > **注意：** 服务器端端口范围监听仅支持 Linux。需要系统上有 `nft`（nftables）或 `iptables`/`ip6tables`。服务器可能需要以适当的权限运行（例如 root 或 `CAP_NET_ADMIN`）才能修改防火墙规则。
 
+`listen` 字段还支持 [Hysteria Realms](Realms.md) URI，让服务端在 NAT 后以 P2P 模式运行：
+
+```yaml
+listen: realm://YOUR-TOKEN@rendezvous.example.com/your-realm-name
+```
+
+## Realm
+
+[Hysteria Realms](Realms.md) 模式的可选调优项。所有字段均为可选；默认值通常已经够用。
+
+```yaml
+realm:
+  stunServers: # (1)!
+    - stun.nextcloud.com:3478
+    - global.stun.twilio.com:3478
+  stunTimeout: 5s # (2)!
+  punchTimeout: 5s # (3)!
+  heartbeatInterval: 30s # (4)!
+  insecure: false # (5)!
+```
+
+1. 用于发现服务端公网 UDP 地址的 STUN 服务器。默认会使用一个内置的小列表。
+2. 单个 STUN 服务器的查询超时。
+3. 单次连接尝试中等待 UDP 打洞成功的最大时间。
+4. 多久向牵线服务器发送一次心跳以保持 realm 注册。如果牵线服务器在超时前没有收到心跳，会话将过期。
+5. 仅在跳过对自签牵线服务器的 TLS 校验时（开发用途）设为 `true`。
+
 ## TLS
 
 可以选择使用 `tls` 或 `acme`，但不能同时包含两者。

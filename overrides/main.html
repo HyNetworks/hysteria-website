@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block announce %}
+  {% set lang = config.theme.language %}
+  {% if lang == 'zh' %}
+    {% set realms_url = '/zh/docs/advanced/Realms/' %}
+    ✨ 没有公网 IP 也没问题！<a href="{{ realms_url }}"><strong>Hysteria Realms</strong></a> 通过 NAT 打洞，让你从家宽、手机流量甚至咖啡店都能运行服务端。与客户端 P2P 连接，无需配置端口转发或中转。
+  {% elif lang == 'ru' %}
+    {% set realms_url = '/ru/docs/advanced/Realms/' %}
+    ✨ Нет публичного IP? Не беда. <a href="{{ realms_url }}"><strong>Hysteria Realms</strong></a> пробивает ваш NAT, чтобы вы могли держать прокси-сервер дома, в мобильной сети или даже в кафе. Клиенты подключаются напрямую, peer-to-peer. Без проброса портов, без релея.
+  {% elif lang == 'fa' %}
+    {% set realms_url = '/fa/docs/advanced/Realms/' %}
+    ✨ بدون IP عمومی؟ مشکلی نیست. <a href="{{ realms_url }}"><strong>Hysteria Realms</strong></a> از NAT شما عبور می‌کند تا بتوانید سرور پروکسی را از خانه، شبکهٔ همراه یا حتی یک کافه میزبانی کنید. کلاینت‌ها مستقیماً peer-to-peer متصل می‌شوند. بدون فوروارد پورت، بدون رله.
+  {% else %}
+    ✨ No public IP? No problem. <a href="/docs/advanced/Realms/"><strong>Hysteria Realms</strong></a> punches through your NAT to let you host a proxy server from home, a cellular network, or even a coffee shop. Clients connect directly, peer-to-peer. No port forwarding, no relay.
+  {% endif %}
+{% endblock %}

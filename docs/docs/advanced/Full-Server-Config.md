@@ -37,6 +37,33 @@ listen: :20000-50000 # (1)!
 
 > **NOTE:** Server-side port range listening is only supported on Linux. It requires either `nft` (nftables) or `iptables`/`ip6tables` to be available on the system. The server may need to be run with appropriate privileges (e.g. root or `CAP_NET_ADMIN`) to modify firewall rules.
 
+The `listen` field also accepts a [Hysteria Realms](Realms.md) URI to run the server in P2P mode behind NAT:
+
+```yaml
+listen: realm://YOUR-TOKEN@rendezvous.example.com/your-realm-name
+```
+
+## Realm
+
+Optional tuning for [Hysteria Realms](Realms.md) mode. All fields are optional; defaults work for most users.
+
+```yaml
+realm:
+  stunServers: # (1)!
+    - stun.nextcloud.com:3478
+    - global.stun.twilio.com:3478
+  stunTimeout: 5s # (2)!
+  punchTimeout: 5s # (3)!
+  heartbeatInterval: 30s # (4)!
+  insecure: false # (5)!
+```
+
+1. STUN servers used to discover the server's public UDP addresses. Defaults to a small built-in list.
+2. Per-server timeout for STUN discovery.
+3. Maximum time to wait for UDP hole punching to succeed for a single connect attempt.
+4. How often to send a heartbeat to the rendezvous to keep the realm registered. The session expires if the rendezvous doesn't see one in time.
+5. Set to `true` only to skip TLS verification of a self-signed rendezvous server (development).
+
 ## TLS
 
 You can have either `tls` or `acme`, but not both.
