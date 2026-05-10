@@ -110,6 +110,15 @@ In realm mode the client has no DNS name to validate the server's certificate ag
 
 **1. Self-signed cert with `pinSHA256`.** Run `hysteria cert` on the server — it generates a key + certificate and prints ready-to-paste `tls` blocks for both `server.yaml` (cert/key) and `client.yaml` (`insecure: true` + `pinSHA256`). The pin guarantees the client only accepts that exact certificate, so SNI and CA validation don't matter.
 
+> **NOTE:** On v2.9.0, certificates produced by `hysteria cert` cause clients to hit `tls: internal error`. This will be fixed in the next release. Until then, add `sniGuard: disable` under your existing `tls` section on the **server** (keep your existing `cert`, `key`, and other fields):
+>
+> ```yaml
+> tls:
+>   cert: server.crt
+>   key: server.key
+>   sniGuard: disable
+> ```
+
 **2. Real CA cert + `tls.sni` override.** Get a cert via [DNS-01 ACME](ACME-DNS-Config.md) for a domain you control (HTTP-01 / TLS-ALPN-01 can't work without a public IP), use it on the server, and set [`tls.sni`](Full-Client-Config.md#tls) on the client to that domain.
 
 **3. Cert for the rendezvous hostname.** Only practical when self-hosting both — issue the Hysteria server's cert for the same hostname as the rendezvous. The default client SNI then matches without any override.

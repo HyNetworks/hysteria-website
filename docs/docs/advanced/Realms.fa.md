@@ -110,6 +110,15 @@ auth: your-hysteria-password
 
 **۱. گواهی self-signed با `pinSHA256`.** روی سرور `hysteria cert` را اجرا کنید — کلید و گواهی تولید می‌کند و بلوک‌های `tls` آمادهٔ کپی برای `server.yaml` (cert/key) و `client.yaml` (`insecure: true` + `pinSHA256`) را چاپ می‌کند. pin تضمین می‌کند که کلاینت فقط همان گواهی خاص را بپذیرد، بنابراین SNI و بررسی CA دیگر مهم نیستند.
 
+> **NOTE:** در v2.9.0، گواهی‌های ساخته‌شده با `hysteria cert` باعث می‌شوند کلاینت با خطای `tls: internal error` مواجه شود. این مشکل در نسخهٔ بعدی برطرف خواهد شد. تا آن زمان، در بخش `tls` موجود در پیکربندی **سرور** عبارت `sniGuard: disable` را اضافه کنید (فیلدهای `cert`، `key` و بقیه را حفظ کنید):
+>
+> ```yaml
+> tls:
+>   cert: server.crt
+>   key: server.key
+>   sniGuard: disable
+> ```
+
 **۲. گواهی واقعی CA + override برای `tls.sni`.** برای دامنه‌ای که در اختیار دارید گواهی از طریق [DNS-01 ACME](ACME-DNS-Config.md) بگیرید (HTTP-01 / TLS-ALPN-01 بدون IP عمومی کار نمی‌کنند)، آن را روی سرور بگذارید و در کلاینت [`tls.sni`](Full-Client-Config.md#tls) را برابر همان دامنه قرار دهید.
 
 **۳. گواهی برای نام میزبان rendezvous.** فقط زمانی عملی است که هم rendezvous و هم سرور را خودتان میزبانی می‌کنید — گواهی سرور Hysteria را برای همان نام میزبان rendezvous صادر کنید. در این حالت SNI پیش‌فرض کلاینت بدون هیچ override تطبیق پیدا می‌کند.

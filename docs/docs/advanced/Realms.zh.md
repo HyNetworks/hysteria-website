@@ -110,6 +110,15 @@ auth: your-hysteria-password
 
 **1. 使用 `pinSHA256` 加自签名证书。** 在服务端运行 `hysteria cert`，会生成密钥和证书，并打印可直接粘贴到 `server.yaml`（cert/key）和 `client.yaml`（`insecure: true` + `pinSHA256`）的 `tls` 配置。pin 可以保证客户端只接受这个特定的证书，因此 SNI 与 CA 校验都不再重要。
 
+> **NOTE:** v2.9.0 中，`hysteria cert` 生成的证书会导致客户端连接时出现 `tls: internal error` 错误。该问题将在下个版本中修复。在此之前，请在**服务端**配置文件已有的 `tls` 部分中添加 `sniGuard: disable`（保留原有的 `cert`、`key` 等字段）：
+>
+> ```yaml
+> tls:
+>   cert: server.crt
+>   key: server.key
+>   sniGuard: disable
+> ```
+
 **2. 真实 CA 证书 + `tls.sni` 覆盖。** 通过你拥有的域名使用 [DNS-01 ACME](ACME-DNS-Config.md) 申请证书（HTTP-01 / TLS-ALPN-01 无法在没有公网 IP 的情况下使用），部署到服务端，并在客户端将 [`tls.sni`](Full-Client-Config.md#tls) 设为该域名。
 
 **3. 使用与牵线服务器同名的证书。** 仅在你同时自建牵线服务器时可用：把 Hysteria 服务端的证书签发给和牵线服务器相同的主机名，客户端默认的 SNI 即可匹配，无需额外配置。
