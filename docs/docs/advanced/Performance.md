@@ -8,7 +8,7 @@ The following factors are common contributors to bottlenecks in your transfer sp
 - Flow control receive window sizes
 - Process priority
 
-> It's worth noting that QUIC, being a much newer and more complex protocol running in userspace, will inherently require more processing power than the mature, highly optimized kernel-level implementation of TCP. If you want to achieve high transfer speeds, you should not host your server on low-power hardware such as a Raspberry Pi or an extremely low-cost, CPU-throttled VPS.
+> QUIC, being a much newer and more complex protocol running in userspace, will inherently require more processing power than the mature, highly optimized kernel-level implementation of TCP. High transfer speeds depend on enough CPU headroom, memory bandwidth, and network I/O capacity. Very low-power devices and extremely low-cost, CPU-throttled VPS plans can become bottlenecks.
 
 While the first two are beyond the scope of this documentation, the last three can be optimized to improve performance.
 
@@ -61,8 +61,7 @@ Create `/etc/systemd/system/hysteria-server.service.d/priority.conf` and add the
 
 ```ini
 [Service]
-CPUSchedulingPolicy=rr
-CPUSchedulingPriority=99
+Nice=-5
 ```
 
 Reload the systemd config files and restart the service using the following commands:
@@ -74,12 +73,12 @@ systemctl restart hysteria-server.service
 
 ### chrt
 
-For both Linux and FreeBSD. On FreeBSD, you need to install `util-linux`, and the highest priority is 31 instead of 99.
+For both Linux and FreeBSD. On FreeBSD, you need to install `util-linux`, and the highest priority is 31 instead of 99. Real-time scheduling can affect the responsiveness of other processes, so start with a moderate priority and raise it only after testing.
 
 ```bash
 # Execute after each service start
-chrt -r 99 $(pidof hysteria)
+chrt -r 20 $(pidof hysteria)
 
 # Or, use the following command to start the service
-chrt -r 99 hysteria server -c /path/to/config.yaml
+chrt -r 20 hysteria server -c /path/to/config.yaml
 ```
