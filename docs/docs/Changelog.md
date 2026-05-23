@@ -4,6 +4,19 @@ hide:
   - navigation
 ---
 
+## 2.9.2
+
+> This release contains important security fixes and we strongly encourage everyone to upgrade.
+
+- Added [Gecko obfuscation](advanced/Full-Server-Config.md#obfuscation): a new experimental obfuscation layer that fragments QUIC handshake packets
+- Fixed a security issue where UDP packets could bypass ACL
+- Fixed a potential server OOM caused by incomplete or oversized HTTP requests during sniff
+- Fixed an ACL bypass via trailing dots in domain names (e.g. `example.com.`)
+- Fixed incorrect destination handling in the SOCKS5 UDP outbound
+- Fixed prefix matching in DNS HTTPS records
+- Outbound rules now reject invalid port values
+- Minor performance improvements
+
 ## 2.9.1
 
 - Fixed an issue where the client failed to connect to a server behind symmetric NAT, improving hole punching success rate

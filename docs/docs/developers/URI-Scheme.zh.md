@@ -28,7 +28,7 @@ hysteria2://[auth@]hostname[:port]/?[key=value]&[key=value]...
 
 ### 参数
 
-- `obfs`：要使用的混淆类型。目前只支持 `salamander`。
+- `obfs`：要使用的混淆类型。目前支持 `salamander` 和 `gecko`。
 
 - `obfs-password`：混淆所需的密码。
 

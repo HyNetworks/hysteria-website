@@ -28,7 +28,7 @@ The port part supports the "multi-port" format mentioned in [Port Hopping](../ad
 
 ### Query parameters
 
-- `obfs`: The type of obfuscation to be used. Current only `salamander` is supported.
+- `obfs`: The type of obfuscation to be used. Currently `salamander` and `gecko` are supported.
 
 - `obfs-password`: The password required for the specified obfuscation type, if applicable.
 

@@ -4,6 +4,19 @@ hide:
   - navigation
 ---
 
+## 2.9.2
+
+> 此版本包含重要安全修复，强烈建议更新
+
+- 新增 [Gecko](advanced/Full-Server-Config.md#obfuscation)：一种实验性的新混淆实现，会对 QUIC 握手包进行分片处理
+- 修复了 UDP 包可绕过 ACL 的安全问题
+- 修复了启用 sniff 时，不完整或超大 HTTP 请求可能导致服务端 OOM 的问题
+- 修复了通过在域名末尾添加点（如 `example.com.`）绕过 ACL 的问题
+- 修复了 SOCKS5 UDP 出站中目标地址处理错误的问题
+- 修复了 DNS HTTPS 记录前缀匹配的问题
+- outbound 规则现在会拒绝无效端口号
+- 小幅性能改进
+
 ## 2.9.1
 
 - 修复了一个导致服务端位于对称 NAT 后时客户端无法连接的问题，提升打洞成功率

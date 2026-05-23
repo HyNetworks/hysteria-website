@@ -151,3 +151,35 @@ for i in range(0, len(payload)):
 ```
 
 The deobfuscator MUST use the same algorithms to calculate the salted hash and deobfuscate the payload. Any invalid packet MUST be discarded.
+
+## "Gecko" Obfuscation
+
+"Gecko" is an obfuscation layer that wraps "Salamander". Its goal is to disguise the distinctive shape of QUIC handshake datagrams by splitting them into multiple randomly-sized, randomly-padded fragments.
+
+The sender inspects the first byte of each outgoing QUIC packet:
+
+- **Short-header packets** (high bit `0x80` clear): sent as-is through Salamander.
+- **Long-header packets** (high bit `0x80` set): split into N fragments where `2 <= N <= 8`. Each fragment is wrapped in a Gecko frame, then sent through Salamander as an independent datagram.
+
+The Gecko frame is laid out as follows (before Salamander encryption):
+
+```
+[1 byte]  flags         — MUST be 0x80 (fragment marker)
+[1 byte]  msgID         — identifies the original packet; arbitrary per sender
+[1 byte]  chunkIdx:4 | totalChunks:4
+[2 bytes] padLen        — uint16, big-endian
+[padLen bytes] padding  — random bytes, ignored on receive
+[bytes]   chunk         — this fragment's slice of the original packet
+```
+
+`chunkIdx` MUST be less than `totalChunks`, and `totalChunks` MUST be in `[2, 8]`. Fragments belonging to the same original packet share the same `msgID` and `totalChunks`. Chunks concatenated in order of `chunkIdx` reproduce the original QUIC packet exactly.
+
+The receiver:
+
+1. Salamander-deobfuscates each datagram. If the first byte's high bit is clear, the datagram is treated as a short-header QUIC packet and passed through unchanged.
+2. Otherwise, parses the Gecko frame. Malformed frames MUST be discarded.
+3. Buffers chunks keyed by `(source address, msgID)` until all `totalChunks` have arrived, then delivers the reassembled packet to QUIC.
+
+Receivers SHOULD apply bounds to reassembly state (per-source limit, total limit, and a TTL) and drop duplicates or frames with inconsistent `totalChunks`. The exact bounds are implementation-defined.
+
+The padding range, the fragment count distribution, and the chosen `msgID` sequence are all sender-side choices and are not negotiated.

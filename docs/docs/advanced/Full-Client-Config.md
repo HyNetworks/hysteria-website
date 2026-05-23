@@ -107,19 +107,39 @@ transport:
 
 ## Obfuscation
 
-By default, the Hysteria protocol mimics HTTP/3. If your network specifically blocks QUIC or HTTP/3 traffic (but not UDP in general), obfuscation can be used to work around this. We currently have an obfuscation implementation called "Salamander" that converts packets into seamingly random bytes with no pattern. This feature requires a password that must be identical on both the client and server sides.
+By default, the Hysteria protocol mimics HTTP/3. If your network specifically blocks QUIC or HTTP/3 traffic (but not UDP in general), obfuscation can be used to work around this. Two implementations are available, both requiring a password that must be identical on the client and server:
+
+- **Salamander** scrambles every packet into seemingly random bytes with no pattern.
+- **Gecko** (experimental) builds on Salamander and additionally fragments QUIC handshake packets into randomly-sized, randomly-padded chunks.
 
 > **NOTE:** Using an incorrect obfuscation password will result in a connection timeout, just as if the server were not running at all. If you experience connection problems, double-check that the password is correct.
 
-```yaml
-obfs:
-  type: salamander # (2)!
-  salamander:
-    password: cry_me_a_r1ver # (1)!
-```
+=== "Salamander"
 
-1. Replace with a strong password of your choice.
-2. Please read the instructions regarding the "type selector" at the top of this page.
+    ```yaml
+    obfs:
+      type: salamander # (2)!
+      salamander:
+        password: cry_me_a_r1ver # (1)!
+    ```
+
+    1. Replace with a strong password of your choice.
+    2. Please read the instructions regarding the "type selector" at the top of this page.
+
+=== "Gecko"
+
+    ```yaml
+    obfs:
+      type: gecko
+      gecko:
+        password: cry_me_a_r1ver # (1)!
+        minPacketSize: 512  # (2)!
+        maxPacketSize: 1200 # (3)!
+    ```
+
+    1. Replace with a strong password of your choice.
+    2. Minimum size of each fragmented handshake datagram, in bytes. Default 512.
+    3. Maximum size of each fragmented handshake datagram, in bytes. Default 1200. Must be `>= minPacketSize` and `<= 2048`.
 
 ## QUIC parameters
 

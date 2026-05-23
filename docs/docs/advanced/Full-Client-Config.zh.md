@@ -107,19 +107,39 @@ transport:
 
 ## 混淆
 
-默认 Hysteria 协议伪装为 HTTP/3。如果你的网络针对性屏蔽了 QUIC 或 HTTP/3 流量（但允许其他 UDP 流量），可以使用混淆来解决此问题。目前有一个名为 "Salamander" 的混淆实现，将数据包混淆成没有特征的 UDP 包。此功能需要一个混淆密码，密码在客户端和服务端必须相同。
+默认 Hysteria 协议伪装为 HTTP/3。如果你的网络针对性屏蔽了 QUIC 或 HTTP/3 流量（但允许其他 UDP 流量），可以使用混淆来解决此问题。目前有两种实现，均需要在客户端和服务端使用相同的密码：
+
+- **Salamander** 将每个数据包混淆成没有特征的随机字节。
+- **Gecko**（实验性）在 Salamander 的基础上，额外将 QUIC 握手包拆分为大小和填充均随机的多个分片。
 
 > **注意：** 使用错误的混淆密码将导致无法连接，效果如同服务器没有运行一样。如果遇到连接问题，请先仔细检查混淆密码是否正确。
 
-```yaml
-obfs:
-  type: salamander # (2)!
-  salamander:
-    password: cry_me_a_r1ver # (1)!
-```
+=== "Salamander"
 
-1. 替换为你的混淆密码。
-2. 混淆类型。 请阅读页面最上方关于 "类型选择" 配置格式的说明。
+    ```yaml
+    obfs:
+      type: salamander # (2)!
+      salamander:
+        password: cry_me_a_r1ver # (1)!
+    ```
+
+    1. 替换为你的混淆密码。
+    2. 混淆类型。 请阅读页面最上方关于 "类型选择" 配置格式的说明。
+
+=== "Gecko"
+
+    ```yaml
+    obfs:
+      type: gecko
+      gecko:
+        password: cry_me_a_r1ver # (1)!
+        minPacketSize: 512  # (2)!
+        maxPacketSize: 1200 # (3)!
+    ```
+
+    1. 替换为你的混淆密码。
+    2. 握手分片包的最小字节数。默认 512。
+    3. 握手分片包的最大字节数。默认 1200。必须 `>= minPacketSize` 且 `<= 2048`。
 
 ## QUIC 参数
 
