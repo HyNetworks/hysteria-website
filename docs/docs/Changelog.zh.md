@@ -13,7 +13,7 @@ hide:
 - 修复了启用 sniff 时，不完整或超大 HTTP 请求可能导致服务端 OOM 的问题
 - 修复了通过在域名末尾添加点（如 `example.com.`）绕过 ACL 的问题
 - 修复了 SOCKS5 UDP 出站中目标地址处理错误的问题
-- 修复了 DNS HTTPS 记录前缀匹配的问题
+- 修复了 DoH 解析器对 `https://` 前缀的判断错误
 - outbound 规则现在会拒绝无效端口号
 - 小幅性能改进
 

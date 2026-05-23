@@ -13,7 +13,7 @@ hide:
 - Fixed a potential server OOM caused by incomplete or oversized HTTP requests during sniff
 - Fixed an ACL bypass via trailing dots in domain names (e.g. `example.com.`)
 - Fixed incorrect destination handling in the SOCKS5 UDP outbound
-- Fixed prefix matching in DNS HTTPS records
+- Fixed `https://` prefix detection in the DoH resolver
 - Outbound rules now reject invalid port values
 - Minor performance improvements
 
