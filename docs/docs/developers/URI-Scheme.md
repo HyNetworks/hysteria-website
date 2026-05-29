@@ -44,6 +44,39 @@ The port part supports the "multi-port" format mentioned in [Port Hopping](../ad
 hysteria2://letmein@example.com:123,5000-6000/?insecure=1&obfs=salamander&obfs-password=gawrgura&pinSHA256=deadbeef&sni=real.example.com
 ```
 
+## Realm mode
+
+[Hysteria Realms](../advanced/Realms.md) normally uses its own `realm://` URI, with the Hysteria password supplied separately in the config file. The `hysteria2+realm://` scheme bundles a realm address together with Hysteria connection parameters, so a realm-mode server can be shared as a single URI.
+
+### Structure
+
+```
+hysteria2+realm://<token>@<rendezvous-host>[:port]/<realm-name>?[key=value]&[key=value]...
+```
+
+The address components mirror the `realm://` URI, not `hysteria2://`:
+
+- **Scheme:** `hysteria2+realm` uses HTTPS. `hysteria2+realm+http` uses plain HTTP.
+- **Token:** the userinfo component is the rendezvous server's token, **NOT** the Hysteria password (see the `auth` parameter below).
+- **Hostname:** the address of the rendezvous server, **NOT** the Hysteria server. The port hopping format is not supported for now.
+- **Realm name:** the path component. The server and client must use the same one.
+
+### Parameters
+
+All `hysteria2://` query parameters apply (`obfs`, `obfs-password`, `sni`, `insecure`, `pinSHA256`), **plus**:
+
+- `auth`: Hysteria authentication credentials. (In the `hysteria2://` scheme this lives in the userinfo component, but here the userinfo is taken by the realm token.)
+
+- `stun`: Override the STUN servers. Repeat the parameter to provide multiple servers.
+
+- `lport`: Bind the local UDP socket to a specific source port (1-65535). Defaults to ephemeral.
+
+### Example
+
+```
+hysteria2+realm://mytoken@rendezvous.example.com/my-cabin-1f3a8c2e9b?auth=your_password&insecure=1&pinSHA256=deadbeef
+```
+
 ## Implementation notes
 
 The URI is intentionally designed to contain only the essential information needed to connect to a Hysteria 2 server. While third-party implementations are free to add additional parameters if necessary, they must not assume that other implementations will understand them.

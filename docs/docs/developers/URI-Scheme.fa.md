@@ -44,6 +44,39 @@ hysteria2://[auth@]hostname[:port]/?[key=value]&[key=value]...
 hysteria2://letmein@example.com:123,5000-6000/?insecure=1&obfs=salamander&obfs-password=gawrgura&pinSHA256=deadbeef&sni=real.example.com
 ```
 
+## حالت Realm
+
+[Hysteria Realms](../advanced/Realms.md) معمولاً از URI مخصوص خود یعنی `realm://` استفاده می‌کند و رمز Hysteria به‌طور جداگانه در فایل پیکربندی ارائه می‌شود. طرح `hysteria2+realm://` آدرس realm را همراه با پارامترهای اتصال Hysteria در یک جا قرار می‌دهد تا بتوان یک سرور در حالت realm را با یک URI واحد به اشتراک گذاشت.
+
+### ساختار
+
+```
+hysteria2+realm://<token>@<rendezvous-host>[:port]/<realm-name>?[key=value]&[key=value]...
+```
+
+اجزای آدرس مطابق URI `realm://` هستند، نه `hysteria2://`:
+
+- **طرح:** `hysteria2+realm` از HTTPS استفاده می‌کند. `hysteria2+realm+http` از HTTP ساده استفاده می‌کند.
+- **Token:** بخش userinfo، توکن سرور rendezvous است، **نه** رمز Hysteria (به پارامتر `auth` در ادامه مراجعه کنید).
+- **Hostname:** آدرس سرور rendezvous، **نه** سرور Hysteria. قالب پرش بین پورت‌ها فعلاً پشتیبانی نمی‌شود.
+- **نام realm:** بخش مسیر (path). سرور و کلاینت باید از نام یکسانی استفاده کنند.
+
+### پارامترها
+
+همهٔ پارامترهای پرس‌وجوی `hysteria2://` اعمال می‌شوند (`obfs`، `obfs-password`، `sni`، `insecure`، `pinSHA256`)، **به‌علاوهٔ**:
+
+- `auth`: اعتبارنامه‌های احراز هویت Hysteria. (در طرح `hysteria2://` این مقدار در بخش userinfo قرار دارد، اما اینجا userinfo توسط توکن realm اشغال شده است.)
+
+- `stun`: جایگزینی سرورهای STUN. برای مشخص کردن چند سرور، این پارامتر را تکرار کنید.
+
+- `lport`: اتصال سوکت محلی UDP به یک پورت مبدأ مشخص (1-65535). پیش‌فرض، پورت موقت (ephemeral) است.
+
+### مثال
+
+```
+hysteria2+realm://mytoken@rendezvous.example.com/my-cabin-1f3a8c2e9b?auth=your_password&insecure=1&pinSHA256=deadbeef
+```
+
 ## نکات پیاده‌سازی
 
 URI عمداً طوری طراحی شده که فقط شامل اطلاعات ضروری مورد نیاز برای اتصال به سرور Hysteria 2 باشد. اگرچه پیاده‌سازی‌های شخص ثالث آزادند در صورت نیاز پارامترهای اضافی اضافه کنند، اما نباید فرض کنند که پیاده‌سازی‌های دیگر آن‌ها را درک خواهند کرد.

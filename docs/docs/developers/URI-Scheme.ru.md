@@ -44,6 +44,39 @@ hysteria2://[auth@]hostname[:port]/?[key=value]&[key=value]...
 hysteria2://letmein@example.com:123,5000-6000/?insecure=1&obfs=salamander&obfs-password=gawrgura&pinSHA256=deadbeef&sni=real.example.com
 ```
 
+## Режим Realm
+
+[Hysteria Realms](../advanced/Realms.md) обычно использует собственный URI `realm://`, где пароль Hysteria указывается отдельно в файле конфигурации. Схема `hysteria2+realm://` объединяет адрес realm с параметрами подключения Hysteria, так что сервер в режиме realm можно передать одним URI.
+
+### Структура
+
+```
+hysteria2+realm://<token>@<rendezvous-host>[:port]/<realm-name>?[key=value]&[key=value]...
+```
+
+Компоненты адреса соответствуют URI `realm://`, а не `hysteria2://`:
+
+- **Схема:** `hysteria2+realm` использует HTTPS. `hysteria2+realm+http` использует обычный HTTP.
+- **Token:** компонент userinfo — это токен сервера рандеву, **а НЕ** пароль Hysteria (см. параметр `auth` ниже).
+- **Hostname:** адрес сервера рандеву, **а НЕ** сервера Hysteria. Формат смены портов пока не поддерживается.
+- **Имя realm:** компонент пути. Сервер и клиент должны использовать одно и то же имя.
+
+### Параметры
+
+Применяются все параметры запроса `hysteria2://` (`obfs`, `obfs-password`, `sni`, `insecure`, `pinSHA256`), **плюс**:
+
+- `auth`: Учётные данные аутентификации Hysteria. (В схеме `hysteria2://` они находятся в компоненте userinfo, но здесь userinfo занят токеном realm.)
+
+- `stun`: Переопределить STUN-серверы. Повторите параметр, чтобы указать несколько серверов.
+
+- `lport`: Привязать локальный UDP-сокет к конкретному исходному порту (1-65535). По умолчанию — эфемерный.
+
+### Пример
+
+```
+hysteria2+realm://mytoken@rendezvous.example.com/my-cabin-1f3a8c2e9b?auth=your_password&insecure=1&pinSHA256=deadbeef
+```
+
 ## Замечания по реализации
 
 URI намеренно разработан так, чтобы содержать только основную информацию, необходимую для подключения к серверу Hysteria 2. Хотя сторонние реализации могут добавлять дополнительные параметры при необходимости, они не должны предполагать, что другие реализации их поймут.

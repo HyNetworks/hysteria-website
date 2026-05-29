@@ -44,6 +44,39 @@ hysteria2://[auth@]hostname[:port]/?[key=value]&[key=value]...
 hysteria2://letmein@example.com:123,5000-6000/?insecure=1&obfs=salamander&obfs-password=gawrgura&pinSHA256=deadbeef&sni=real.example.com
 ```
 
+## Realm 模式
+
+[Hysteria Realms](../advanced/Realms.md) 通常使用自己的 `realm://` URI，Hysteria 密码在配置中另外提供。`hysteria2+realm://` 格式将 Realm 地址与 Hysteria 连接参数打包在一起，从而可以通过单个 URI 分享 Realm 模式 Hysteria 服务器的完整信息。
+
+### 结构
+
+```
+hysteria2+realm://<token>@<rendezvous-host>[:port]/<realm-name>?[key=value]&[key=value]...
+```
+
+地址部分与 `realm://` URI 一致，而非 `hysteria2://`：
+
+- **协议名：** `hysteria2+realm` 使用 HTTPS，`hysteria2+realm+http` 使用 HTTP。
+- **Token：** userinfo 部分是牵线服务器的 token，**而非** Hysteria 密码（见下方 `auth` 参数）。
+- **地址：** 牵线服务器的地址，**而非** Hysteria 服务器的地址。目前不支持端口跳跃格式。
+- **Realm 名称：** 路径部分。服务器和客户端必须使用相同的名称。
+
+### 参数
+
+所有 `hysteria2://` 参数均适用（`obfs`、`obfs-password`、`sni`、`insecure`、`pinSHA256`），**此外添加**：
+
+- `auth`：Hysteria 验证密码。（在 `hysteria2://` 格式中位于 userinfo 部分，但这里 userinfo 已被 Realm token 占用。）
+
+- `stun`：覆盖 STUN 服务器。重复该参数可指定多个服务器。
+
+- `lport`：将本地 UDP socket 绑定到指定端口（1-65535）。默认为随机端口。
+
+### 示例
+
+```
+hysteria2+realm://mytoken@rendezvous.example.com/my-cabin-1f3a8c2e9b?auth=your_password&insecure=1&pinSHA256=deadbeef
+```
+
 ## 注意事项
 
 这个 URI 故意只包含连接到 Hysteria 2 服务器所需的基础信息。尽管第三方实现可以根据需要添加额外的参数，但它们不应假设其他实现能理解这些额外参数。
