@@ -31,8 +31,8 @@ Hysteria یک پروژه متن‌باز است که از شور و اشتیاق
 
 === ":fontawesome-solid-bitcoin-sign: رمزارز"
 
-    <a href="https://nowpayments.io/donation?api_key=EJH83FM-FDC40ZW-QGDZRR4-A7SC67S" target="_blank">
-     <img src="https://nowpayments.io/images/embeds/donation-button-black.svg" alt="دکمه کمک مالی رمزارزی توسط NOWPayments" class="skip-lightbox">
+    <a href="https://nowpayments.io/donation/hysteria" target="_blank">
+     <img src="https://nowpayments.io/images/embeds/donation-button-white.svg" alt="دکمه کمک مالی رمزارزی توسط NOWPayments" class="skip-lightbox">
     </a>
 
 ## تالار افتخار

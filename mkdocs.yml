@@ -36,7 +36,7 @@ extra:
   generator: false
   social:
     - icon: fontawesome/solid/circle-dollar-to-slot
-      link: https://nowpayments.io/donation?api_key=EJH83FM-FDC40ZW-QGDZRR4-A7SC67S
+      link: https://nowpayments.io/donation/hysteria
     - icon: fontawesome/brands/telegram
       link: https://t.me/hysteria_github
     - icon: fontawesome/brands/github

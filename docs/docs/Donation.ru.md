@@ -31,8 +31,8 @@ Hysteria — это проект с открытым исходным кодом
 
 === ":fontawesome-solid-bitcoin-sign: Крипто"
 
-    <a href="https://nowpayments.io/donation?api_key=EJH83FM-FDC40ZW-QGDZRR4-A7SC67S" target="_blank">
-     <img src="https://nowpayments.io/images/embeds/donation-button-black.svg" alt="Кнопка пожертвования криптовалютой от NOWPayments" class="skip-lightbox">
+    <a href="https://nowpayments.io/donation/hysteria" target="_blank">
+     <img src="https://nowpayments.io/images/embeds/donation-button-white.svg" alt="Кнопка пожертвования криптовалютой от NOWPayments" class="skip-lightbox">
     </a>
 
 ## Зал славы

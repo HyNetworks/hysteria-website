@@ -31,8 +31,8 @@ Hysteria 是一个旨在连接世界的纯公益开源项目。如果你支持�
 
 === ":fontawesome-solid-bitcoin-sign: Crypto"
 
-    <a href="https://nowpayments.io/donation?api_key=EJH83FM-FDC40ZW-QGDZRR4-A7SC67S" target="_blank">
-     <img src="https://nowpayments.io/images/embeds/donation-button-black.svg" alt="Crypto donation button by NOWPayments" class="skip-lightbox">
+    <a href="https://nowpayments.io/donation/hysteria" target="_blank">
+     <img src="https://nowpayments.io/images/embeds/donation-button-white.svg" alt="Crypto donation button by NOWPayments" class="skip-lightbox">
     </a>
 
 ## 荣誉榜
