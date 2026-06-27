@@ -4,6 +4,18 @@ hide:
   - navigation
 ---
 
+## 2.9.3
+
+- 为 [Hysteria Realms](advanced/Realms.md) 新增 UPnP/NAT-PMP 支持以加强 NAT 穿透能力
+- 为 Hysteria Realms 新增 `ipMode` 选项，可将连接限制为仅使用 IPv4 或 IPv6
+- quic-go 更新至 v0.60.0
+- 修复了解析 `hysteria2://` 分享链接时密码中的 `+` 被错误转换为空格的问题
+- 修复了 HTTP 代理拒绝有效 Basic 验证凭据的问题
+- 修复了 HTTPS 代理出站将 `host:port` 而非主机名用作 TLS SNI 的问题
+- 修复了客户端 HTTP/SOCKS5 监听多路复用器中的线程安全问题
+- 修复了服务端绑定指定 IPv6 地址时 nftables 重定向失效的问题
+- DNS 解析器增加 CNAME 链长度限制，防止无限递归
+
 ## 2.9.2
 
 > 此版本包含重要安全修复，强烈建议更新

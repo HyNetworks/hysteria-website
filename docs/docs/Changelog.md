@@ -4,6 +4,18 @@ hide:
   - navigation
 ---
 
+## 2.9.3
+
+- Added [Hysteria Realms](advanced/Realms.md) UPnP/NAT-PMP port mapping support for easier NAT traversal
+- Added a Hysteria Realms `ipMode` option to restrict connections to IPv4 or IPv6 only
+- Updated quic-go to v0.60.0
+- Fixed `+` in the authentication credentials being corrupted to a space when parsing `hysteria2://` sharing links
+- Fixed the HTTP proxy rejecting valid Basic authentication credentials
+- Fixed the HTTPS proxy outbound using `host:port` instead of the hostname as the TLS SNI
+- Fixed a data race in the client's HTTP/SOCKS5 listener multiplexer
+- Fixed nftables redirect failure when the server binds to a specific IPv6 address
+- DNS resolver now limits CNAME chain length to prevent unbounded recursion
+
 ## 2.9.2
 
 > This release contains important security fixes and we strongly encourage everyone to upgrade.
