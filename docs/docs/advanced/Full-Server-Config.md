@@ -56,6 +56,11 @@ realm:
   punchTimeout: 5s # (3)!
   heartbeatInterval: 30s # (4)!
   insecure: false # (5)!
+  ipMode: dual # (6)!
+  portMapping:
+    enabled: false # (7)!
+    timeout: 10s # (8)!
+    lifetime: 10m # (9)!
 ```
 
 1. STUN servers used to discover the server's public UDP addresses. Defaults to a small built-in list.
@@ -63,6 +68,10 @@ realm:
 3. Maximum time to wait for UDP hole punching to succeed for a single connect attempt.
 4. How often to send a heartbeat to the rendezvous to keep the realm registered. The session expires if the rendezvous doesn't see one in time.
 5. Set to `true` only to skip TLS verification of a self-signed rendezvous server (development).
+6. Restrict NAT traversal to a single IP family: `dual` (default, both IPv4 and IPv6), `v4` (IPv4 only), or `v6` (IPv6 only).
+7. Enable UPnP/NAT-PMP port mapping on your gateway to improve hole punching success. Failures are non-fatal — it falls back to STUN-discovered addresses.
+8. Per-operation timeout when talking to the gateway.
+9. Lease duration of the port mapping; it's renewed automatically before expiry.
 
 ## TLS
 

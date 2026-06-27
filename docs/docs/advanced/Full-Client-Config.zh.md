@@ -53,12 +53,21 @@ realm:
   stunTimeout: 5s # (2)!
   punchTimeout: 5s # (3)!
   insecure: false # (4)!
+  ipMode: dual # (5)!
+  portMapping:
+    enabled: false # (6)!
+    timeout: 10s # (7)!
+    lifetime: 10m # (8)!
 ```
 
 1. 用于发现客户端公网 UDP 地址的 STUN 服务器。默认会使用一个内置的小列表。
 2. 单个 STUN 服务器的查询超时。
 3. 等待 UDP 打洞成功的最大时间。
 4. 仅在跳过对自签牵线服务器的 TLS 校验时（开发用途）设为 `true`。
+5. 将 NAT 打洞限制在指定 IP 栈：`dual`（默认，同时使用 IPv4 和 IPv6）、`v4`（仅 IPv4）或 `v6`（仅 IPv6）。
+6. 在网关上启用 UPnP/NAT-PMP 端口映射以提升打洞成功率。失败不会导致致命错误——会回退到仅使用 STUN 发现的地址。
+7. 与网关通信时单次操作的超时。
+8. 端口映射的租约时长；会在到期前自动续期。
 
 ## 验证
 

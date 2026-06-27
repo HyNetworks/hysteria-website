@@ -56,6 +56,11 @@ realm:
   punchTimeout: 5s # (3)!
   heartbeatInterval: 30s # (4)!
   insecure: false # (5)!
+  ipMode: dual # (6)!
+  portMapping:
+    enabled: false # (7)!
+    timeout: 10s # (8)!
+    lifetime: 10m # (9)!
 ```
 
 1. 用于发现服务端公网 UDP 地址的 STUN 服务器。默认会使用一个内置的小列表。
@@ -63,6 +68,10 @@ realm:
 3. 单次连接尝试中等待 UDP 打洞成功的最大时间。
 4. 多久向牵线服务器发送一次心跳以保持 realm 注册。如果牵线服务器在超时前没有收到心跳，会话将过期。
 5. 仅在跳过对自签牵线服务器的 TLS 校验时（开发用途）设为 `true`。
+6. 将 NAT 打洞限制在指定 IP 栈：`dual`（默认，同时使用 IPv4 和 IPv6）、`v4`（仅 IPv4）或 `v6`（仅 IPv6）。
+7. 在网关上启用 UPnP/NAT-PMP 端口映射以提升打洞成功率。失败不会导致致命错误——会回退到仅使用 STUN 发现的地址。
+8. 与网关通信时单次操作的超时。
+9. 端口映射的租约时长；会在到期前自动续期。
 
 ## TLS
 

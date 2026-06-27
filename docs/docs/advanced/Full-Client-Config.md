@@ -53,12 +53,21 @@ realm:
   stunTimeout: 5s # (2)!
   punchTimeout: 5s # (3)!
   insecure: false # (4)!
+  ipMode: dual # (5)!
+  portMapping:
+    enabled: false # (6)!
+    timeout: 10s # (7)!
+    lifetime: 10m # (8)!
 ```
 
 1. STUN servers used to discover the client's public UDP addresses. Defaults to a small built-in list.
 2. Per-server timeout for STUN discovery.
 3. Maximum time to wait for UDP hole punching to succeed.
 4. Set to `true` only to skip TLS verification of a self-signed rendezvous server (development).
+5. Restrict NAT traversal to a single IP family: `dual` (default, both IPv4 and IPv6), `v4` (IPv4 only), or `v6` (IPv6 only).
+6. Enable UPnP/NAT-PMP port mapping on your gateway to improve hole punching success. Failures are non-fatal — it falls back to STUN-discovered addresses.
+7. Per-operation timeout when talking to the gateway.
+8. Lease duration of the port mapping; it's renewed automatically before expiry.
 
 ## Authentication
 
