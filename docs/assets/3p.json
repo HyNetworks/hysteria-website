@@ -85,6 +85,22 @@
   },
   "apps": [
     {
+      "name": "Bedlam",
+      "link": "https://github.com/0xSVV/Bedlam",
+      "types": [
+        "client"
+      ],
+      "platforms": [
+        "android"
+      ],
+      "description": {
+        "en": "Hysteria 2 Android client built directly on the protocol core",
+        "zh": "Hysteria 2 Android client built directly on the protocol core",
+        "ru": "Android-клиент Hysteria 2 написанный поверх ядра протокола",
+        "fa": "کلاینت اندروید Hysteria 2 بر پایه‌ی هسته‌ی اصلی پروتکل"
+      }
+    },
+    {
       "name": "Blitz",
       "link": "https://github.com/ReturnFI/Blitz",
       "types": [
