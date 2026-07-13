@@ -38,6 +38,8 @@ hysteria2://[auth@]hostname[:port]/?[key=value]&[key=value]...
 
 - `pinSHA256`：服务器证书 SHA-256 指纹。
 
+- `ech`：[ECH](../advanced/ECH.md) 配置列表（base64）。必须与服务端的 ECH 配置相匹配。
+
 ## 示例
 
 ```
@@ -63,7 +65,7 @@ hysteria2+realm://<token>@<rendezvous-host>[:port]/<realm-name>?[key=value]&[key
 
 ### 参数
 
-所有 `hysteria2://` 参数均适用（`obfs`、`obfs-password`、`sni`、`insecure`、`pinSHA256`），**此外添加**：
+所有 `hysteria2://` 参数均适用（`obfs`、`obfs-password`、`sni`、`insecure`、`pinSHA256`、`ech`），**此外添加**：
 
 - `auth`：Hysteria 验证密码。（在 `hysteria2://` 格式中位于 userinfo 部分，但这里 userinfo 已被 Realm token 占用。）
 

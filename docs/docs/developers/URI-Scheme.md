@@ -38,6 +38,8 @@ The port part supports the "multi-port" format mentioned in [Port Hopping](../ad
 
 - `pinSHA256`: The pinned SHA-256 fingerprint of the server's certificate.
 
+- `ech`: The [ECH](../advanced/ECH.md) config list (base64). Must match the server's ECH configuration.
+
 ## Example
 
 ```
@@ -63,7 +65,7 @@ The address components mirror the `realm://` URI, not `hysteria2://`:
 
 ### Parameters
 
-All `hysteria2://` query parameters apply (`obfs`, `obfs-password`, `sni`, `insecure`, `pinSHA256`), **plus**:
+All `hysteria2://` query parameters apply (`obfs`, `obfs-password`, `sni`, `insecure`, `pinSHA256`, `ech`), **plus**:
 
 - `auth`: Hysteria authentication credentials. (In the `hysteria2://` scheme this lives in the userinfo component, but here the userinfo is taken by the realm token.)
 

@@ -4,6 +4,12 @@ hide:
   - navigation
 ---
 
+## 2.10.0
+
+- پشتیبانی از [Encrypted Client Hello](advanced/ECH.md) افزوده شد
+- گزینهٔ `bandwidth.disableLossCompensation` برای غیرفعال کردن مکانیزم جبران از دست رفتن بستهٔ کنترل ازدحام Brutal افزوده شد، که می‌تواند در برخی موارد پایداری را بهبود بخشد
+- به‌روزرسانی‌های متعدد وابستگی‌ها و رفع اشکالات جزئی
+
 ## 2.9.3
 
 - پشتیبانی از نگاشت پورت UPnP/NAT-PMP به [Hysteria Realms](advanced/Realms.md) برای عبور آسان‌تر از NAT افزوده شد

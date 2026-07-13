@@ -38,6 +38,8 @@ hysteria2://[auth@]hostname[:port]/?[key=value]&[key=value]...
 
 - `pinSHA256`: اثر انگشت SHA-256 پین‌شده گواهی سرور.
 
+- `ech`: فهرست پیکربندی [ECH](../advanced/ECH.md) (به صورت base64). باید با پیکربندی ECH سرور مطابقت داشته باشد.
+
 ## مثال
 
 ```
@@ -63,7 +65,7 @@ hysteria2+realm://<token>@<rendezvous-host>[:port]/<realm-name>?[key=value]&[key
 
 ### پارامترها
 
-همهٔ پارامترهای پرس‌وجوی `hysteria2://` اعمال می‌شوند (`obfs`، `obfs-password`، `sni`، `insecure`، `pinSHA256`)، **به‌علاوهٔ**:
+همهٔ پارامترهای پرس‌وجوی `hysteria2://` اعمال می‌شوند (`obfs`، `obfs-password`، `sni`، `insecure`، `pinSHA256`، `ech`)، **به‌علاوهٔ**:
 
 - `auth`: اعتبارنامه‌های احراز هویت Hysteria. (در طرح `hysteria2://` این مقدار در بخش userinfo قرار دارد، اما اینجا userinfo توسط توکن realm اشغال شده است.)
 

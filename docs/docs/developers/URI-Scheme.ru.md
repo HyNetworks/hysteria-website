@@ -38,6 +38,8 @@ hysteria2://[auth@]hostname[:port]/?[key=value]&[key=value]...
 
 - `pinSHA256`: Закреплённый SHA-256 отпечаток сертификата сервера.
 
+- `ech`: Config list [ECH](../advanced/ECH.md) (base64). Должен совпадать с конфигурацией ECH сервера.
+
 ## Пример
 
 ```
@@ -63,7 +65,7 @@ hysteria2+realm://<token>@<rendezvous-host>[:port]/<realm-name>?[key=value]&[key
 
 ### Параметры
 
-Применяются все параметры запроса `hysteria2://` (`obfs`, `obfs-password`, `sni`, `insecure`, `pinSHA256`), **плюс**:
+Применяются все параметры запроса `hysteria2://` (`obfs`, `obfs-password`, `sni`, `insecure`, `pinSHA256`, `ech`), **плюс**:
 
 - `auth`: Учётные данные аутентификации Hysteria. (В схеме `hysteria2://` они находятся в компоненте userinfo, но здесь userinfo занят токеном realm.)
 

@@ -127,6 +127,17 @@ You can have either `tls` or `acme`, but not both.
        (Note: Changing to a port other than 443 requires port forwarding or TLS reverse proxy, or the challenge will fail!)
     7. DNS provider. For details, refer to [ACME DNS Configuration](ACME-DNS-Config.md).
 
+### ECH
+
+You can optionally enable [Encrypted Client Hello](ECH.md) to hide the TLS SNI from middleboxes.
+
+```yaml
+ech:
+  keyPath: ech.pem # (1)!
+```
+
+1. Path to an ECH key file generated with `sing-box generate ech-keypair <public_name>`. On startup, the server logs the config list that clients need to set in their `tls.ech`. See [ECH](ECH.md) for details.
+
 ## Obfuscation
 
 By default, the Hysteria protocol mimics HTTP/3. If your network specifically blocks QUIC or HTTP/3 traffic (but not UDP in general), obfuscation can be used to work around this. Two implementations are available, both requiring a password that must be identical on the client and server:
@@ -192,7 +203,10 @@ The default stream and connection receive window sizes are 8MB and 20MB, respect
 bandwidth:
   up: 1 gbps
   down: 1 gbps
+  disableLossCompensation: false # (1)!
 ```
+
+1. Brutal congestion control has a "loss compensation" mechanism: when there is packet loss, it attempts to send slightly faster than the set bandwidth to compensate and still reach the target speed. This may or may not help depending on the network conditions, and can sometimes make things worse. Set this to `true` to disable the compensation and always send at exactly the set speed. Note that this option is local to the endpoint (it only affects the upload direction of this machine).
 
 The bandwidth values on the server side act as speed limits, limiting the maximum rate at which the server will send and receive data (per client). **Note that the server's upload speed is the client's download speed, and vice versa.** You can omit these values or set them to zero on either or both sides, which would mean no limit.
 
