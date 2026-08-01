@@ -8,6 +8,8 @@ ACME DNS 可以实现通过 DNS 服务商 API 来获取证书, 该功能不依�
 
 > 注意: 以下文档仅列出每个 DNS 服务商的配置选项, 由于开发资源有限, 配置选项应填写的值需要用户自行查找, 我们仅测试了 Cloudflare 配置.
 
+> 注意: `namedotcom` 服务商已在 v2.11.0 中移除, 因其上游库未针对新的 libdns API 进行更新。使用该服务商的服务端将无法启动, 需要更换为其他服务商.
+
 ### Cloudflare
 
 ```yaml
@@ -63,22 +65,6 @@ acme:
     name: godaddy
     config:
       godaddy_api_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
-```
-
-### Name.com
-
-```yaml
-acme:
-  domains:
-    - "*.example.com"
-  email: your@email.address
-  type: dns
-  dns:
-    name: namedotcom
-    config:
-      namedotcom_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
-      namedotcom_user: user
-      namedotcom_server: api.name.com
 ```
 
 ### Vultr

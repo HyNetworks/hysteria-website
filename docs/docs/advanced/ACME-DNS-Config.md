@@ -8,6 +8,8 @@ Currently, ACME DNS configuration supports only a few popular DNS service provid
 
 > Note: The following documentation only lists the configuration options for each DNS service provider. Due to limited development resources, the values that should be filled in for the configuration options need to be researched by the user, and we have only tested the Cloudflare configuration.
 
+> Note: The `namedotcom` provider was removed in v2.11.0, as its upstream library has not been updated for the new libdns API. Servers using it will fail to start and need to switch to another provider.
+
 ### Cloudflare
 
 ```yaml
@@ -63,22 +65,6 @@ acme:
     name: godaddy
     config:
       godaddy_api_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
-```
-
-### Name.com
-
-```yaml
-acme:
-  domains:
-    - "*.example.com"
-  email: your@email.address
-  type: dns
-  dns:
-    name: namedotcom
-    config:
-      namedotcom_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
-      namedotcom_user: user
-      namedotcom_server: api.name.com
 ```
 
 ### Vultr

@@ -4,6 +4,13 @@ hide:
   - navigation
 ---
 
+## 2.11.0
+
+- تقلید اثرانگشت QUIC کروم افزوده شد: دست‌دادن QUIC کلاینت اکنون شبیه Google Chrome است. به‌طور پیش‌فرض فعال است، اما می‌توان آن را با گزینهٔ [`quic.disableChromeParrot`](advanced/Full-Client-Config.md#quic-parameters) غیرفعال کرد
+- پشتهٔ ACME نوسازی شد (CertMagic، ACMEz و ارائه‌دهندگان libdns)
+- [ارائه‌دهندهٔ ACME DNS](advanced/ACME-DNS-Config.md) با نام `namedotcom` حذف شد، زیرا برای API جدید libdns به‌روزرسانی نشده است
+- به‌روزرسانی quic-go به v0.61.0
+
 ## 2.10.0
 
 - پشتیبانی از [Encrypted Client Hello](advanced/ECH.md) افزوده شد

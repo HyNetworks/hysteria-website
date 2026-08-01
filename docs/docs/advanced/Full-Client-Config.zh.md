@@ -163,10 +163,11 @@ quic:
   maxIdleTimeout: 30s # (5)!
   keepAlivePeriod: 10s # (6)!
   disablePathMTUDiscovery: false # (7)!
+  disableChromeParrot: false # (8)!
   sockopts:
-    bindInterface: eth0 # (8)!
-    fwmark: 1234 # (9)!
-    fdControlUnixSocket: ./test.sock # (10)!
+    bindInterface: eth0 # (9)!
+    fwmark: 1234 # (10)!
+    fdControlUnixSocket: ./test.sock # (11)!
 ```
 
 1. 初始的 QUIC 流接收窗口大小。
@@ -176,13 +177,16 @@ quic:
 5. 最长空闲超时时间。客户端会在多长时间没有收到任何服务端数据后关闭连接。
 6. 心跳包发送间隔。客户端会多久发送一次心跳包以保持连接。
 7. 禁用 MTU 探测。
-8. （仅限 Linux）接口名称。强制 QUIC 数据包通过此接口发送。
-9. （仅限 Linux）要为 QUIC 数据包添加的 `SO_MARK` 标记。
-10. （仅限 Linux）由其它进程监听的 Unix Socket 路径。<br>Hysteria 客户端会把 QUIC 连接所使用的文件描述符（File Descriptor）作为辅助信息（Ancillary Message）发送给该 Unix Socket，以便监听进程进行其它自定义的配置。<br>此选项可被用于 Android 客户端开发，请参考 [FD Control 协议](./FD-Control.md) 以了解更多细节。
+8. 禁用 Chrome QUIC 指纹模仿。默认启用，它让客户端的 QUIC 握手看起来与 Google Chrome 一致，使 Hysteria 流量更难通过握手指纹被识别。关闭前请阅读下方的注意事项。
+9. （仅限 Linux）接口名称。强制 QUIC 数据包通过此接口发送。
+10. （仅限 Linux）要为 QUIC 数据包添加的 `SO_MARK` 标记。
+11. （仅限 Linux）由其它进程监听的 Unix Socket 路径。<br>Hysteria 客户端会把 QUIC 连接所使用的文件描述符（File Descriptor）作为辅助信息（Ancillary Message）发送给该 Unix Socket，以便监听进程进行其它自定义的配置。<br>此选项可被用于 Android 客户端开发，请参考 [FD Control 协议](./FD-Control.md) 以了解更多细节。
 
 默认的流和连接接收窗口大小分别为 8MB 和 20MB。**除非你完全明白自己在做什么，否则不建议修改这些值。**如果要改，建议保持流接收窗口与连接接收窗口的比例为 2:5。
 
 **注意：** `sockopts` 项下的子选项目前仅对出站 QUIC 连接有效，对其它出站连接（例如为解析服务端地址而发送的 DNS 查询）无效。
+
+**关于 Chrome 模仿的注意事项：** 为了与 Chrome 完全一致，客户端会使用 Chrome 自身的 QUIC 参数，这会覆盖上面的部分设置：`maxIdleTimeout` 固定为 30 秒，接收窗口会从 Chrome 的初始值开始，再增长到配置的最大值。由于 Chrome 不声明支持 Ed25519 签名，**使用 Ed25519 证书的服务端将无法完成握手**，请改用 ECDSA 或 RSA 证书（通过 ACME 签发的证书不受影响）。
 
 ## 拥塞控制
 

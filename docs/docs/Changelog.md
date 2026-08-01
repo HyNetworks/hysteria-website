@@ -4,6 +4,13 @@ hide:
   - navigation
 ---
 
+## 2.11.0
+
+- Added Chrome QUIC fingerprint parroting: the client's QUIC handshake now looks like Google Chrome's. Enabled by default, but can be turned off with the [`quic.disableChromeParrot`](advanced/Full-Client-Config.md#quic-parameters) option
+- Modernized the ACME stack (CertMagic, ACMEz and the libdns providers)
+- Removed the `namedotcom` [ACME DNS provider](advanced/ACME-DNS-Config.md), as it has not been updated for the new libdns API
+- Updated quic-go to v0.61.0
+
 ## 2.10.0
 
 - Added [Encrypted Client Hello](advanced/ECH.md) support

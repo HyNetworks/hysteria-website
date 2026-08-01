@@ -8,6 +8,8 @@ ACME DNS позволяет получать сертификаты через A
 
 > Примечание: В следующей документации перечислены только параметры конфигурации для каждого DNS-провайдера. Из-за ограниченных ресурсов разработки значения, которые следует указать для параметров конфигурации, пользователь должен определить самостоятельно. Мы протестировали только конфигурацию Cloudflare.
 
+> Примечание: Провайдер `namedotcom` был удалён в версии v2.11.0, так как его библиотека не была обновлена для нового API libdns. Серверы, использующие его, не смогут запуститься — необходимо перейти на другого провайдера.
+
 ### Cloudflare
 
 ```yaml
@@ -63,22 +65,6 @@ acme:
     name: godaddy
     config:
       godaddy_api_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
-```
-
-### Name.com
-
-```yaml
-acme:
-  domains:
-    - "*.example.com"
-  email: your@email.address
-  type: dns
-  dns:
-    name: namedotcom
-    config:
-      namedotcom_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
-      namedotcom_user: user
-      namedotcom_server: api.name.com
 ```
 
 ### Vultr

@@ -4,6 +4,13 @@ hide:
   - navigation
 ---
 
+## 2.11.0
+
+- Добавлена имитация QUIC-отпечатка Chrome: QUIC-рукопожатие клиента теперь выглядит как у Google Chrome. Включена по умолчанию, но её можно отключить параметром [`quic.disableChromeParrot`](advanced/Full-Client-Config.md#quic-parameters)
+- Модернизирован стек ACME (CertMagic, ACMEz и провайдеры libdns)
+- Удалён [провайдер ACME DNS](advanced/ACME-DNS-Config.md) `namedotcom`, так как он не был обновлён для нового API libdns
+- Обновлён quic-go до v0.61.0
+
 ## 2.10.0
 
 - Добавлена поддержка [Encrypted Client Hello](advanced/ECH.md)

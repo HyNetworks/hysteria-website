@@ -4,6 +4,13 @@ hide:
   - navigation
 ---
 
+## 2.11.0
+
+- 新增 Chrome QUIC 指纹模仿：将客户端 QUIC 握手调整至与 Google Chrome 一致。默认启用，可通过 [`quic.disableChromeParrot`](advanced/Full-Client-Config.md#quic) 选项关闭
+- 更新 ACME 相关依赖（CertMagic, ACMEz, libdns 等）
+- 移除了 `namedotcom` [ACME DNS 服务商](advanced/ACME-DNS-Config.md)，由于其未针对新的 libdns API 进行更新
+- quic-go 更新至 v0.61.0
+
 ## 2.10.0
 
 - 新增 [Encrypted Client Hello](advanced/ECH.md) 支持

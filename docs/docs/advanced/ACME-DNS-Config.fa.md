@@ -8,6 +8,8 @@ ACME DNS می‌تواند گواهی‌ها را از طریق API ارائه�
 
 > توجه: در مستندات زیر فقط گزینه‌های پیکربندی برای هر ارائه‌دهندهٔ DNS فهرست شده است. با توجه به محدودیت منابع توسعه، مقدارهایی که باید در گزینه‌های پیکربندی قرار گیرد را باید خود کاربر بررسی کند؛ ما تنها پیکربندی Cloudflare را آزمایش کرده‌ایم.
 
+> توجه: ارائه‌دهندهٔ `namedotcom` در نسخهٔ v2.11.0 حذف شد، زیرا کتابخانهٔ آن برای API جدید libdns به‌روزرسانی نشده است. سرورهایی که از آن استفاده می‌کنند اجرا نخواهند شد و باید به ارائه‌دهندهٔ دیگری تغییر کنند.
+
 ### Cloudflare
 
 ```yaml
@@ -63,22 +65,6 @@ acme:
     name: godaddy
     config:
       godaddy_api_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
-```
-
-### Name.com
-
-```yaml
-acme:
-  domains:
-    - "*.example.com"
-  email: your@email.address
-  type: dns
-  dns:
-    name: namedotcom
-    config:
-      namedotcom_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
-      namedotcom_user: user
-      namedotcom_server: api.name.com
 ```
 
 ### Vultr
