@@ -4,6 +4,13 @@ hide:
   - navigation
 ---
 
+## 2.12.0
+
+- 新增 [mimic](advanced/Mimic.md) 集成，可将连接伪装成 TCP，用于限制 UDP 的网络环境（仅限 Linux，需另行安装 mimic）
+- 提升 Chrome QUIC 指纹模仿的准确度
+- 修复了小 MTU 下一个 BBR panic 问题，由 2.11.0 的 Chrome 指纹模仿引入
+- 若干依赖更新
+
 ## 2.11.0
 
 - 新增 Chrome QUIC 指纹模仿：将客户端 QUIC 握手调整至与 Google Chrome 一致。默认启用，可通过 [`quic.disableChromeParrot`](advanced/Full-Client-Config.md#quic) 选项关闭

@@ -188,6 +188,27 @@ The default stream and connection receive window sizes are 8MB and 20MB, respect
 
 **Note on Chrome parroting:** To match Chrome exactly, the client uses Chrome's own QUIC parameters, which overrides some of the settings above: `maxIdleTimeout` is fixed at 30 seconds, and the initial receive windows start at Chrome's values before growing to the configured maximums. Because Chrome does not advertise support for Ed25519 signatures, **a server using an Ed25519 certificate will fail the handshake**; use an ECDSA or RSA certificate instead (certificates issued via ACME are unaffected).
 
+## Mimic (Fake TCP, Linux only)
+
+Disguise the connection as TCP using [mimic](https://github.com/hack3ric/mimic). Requires mimic and its kernel module to be installed, and Hysteria to run as root. **The server must have the same setting**, otherwise the connection will not work at all.
+
+```yaml
+mimic:
+  enabled: true # (1)!
+  interface: eth0 # (2)!
+  xdpMode: skb # (3)!
+  path: /usr/bin/mimic # (4)!
+  extraArgs: [] # (5)!
+```
+
+1. Whether to enable mimic. **Must match the server.**
+2. The interface to attach to. If omitted, the one that carries traffic to the server is used.
+3. Force the XDP attach mode, either `native` or `skb`. If omitted, mimic decides.
+4. Path to the mimic executable. If omitted, it is looked up in `PATH`.
+5. Extra arguments passed to mimic verbatim.
+
+Mimic cannot be used together with [port hopping](Port-Hopping.md), and it disables UDP segmentation offload, which costs throughput. See [Mimic](Mimic.md) for details.
+
 ## Congestion
 
 ```yaml

@@ -197,6 +197,27 @@ quic:
 
 默认的流和连接接收窗口大小分别为 8MB 和 20MB。**除非你完全明白自己在做什么，否则不建议修改这些值。**如果要改，建议保持流接收窗口与连接接收窗口的比例为 2:5。
 
+## Mimic (伪装 TCP，仅限 Linux)
+
+使用 [mimic](https://github.com/hack3ric/mimic) 把连接伪装成 TCP。需要安装 mimic 及其内核模块，并且 Hysteria 需以 root 权限运行。**客户端必须也同样开启**，否则将完全无法连接。
+
+```yaml
+mimic:
+  enabled: true # (1)!
+  interface: eth0 # (2)!
+  xdpMode: skb # (3)!
+  path: /usr/bin/mimic # (4)!
+  extraArgs: [] # (5)!
+```
+
+1. 是否启用 mimic。**必须与客户端一致。**
+2. 要附加到的网络接口。如果省略，则使用与服务端通信所经过的那个接口。
+3. 强制指定 XDP 模式，`native` 或 `skb`。如果省略，由 mimic 自行决定。
+4. mimic 可执行文件的路径。如果省略，则从 `PATH` 中查找。
+5. 原样传递给 mimic 的额外参数。
+
+在已有的服务端上启用 mimic 会导致未同步开启这个选项的客户端无法再连接。启用会关闭 UDP GSO，稍微影响吞吐量。详见 [Mimic](Mimic.md)。
+
 ## 带宽
 
 ```yaml

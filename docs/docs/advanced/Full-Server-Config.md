@@ -197,6 +197,27 @@ quic:
 
 The default stream and connection receive window sizes are 8MB and 20MB, respectively. **We do not recommend changing these values unless you fully understand what you are doing.** If you choose to change these values, we recommend keeping the ratio of stream receive window to connection receive window at 2:5.
 
+## Mimic (Fake TCP, Linux only)
+
+Disguise the connection as TCP using [mimic](https://github.com/hack3ric/mimic). Requires mimic and its kernel module to be installed, and Hysteria to run as root. **All clients must have the same setting**, otherwise they will not be able to connect at all.
+
+```yaml
+mimic:
+  enabled: true # (1)!
+  interface: eth0 # (2)!
+  xdpMode: skb # (3)!
+  path: /usr/bin/mimic # (4)!
+  extraArgs: [] # (5)!
+```
+
+1. Whether to enable mimic. **Must match on all clients.**
+2. The interface to attach to. If omitted, the one facing the internet is used.
+3. Force the XDP attach mode, either `native` or `skb`. If omitted, mimic decides.
+4. Path to the mimic executable. If omitted, it is looked up in `PATH`.
+5. Extra arguments passed to mimic verbatim.
+
+Enabling mimic on an existing server is a breaking change: clients without it will no longer be able to connect. It also disables UDP segmentation offload, which costs throughput. See [Mimic](Mimic.md) for details.
+
 ## Bandwidth
 
 ```yaml

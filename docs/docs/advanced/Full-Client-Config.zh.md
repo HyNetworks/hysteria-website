@@ -188,6 +188,27 @@ quic:
 
 **关于 Chrome 模仿的注意事项：** 为了与 Chrome 完全一致，客户端会使用 Chrome 自身的 QUIC 参数，这会覆盖上面的部分设置：`maxIdleTimeout` 固定为 30 秒，接收窗口会从 Chrome 的初始值开始，再增长到配置的最大值。由于 Chrome 不声明支持 Ed25519 签名，**使用 Ed25519 证书的服务端将无法完成握手**，请改用 ECDSA 或 RSA 证书（通过 ACME 签发的证书不受影响）。
 
+## Mimic (伪装 TCP，仅限 Linux)
+
+使用 [mimic](https://github.com/hack3ric/mimic) 把连接伪装成 TCP。需要安装 mimic 及其内核模块，并且 Hysteria 需以 root 权限运行。**服务端必须也同样开启**，否则将完全无法连接。
+
+```yaml
+mimic:
+  enabled: true # (1)!
+  interface: eth0 # (2)!
+  xdpMode: skb # (3)!
+  path: /usr/bin/mimic # (4)!
+  extraArgs: [] # (5)!
+```
+
+1. 是否启用 mimic。**必须与服务端一致。**
+2. 要附加到的网络接口。如果省略，则使用与服务端通信所经过的那个接口。
+3. 强制指定 XDP 模式，`native` 或 `skb`。如果省略，由 mimic 自行决定。
+4. mimic 可执行文件的路径。如果省略，则从 `PATH` 中查找。
+5. 原样传递给 mimic 的额外参数。
+
+Mimic 不能与[端口跳跃](Port-Hopping.md)同时使用，并且会关闭 UDP GSO，稍微影响吞吐量。详见 [Mimic](Mimic.md)。
+
 ## 拥塞控制
 
 ```yaml

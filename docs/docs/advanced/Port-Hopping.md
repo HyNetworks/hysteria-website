@@ -2,6 +2,8 @@
 
 Users in China sometimes report that their ISPs block or throttle persistent UDP connections. However, these restrictions often only apply to the specific port being used. Port hopping can be used as a workaround for this situation.
 
+If the restriction applies to UDP as a whole rather than to a particular port, port hopping will not help. [Mimic](Mimic.md) disguises the connection as TCP instead, but the two cannot be used together.
+
 ## Client
 
 The Hysteria client supports a special multi-port address format:

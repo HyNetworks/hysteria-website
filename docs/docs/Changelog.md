@@ -4,6 +4,13 @@ hide:
   - navigation
 ---
 
+## 2.12.0
+
+- Added [mimic](advanced/Mimic.md) integration, which disguises the connection as TCP for networks that restrict UDP (Linux only, requires mimic to be installed separately)
+- Improved the accuracy of Chrome QUIC fingerprint parroting
+- Fixed a BBR panic on paths with a small MTU, introduced in 2.11.0 by Chrome parroting
+- Various dependency updates
+
 ## 2.11.0
 
 - Added Chrome QUIC fingerprint parroting: the client's QUIC handshake now looks like Google Chrome's. Enabled by default, but can be turned off with the [`quic.disableChromeParrot`](advanced/Full-Client-Config.md#quic-parameters) option
