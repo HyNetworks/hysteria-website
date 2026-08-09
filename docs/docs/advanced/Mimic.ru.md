@@ -17,7 +17,6 @@ Mimic присоединяет eBPF-программы к сетевому ин�
 Mimic работает **только в Linux** и не поставляется вместе с Hysteria. На обеих машинах требуется:
 
 - Программа `mimic`, доступная в `PATH` (или указанная явно, см. ниже).
-- Загруженный модуль ядра (`modprobe mimic`).
 - Запуск самой Hysteria с **правами root**, так как присоединение eBPF-программ требует их.
 
 Инструкции по установке смотрите в собственном руководстве mimic [Getting Started](https://github.com/hack3ric/mimic/blob/master/docs/getting-started.md), а полное описание команд — в [mimic(1)](https://github.com/hack3ric/mimic/blob/master/docs/mimic.1.md).

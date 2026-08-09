@@ -67,6 +67,55 @@ acme:
       godaddy_api_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
 ```
 
+### Namecheap
+
+```yaml
+acme:
+  domains:
+    - "*.example.com"
+  email: your@email.address
+  type: dns
+  dns:
+    name: namecheap
+    config:
+      namecheap_api_key: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
+      namecheap_api_user: your_api_user
+      namecheap_client_ip: 203.0.113.1 # (1)!
+      namecheap_api_endpoint: https://api.sandbox.namecheap.com/xml.response # (2)!
+```
+
+1. Optional. The IP address making the API request, which must be whitelisted in the Namecheap console. If omitted, the machine's public IP is discovered automatically.
+2. Optional. Only needed to point at Namecheap's sandbox instead of production.
+
+### Njalla
+
+```yaml
+acme:
+  domains:
+    - "*.example.com"
+  email: your@email.address
+  type: dns
+  dns:
+    name: njalla
+    config:
+      njalla_api_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
+```
+
+### Porkbun
+
+```yaml
+acme:
+  domains:
+    - "*.example.com"
+  email: your@email.address
+  type: dns
+  dns:
+    name: porkbun
+    config:
+      porkbun_api_key: pk1_Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
+      porkbun_api_secret_key: sk1_Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
+```
+
 ### Vultr
 
 ```yaml

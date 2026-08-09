@@ -4,6 +4,13 @@ hide:
   - navigation
 ---
 
+## 2.12.1
+
+- Added [Porkbun, Namecheap and Njalla](advanced/ACME-DNS-Config.md) as ACME DNS providers
+- Fixed slow reconnection after the client has been idle or asleep, most noticeable on mobile devices. The server now sends QUIC stateless resets, so a client holding a stale connection reconnects immediately instead of waiting out its idle timeout
+- Fixed [mimic](advanced/Mimic.md) refusing to start when its optional kernel module is not loaded
+- Various dependency updates
+
 ## 2.12.0
 
 - Added [mimic](advanced/Mimic.md) integration, which disguises the connection as TCP for networks that restrict UDP (Linux only, requires mimic to be installed separately)

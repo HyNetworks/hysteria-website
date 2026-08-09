@@ -17,7 +17,6 @@ Mimic 会通过 eBPF 在数据包进出本机时对其进行改写：发出的 U
 Mimic **仅支持 Linux**，且不随 Hysteria 一起分发。两端的机器都需要：
 
 - `mimic` 程序位于 `PATH` 中（或在配置中显式指定，见下文）。
-- 已加载其内核模块（`modprobe mimic`）。
 - Hysteria 自身以 **root 权限**运行，因为安装 eBPF 程序需要足够权限。
 
 安装方法请参阅 mimic 自己的 [Getting Started](https://github.com/hack3ric/mimic/blob/master/docs/getting-started.md) 文档，完整的命令行说明请参阅 [mimic(1)](https://github.com/hack3ric/mimic/blob/master/docs/mimic.1.md)。

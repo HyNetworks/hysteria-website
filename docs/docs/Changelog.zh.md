@@ -4,6 +4,13 @@ hide:
   - navigation
 ---
 
+## 2.12.1
+
+- 新增 [Porkbun、Namecheap 与 Njalla](advanced/ACME-DNS-Config.md) ACME DNS 服务商支持
+- 修复客户端空闲或休眠后重连缓慢的问题，在移动端上尤为明显。服务端现在会发送 QUIC 无状态重置（stateless reset），使持有失效连接的客户端能够立即重连，不再等待超时
+- 修复未加载可选内核模块时 [mimic](advanced/Mimic.md) 拒绝启动的问题
+- 若干依赖更新
+
 ## 2.12.0
 
 - 新增 [mimic](advanced/Mimic.md) 集成，可将连接伪装成 TCP，用于限制 UDP 的网络环境（仅限 Linux，需另行安装 mimic）

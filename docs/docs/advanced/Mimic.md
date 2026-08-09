@@ -17,7 +17,6 @@ Because both directions have to agree on the disguise, **mimic must be enabled o
 Mimic is **Linux only** and is not bundled with Hysteria. On both machines you need:
 
 - The `mimic` program available in `PATH` (or configured explicitly, see below).
-- Its kernel module loaded (`modprobe mimic`).
 - **root privileges** for Hysteria itself, since attaching eBPF programs requires them.
 
 See mimic's own [Getting Started](https://github.com/hack3ric/mimic/blob/master/docs/getting-started.md) guide for installation, and [mimic(1)](https://github.com/hack3ric/mimic/blob/master/docs/mimic.1.md) for its full command-line reference.

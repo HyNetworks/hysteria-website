@@ -17,7 +17,6 @@ Mimic برنامه‌های eBPF را به یک واسط شبکه متصل می�
 ‏Mimic **فقط روی لینوکس** کار می‌کند و همراه Hysteria عرضه نمی‌شود. روی هر دو دستگاه به موارد زیر نیاز دارید:
 
 - برنامهٔ `mimic` در `PATH` (یا مشخص‌شده به صورت صریح، به ادامه مراجعه کنید).
-- بارگذاری ماژول هستهٔ آن (`modprobe mimic`).
 - اجرای خود Hysteria با **دسترسی root**، چون اتصال برنامه‌های eBPF به آن نیاز دارد.
 
 برای نصب به راهنمای [Getting Started](https://github.com/hack3ric/mimic/blob/master/docs/getting-started.md) خودِ mimic و برای مرجع کامل خط فرمان به [mimic(1)](https://github.com/hack3ric/mimic/blob/master/docs/mimic.1.md) مراجعه کنید.

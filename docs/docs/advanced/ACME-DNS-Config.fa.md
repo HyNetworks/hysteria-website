@@ -67,6 +67,55 @@ acme:
       godaddy_api_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
 ```
 
+### Namecheap
+
+```yaml
+acme:
+  domains:
+    - "*.example.com"
+  email: your@email.address
+  type: dns
+  dns:
+    name: namecheap
+    config:
+      namecheap_api_key: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
+      namecheap_api_user: your_api_user
+      namecheap_client_ip: 203.0.113.1 # (1)!
+      namecheap_api_endpoint: https://api.sandbox.namecheap.com/xml.response # (2)!
+```
+
+1. اختیاری. آدرس IP که درخواست API از آن ارسال می‌شود و باید در کنسول Namecheap در فهرست مجاز قرار گیرد. در صورت نبود، IP عمومی دستگاه به صورت خودکار تشخیص داده می‌شود.
+2. اختیاری. فقط زمانی لازم است که بخواهید به جای محیط اصلی از محیط sandbox نیم‌چیپ استفاده کنید.
+
+### Njalla
+
+```yaml
+acme:
+  domains:
+    - "*.example.com"
+  email: your@email.address
+  type: dns
+  dns:
+    name: njalla
+    config:
+      njalla_api_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
+```
+
+### Porkbun
+
+```yaml
+acme:
+  domains:
+    - "*.example.com"
+  email: your@email.address
+  type: dns
+  dns:
+    name: porkbun
+    config:
+      porkbun_api_key: pk1_Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
+      porkbun_api_secret_key: sk1_Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
+```
+
 ### Vultr
 
 ```yaml

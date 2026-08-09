@@ -67,6 +67,55 @@ acme:
       godaddy_api_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
 ```
 
+### Namecheap
+
+```yaml
+acme:
+  domains:
+    - "*.example.com"
+  email: your@email.address
+  type: dns
+  dns:
+    name: namecheap
+    config:
+      namecheap_api_key: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
+      namecheap_api_user: your_api_user
+      namecheap_client_ip: 203.0.113.1 # (1)!
+      namecheap_api_endpoint: https://api.sandbox.namecheap.com/xml.response # (2)!
+```
+
+1. 可选。发起 API 请求的 IP 地址，需要先在 Namecheap 控制台中加入白名单。如果省略，会自动探测本机的公网 IP。
+2. 可选。仅在需要指向 Namecheap 的沙箱环境而非正式环境时填写。
+
+### Njalla
+
+```yaml
+acme:
+  domains:
+    - "*.example.com"
+  email: your@email.address
+  type: dns
+  dns:
+    name: njalla
+    config:
+      njalla_api_token: Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
+```
+
+### Porkbun
+
+```yaml
+acme:
+  domains:
+    - "*.example.com"
+  email: your@email.address
+  type: dns
+  dns:
+    name: porkbun
+    config:
+      porkbun_api_key: pk1_Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
+      porkbun_api_secret_key: sk1_Dxabckw9dB_jYBdi89kgyaS8wRjqqSsd679urScKOBP
+```
+
 ### Vultr
 
 ```yaml
