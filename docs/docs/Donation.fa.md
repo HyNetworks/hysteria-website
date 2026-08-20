@@ -10,6 +10,10 @@ Hysteria یک پروژه متن‌باز است که از شور و اشتیاق
 
 **سلب مسئولیت:** کمک‌های مالی به این پروژه مشارکت‌های داوطلبانه هستند. ما هیچ تعهدی بر عهده نمی‌گیریم و هیچ خدمات یا تضمینی در ازای آن ارائه نمی‌دهیم. این پروژه صرفاً یک نرم‌افزار متن‌باز است؛ شما باید سرور و کلاینت را خودتان راه‌اندازی کنید. هیچ پروکسی یا سرویس VPN رسمی وجود ندارد، مراقب کلاهبرداری باشید. از حمایت شما سپاسگزاریم!
 
+=== ":fontawesome-brands-github: GitHub Sponsors"
+
+    <iframe src="https://github.com/sponsors/tobyxdd/card" title="Sponsor tobyxdd" height="225" width="600" style="border: 0; max-width: 100%;"></iframe>
+
 === ":fontawesome-solid-bitcoin-sign: رمزارز"
 
     <a href="https://nowpayments.io/donation/hysteria" target="_blank">

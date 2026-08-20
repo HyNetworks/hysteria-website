@@ -10,6 +10,10 @@ Hysteria — это проект с открытым исходным кодом
 
 **Отказ от ответственности:** Пожертвования на этот проект являются добровольными взносами. Мы не берём на себя никаких обязательств и не предоставляем никаких услуг или гарантий взамен. Этот проект — исключительно программное обеспечение с открытым исходным кодом; вы должны настроить сервер и клиент самостоятельно. Официальных прокси или VPN-сервисов не существует, остерегайтесь мошенников. Спасибо за вашу поддержку!
 
+=== ":fontawesome-brands-github: GitHub Sponsors"
+
+    <iframe src="https://github.com/sponsors/tobyxdd/card" title="Sponsor tobyxdd" height="225" width="600" style="border: 0; max-width: 100%;"></iframe>
+
 === ":fontawesome-solid-bitcoin-sign: Крипто"
 
     <a href="https://nowpayments.io/donation/hysteria" target="_blank">
