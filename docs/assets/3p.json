@@ -290,6 +290,22 @@
       }
     },
     {
+      "name": "Lumen KVN",
+      "link": "https://github.com/krambovic/Lumen-KVN",
+      "types": [
+        "client"
+      ],
+      "platforms": [
+        "windows"
+      ],
+      "description": {
+        "en": "Modern and fast Xray / sing-box GUI client for Windows with Fluent UI",
+        "zh": "适用于 Windows 的现代高速 Xray / sing-box GUI 客户端，采用 Fluent UI",
+        "ru": "Современный и быстрый GUI-клиент Xray / sing-box для Windows с Fluent UI",
+        "fa": "کلاینت گرافیکی مدرن و سریع Xray / sing-box برای ویندوز با رابط کاربری Fluent"
+      }
+    },
+    {
       "name": "NekoBox for Android",
       "link": "https://github.com/MatsuriDayo/NekoBoxForAndroid",
       "types": [
