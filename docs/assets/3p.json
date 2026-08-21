@@ -255,6 +255,25 @@
       }
     },
     {
+      "name": "Kitty Pro",
+      "link": "https://github.com/fagao-ai/kitty-pro",
+      "types": [
+        "client"
+      ],
+      "platforms": [
+        "windows",
+        "linux",
+        "macos",
+        "android"
+      ],
+      "description": {
+        "en": "Cross-platform sing-box proxy client with an embedded core",
+        "zh": "基于嵌入式 sing-box 核心的跨平台代理客户端",
+        "ru": "Кроссплатформенный прокси-клиент со встроенным ядром sing-box",
+        "fa": "کلاینت پروکسی چندسکویی با هسته‌ی تعبیه‌شده sing-box"
+      }
+    },
+    {
       "name": "Loon",
       "link": "https://apps.apple.com/us/app/loon/id1373567447",
       "types": [
