@@ -5,7 +5,7 @@ URI-схема Hysteria 2 предназначена для компактног
 ## Структура
 
 ```
-hysteria2://[auth@]hostname[:port]/?[key=value]&[key=value]...
+hysteria2://[auth@]hostname[:port]/?[key=value]&[key=value]...[#name]
 ```
 
 ## Компоненты
@@ -40,10 +40,14 @@ hysteria2://[auth@]hostname[:port]/?[key=value]&[key=value]...
 
 - `ech`: Config list [ECH](../advanced/ECH.md) (base64). Должен совпадать с конфигурацией ECH сервера.
 
+### Фрагмент
+
+Необязательное человекочитаемое имя сервера, использующее стандартный синтаксис фрагмента URI, определённый в [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986#section-3.5). Фрагмент не содержит информации о подключении. Клиенты могут использовать его как отображаемое имя или полностью игнорировать.
+
 ## Пример
 
 ```
-hysteria2://letmein@example.com:123,5000-6000/?insecure=1&obfs=salamander&obfs-password=gawrgura&pinSHA256=deadbeef&sni=real.example.com
+hysteria2://letmein@example.com:123,5000-6000/?insecure=1&obfs=salamander&obfs-password=gawrgura&pinSHA256=deadbeef&sni=real.example.com#cool-server
 ```
 
 ## Режим Realm

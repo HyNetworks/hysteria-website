@@ -5,7 +5,7 @@
 ## ساختار
 
 ```
-hysteria2://[auth@]hostname[:port]/?[key=value]&[key=value]...
+hysteria2://[auth@]hostname[:port]/?[key=value]&[key=value]...[#name]
 ```
 
 ## اجزا
@@ -40,10 +40,14 @@ hysteria2://[auth@]hostname[:port]/?[key=value]&[key=value]...
 
 - `ech`: فهرست پیکربندی [ECH](../advanced/ECH.md) (به صورت base64). باید با پیکربندی ECH سرور مطابقت داشته باشد.
 
+### قطعه (Fragment)
+
+یک نام خوانا برای سرور، اختیاری، مطابق نحو استاندارد قطعهٔ URI که در [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986#section-3.5) تعریف شده است. قطعه هیچ اطلاعاتی دربارهٔ اتصال ندارد؛ کلاینت‌ها می‌توانند از آن به عنوان نام نمایشی استفاده کنند یا کاملاً نادیده‌اش بگیرند.
+
 ## مثال
 
 ```
-hysteria2://letmein@example.com:123,5000-6000/?insecure=1&obfs=salamander&obfs-password=gawrgura&pinSHA256=deadbeef&sni=real.example.com
+hysteria2://letmein@example.com:123,5000-6000/?insecure=1&obfs=salamander&obfs-password=gawrgura&pinSHA256=deadbeef&sni=real.example.com#cool-server
 ```
 
 ## حالت Realm

@@ -5,7 +5,7 @@ The Hysteria 2 URI scheme is designed to provide a compact representation of the
 ## Structure
 
 ```
-hysteria2://[auth@]hostname[:port]/?[key=value]&[key=value]...
+hysteria2://[auth@]hostname[:port]/?[key=value]&[key=value]...[#name]
 ```
 
 ## Components
@@ -40,10 +40,14 @@ The port part supports the "multi-port" format mentioned in [Port Hopping](../ad
 
 - `ech`: The [ECH](../advanced/ECH.md) config list (base64). Must match the server's ECH configuration.
 
+### Fragment
+
+An optional human-readable name for the server, following the standard URI fragment syntax defined in [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986#section-3.5). The fragment carries no connection information. Clients may use it as a display name, or ignore it entirely.
+
 ## Example
 
 ```
-hysteria2://letmein@example.com:123,5000-6000/?insecure=1&obfs=salamander&obfs-password=gawrgura&pinSHA256=deadbeef&sni=real.example.com
+hysteria2://letmein@example.com:123,5000-6000/?insecure=1&obfs=salamander&obfs-password=gawrgura&pinSHA256=deadbeef&sni=real.example.com#cool-server
 ```
 
 ## Realm mode

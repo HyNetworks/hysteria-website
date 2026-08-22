@@ -5,7 +5,7 @@ Hysteria 2 的 URI 格式旨在提供一种简洁的方式来表示连接到 Hys
 ## 结构
 
 ```
-hysteria2://[auth@]hostname[:port]/?[key=value]&[key=value]...
+hysteria2://[auth@]hostname[:port]/?[key=value]&[key=value]...[#name]
 ```
 
 ## 组件
@@ -40,10 +40,14 @@ hysteria2://[auth@]hostname[:port]/?[key=value]&[key=value]...
 
 - `ech`：[ECH](../advanced/ECH.md) 配置列表（base64）。必须与服务端的 ECH 配置相匹配。
 
+### Fragment
+
+服务器名称，可选，遵循 [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986#section-3.5) 的标准 URI Fragment 语法。本身不包含任何连接信息，客户端可以将其用作显示名称，也可以直接忽略。
+
 ## 示例
 
 ```
-hysteria2://letmein@example.com:123,5000-6000/?insecure=1&obfs=salamander&obfs-password=gawrgura&pinSHA256=deadbeef&sni=real.example.com
+hysteria2://letmein@example.com:123,5000-6000/?insecure=1&obfs=salamander&obfs-password=gawrgura&pinSHA256=deadbeef&sni=real.example.com#cool-server
 ```
 
 ## Realm 模式
