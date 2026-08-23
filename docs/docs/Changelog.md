@@ -4,6 +4,12 @@ hide:
   - navigation
 ---
 
+## 2.12.2
+
+- Added a [`quic.disableStatelessReset`](advanced/Full-Server-Config.md#quic-parameters) server option to turn off the QUIC stateless resets introduced in 2.12.1
+- [Masquerade](advanced/Full-Server-Config.md#masquerade) proxy mode now supports Unix sockets
+- Fixed IPv6 connectivity for [mimic](advanced/Mimic.md)
+
 ## 2.12.1
 
 - Added [Porkbun, Namecheap and Njalla](advanced/ACME-DNS-Config.md) as ACME DNS providers

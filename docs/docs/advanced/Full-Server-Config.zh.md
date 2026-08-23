@@ -185,6 +185,7 @@ quic:
   maxIdleTimeout: 30s # (5)!
   maxIncomingStreams: 1024 # (6)!
   disablePathMTUDiscovery: false # (7)!
+  disableStatelessReset: false # (8)!
 ```
 
 1. 初始的 QUIC 流接收窗口大小。
@@ -194,6 +195,7 @@ quic:
 5. 最长空闲超时时间。服务器会在多长时间没有收到任何客户端数据后关闭连接。
 6. 最大并发传入流的数量。
 7. 禁用 MTU 探测。
+8. 禁用 QUIC stateless reset。当服务端不再认识客户端持有的连接时（如服务端被重启），stateless reset 能让它立即重连，而不必等待空闲超时。禁用后，服务端在这种情况下将保持静默。
 
 默认的流和连接接收窗口大小分别为 8MB 和 20MB。**除非你完全明白自己在做什么，否则不建议修改这些值。**如果要改，建议保持流接收窗口与连接接收窗口的比例为 2:5。
 
@@ -643,7 +645,7 @@ masquerade:
 ```
 
 1. 用于提供文件的目录。
-2. 要代理的网站的 URL。
+2. 要代理的网站的 URL。也可以是 Unix socket，支持 `unix:///path/to.sock` 或 `/path/to.sock` 绝对路径。
 3. 是否重写 `Host` 头以匹配被代理的网站。如果目标网站通过 `Host` 识别请求的网站，这个选项是必须的。
 4. 禁用对代理网站的 TLS 验证。
 5. 要返回的字符串。
