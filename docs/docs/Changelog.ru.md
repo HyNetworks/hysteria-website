@@ -4,6 +4,12 @@ hide:
   - navigation
 ---
 
+## 2.12.2
+
+- Добавлена серверная опция [`quic.disableStatelessReset`](advanced/Full-Server-Config.md#quic) для отключения QUIC stateless reset, появившихся в 2.12.1
+- Режим прокси [маскировки](advanced/Full-Server-Config.md#_14) теперь поддерживает Unix-сокеты
+- Исправлена работа [mimic](advanced/Mimic.md) по IPv6
+
 ## 2.12.1
 
 - Добавлены [Porkbun, Namecheap и Njalla](advanced/ACME-DNS-Config.md) в качестве провайдеров ACME DNS

@@ -4,6 +4,12 @@ hide:
   - navigation
 ---
 
+## 2.12.2
+
+- گزینهٔ سمت سرور [`quic.disableStatelessReset`](advanced/Full-Server-Config.md#quic) برای خاموش کردن QUIC stateless reset که در 2.12.1 اضافه شد، افزوده شد
+- حالت پراکسی [استتار](advanced/Full-Server-Config.md#_14) اکنون از Unix socket پشتیبانی می‌کند
+- مشکل اتصال IPv6 در [mimic](advanced/Mimic.md) برطرف شد
+
 ## 2.12.1
 
 - ‏[Porkbun، Namecheap و Njalla](advanced/ACME-DNS-Config.md) به عنوان ارائه‌دهندهٔ ACME DNS افزوده شدند

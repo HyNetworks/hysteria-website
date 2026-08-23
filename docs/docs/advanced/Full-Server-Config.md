@@ -185,6 +185,7 @@ quic:
   maxIdleTimeout: 30s # (5)!
   maxIncomingStreams: 1024 # (6)!
   disablePathMTUDiscovery: false # (7)!
+  disableStatelessReset: false # (8)!
 ```
 
 1. The initial QUIC stream receive window size.
@@ -194,6 +195,7 @@ quic:
 5. The maximum idle timeout. How long the server will consider the client still connected without any activity.
 6. The maximum number of concurrent incoming streams.
 7. Disable QUIC path MTU discovery.
+8. Disable QUIC stateless resets. Stateless resets let a client holding a connection the server no longer knows about (after a restart, for example) reconnect immediately, instead of waiting out its idle timeout. Disabling them makes the server stay silent in that situation.
 
 The default stream and connection receive window sizes are 8MB and 20MB, respectively. **We do not recommend changing these values unless you fully understand what you are doing.** If you choose to change these values, we recommend keeping the ratio of stream receive window to connection receive window at 2:5.
 
@@ -643,7 +645,7 @@ masquerade:
 ```
 
 1. The directory to serve files from.
-2. The URL of the website to proxy.
+2. The URL of the website to proxy. Can also be a Unix socket, written as `unix:///path/to.sock` or as an absolute path like `/path/to.sock`.
 3. Whether to rewrite the `Host` header to match the proxied website. This is required if the target web server uses `Host` to determine which site to serve.
 4. Disable TLS verification for the proxied website.
 5. The string to return.

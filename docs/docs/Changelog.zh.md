@@ -4,6 +4,12 @@ hide:
   - navigation
 ---
 
+## 2.12.2
+
+- 新增服务端 [`quic.disableStatelessReset`](advanced/Full-Server-Config.md#quic) 选项，可用于关闭 2.12.1 加入的 QUIC stateless reset
+- [Masquerade](advanced/Full-Server-Config.md#masquerade) 代理模式现已支持 Unix socket
+- 修复 [mimic](advanced/Mimic.md) IPv6 连接问题
+
 ## 2.12.1
 
 - 新增 [Porkbun、Namecheap 与 Njalla](advanced/ACME-DNS-Config.md) ACME DNS 服务商支持
