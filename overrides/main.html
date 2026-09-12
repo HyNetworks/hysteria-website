@@ -1,5 +1,18 @@
 {% extends "base.html" %}
 
+{% block site_meta %}
+  {# mkdocs-static-i18n provides page-specific language links and a combined
+     sitemap. Material's alternate-link handler expects separate site roots
+     and otherwise requests a nonexistent sitemap.xml beneath each page.
+     Omit those head links while retaining the i18n language selector.
+     Hreflang metadata remains available in the i18n-generated sitemap. #}
+  {% for line in super().splitlines() %}
+    {% if not ('rel="alternate"' in line and 'hreflang=' in line) %}
+      {{ line | safe }}
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
 {% block announce %}
   {% set lang = config.theme.language %}
   {% if lang == 'zh' %}
