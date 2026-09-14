@@ -17,28 +17,43 @@ ECH 部署包含两个部分，作为一对密钥一起生成：
 
 ## 生成密钥
 
-Hysteria 自身不生成 ECH 密钥。推荐使用 [sing-box](https://github.com/SagerNet/sing-box) 命令创建密钥：
+从 2.12.3 版本开始，可以使用 Hysteria 内置的生成命令：
 
 ```bash
-sing-box generate ech-keypair decoy.example.com
+hysteria ech --public-name decoy.example.com
 ```
 
-参数是公开域名。这**不必**是你自己的域名，但为了达到伪装效果，建议选择一个看起来无害、合理的域名。该命令会输出两个 PEM 块：
+`--public-name` 是必填参数：它是以明文传输的外层伪装 SNI，并非真实服务器域名。
+
+该命令会创建 `ech.pem`，并输出可直接复制粘贴的服务端和客户端配置块。
+
+文件中包含以下两个 PEM 块：
 
 ```
------BEGIN ECH CONFIGS-----
-...
------END ECH CONFIGS-----
 -----BEGIN ECH KEYS-----
 ...
 -----END ECH KEYS-----
+-----BEGIN ECH CONFIGS-----
+...
+-----END ECH CONFIGS-----
 ```
 
-将输出完整保存到一个文件中（例如 `ech.pem`）。服务端会从中读取 `ECH KEYS` 块；不需要手动把这两个块拆分开。
+**请妥善保管 `ech.pem`，不要公开分享。** 该文件包含私钥。只需分享输出的客户端 `tls.ech` 设置下的 base64 值。服务端会读取 `ECH KEYS` 块，并从中派生出对应的公开配置列表。
 
-```bash
-sing-box generate ech-keypair decoy.example.com > ech.pem
-```
+选项：
+
+| 选项 | 默认值 | 含义 |
+| --- | --- | --- |
+| `--public-name` | 必填 | 以明文传输的外层 SNI。 |
+| `--output`, `-o` | `ech.pem` | 包含私钥的 PEM 输出文件。 |
+| `--config-id` | 随机字节 | 配置标识符，范围为 0-255；`-1` 表示随机选择 ID。轮换密钥时，应为同时生效的密钥使用不同的 ID。 |
+| `--max-name-length` | `0` | 用于填充的内层域名长度提示，范围为 0-255。零表示未知；此值不会限制真实服务器域名的长度。 |
+| `--aead` | `aes-128-gcm` | 按优先顺序排列、以逗号分隔的 HPKE AEAD 算法：`aes-128-gcm`、`aes-256-gcm`、`chacha20-poly1305`。 |
+| `--overwrite` | 关闭 | 覆盖已有的密钥文件。 |
+
+生成的密钥不能替代服务器 TLS 证书。请保留现有证书和客户端验证设置。更换 ECH 密钥后，需要向客户端分发新的配置；当服务端不再接受旧配置时，使用旧配置的客户端将无法连接。
+
+通过 `sing-box generate ech-keypair` 生成的密钥文件也与 Hysteria 兼容。
 
 ## 服务端配置
 
@@ -59,7 +74,7 @@ INFO ECH enabled, set the following config list on clients (tls.ech) {"configLis
 
 ## 客户端配置
 
-将 `tls.ech` 设置为服务端日志中的配置。取值可以直接是那段 base64 字符串，也可以是一个包含它的文件路径（文件内容可以是 base64，也可以是 `ECH CONFIGS` PEM 块）：
+将 `tls.ech` 设置为 `hysteria ech` 或服务端日志输出的配置列表。取值可以直接是那段 base64 字符串，也可以是一个包含它的文件路径（文件内容可以是 base64，也可以是 `ECH CONFIGS` PEM 块）：
 
 ```yaml
 tls:
@@ -68,7 +83,7 @@ tls:
 ```
 
 1. 真实的服务器域名，用于证书验证。
-2. 服务端日志中的配置，或是一个包含它的文件路径。
+2. `hysteria ech` 或服务端日志输出的配置列表，或是一个包含它的文件路径。
 
 ECH 配置也可以通过 `ech` 查询参数携带在[分享 URI](../developers/URI-Scheme.md) 中。
 

@@ -3,7 +3,7 @@
 Hysteria 使用一个基于 Python 的自定义构建系统，名为 "Hyperbole"。要使用 Hyperbole，需要安装以下依赖：
 
 - Python 3
-- Go 工具链
+- Go 1.26 或更新版本
 - Git
 
 假设你已经 clone 了 Hysteria 的仓库。转到代码根目录，运行以下其中一个命令：
