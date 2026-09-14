@@ -3,7 +3,7 @@
 Hysteria has its own Python-based build system called "Hyperbole". To use Hyperbole, you will need the following requirements:
 
 - Python 3
-- Go toolchain
+- Go 1.26 or newer
 - Git
 
 Assume that you have cloned the Hysteria repository. Go to the repository's root directory and run one of the following commands:

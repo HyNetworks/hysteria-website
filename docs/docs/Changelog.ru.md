@@ -4,6 +4,13 @@ hide:
   - navigation
 ---
 
+## 2.12.3
+
+- Добавлена подкоманда `hysteria ech` для генерации [ключей ECH и конфигурации клиента](advanced/ECH.md#_2)
+- Исправлено прерывание передачи незашифрованного HTTP-трафика через HTTP-прокси через 10 секунд
+- Исправлено ошибочное перенаправление исходящего UDP-трафика правилами [смены портов](advanced/Port-Hopping.md#linux) в Linux, которое могло нарушать подключения [Realms](advanced/Realms.md) и другой UDP-обмен на той же машине
+- Обновлён quic-go до v0.62.0
+
 ## 2.12.2
 
 - Добавлена серверная опция [`quic.disableStatelessReset`](advanced/Full-Server-Config.md#quic) для отключения QUIC stateless reset, появившихся в 2.12.1

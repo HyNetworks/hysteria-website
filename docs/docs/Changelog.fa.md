@@ -4,6 +4,13 @@ hide:
   - navigation
 ---
 
+## 2.12.3
+
+- زیردستور `hysteria ech` برای تولید [کلیدهای ECH و پیکربندی کلاینت](advanced/ECH.md#_2) اضافه شد
+- مشکل قطع شدن انتقال HTTP رمزنگاری‌نشده از طریق پراکسی HTTP پس از ۱۰ ثانیه برطرف شد
+- مشکل هدایت اشتباه ترافیک خروجی UDP توسط قواعد [پرش پورت](advanced/Port-Hopping.md#_4) در لینوکس برطرف شد؛ این مشکل می‌توانست اتصال‌های [Realms](advanced/Realms.md) و سایر ارتباطات UDP را روی همان دستگاه مختل کند
+- به‌روزرسانی quic-go به v0.62.0
+
 ## 2.12.2
 
 - گزینهٔ سمت سرور [`quic.disableStatelessReset`](advanced/Full-Server-Config.md#quic) برای خاموش کردن QUIC stateless reset که در 2.12.1 اضافه شد، افزوده شد

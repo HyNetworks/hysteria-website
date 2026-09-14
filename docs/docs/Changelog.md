@@ -4,6 +4,13 @@ hide:
   - navigation
 ---
 
+## 2.12.3
+
+- Added `hysteria ech` subcommand to generate [ECH keys and client configuration](advanced/ECH.md#generating-keys)
+- Fixed plain HTTP transfers through the HTTP proxy being cut off after 10 seconds
+- Fixed Linux [port-hopping](advanced/Port-Hopping.md#built-in-port-range-linux) rules incorrectly redirecting outbound UDP traffic, which could break [Realms](advanced/Realms.md) connections and other UDP traffic on the same machine
+- Updated quic-go to v0.62.0
+
 ## 2.12.2
 
 - Added a [`quic.disableStatelessReset`](advanced/Full-Server-Config.md#quic-parameters) server option to turn off the QUIC stateless resets introduced in 2.12.1

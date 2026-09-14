@@ -4,6 +4,13 @@ hide:
   - navigation
 ---
 
+## 2.12.3
+
+- 新增 `hysteria ech` 子命令，用于生成 [ECH 密钥和客户端配置](advanced/ECH.md#_2)
+- 修复通过 HTTP 代理模式传输明文 HTTP 连接时，连接会在 10 秒后断开的问题
+- 修复 Linux [端口跳跃](advanced/Port-Hopping.md#linux)规则错误重定向出站 UDP 流量的问题。此问题可能导致 [Realms](advanced/Realms.md) 和其他 UDP 连接失败
+- quic-go 更新至 v0.62.0
+
 ## 2.12.2
 
 - 新增服务端 [`quic.disableStatelessReset`](advanced/Full-Server-Config.md#quic) 选项，可用于关闭 2.12.1 加入的 QUIC stateless reset
