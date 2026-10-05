@@ -475,7 +475,7 @@ sniff:
 ```
 
 1. Whether to enable protocol sniffing.
-2. Sniffing timeout. If the protocol/domain cannot be determined within this time, the original address will be used to initiate the connection.
+2. Sniffing timeout for TCP. If the protocol/domain cannot be determined within this time, the original address will be used to initiate the connection. UDP is not affected: a UDP session is decided within its first 8 packets.
 3. Whether to rewrite requests that are already in domain name form. If enabled, requests with the target address already in domain name form will still be sniffed.
 4. List of TCP ports. Only TCP requests on these ports will be sniffed.
 5. List of UDP ports. Only UDP requests on these ports will be sniffed.

@@ -446,7 +446,7 @@ tcpRedirect:
 
 TUN 是一个跨平台的透明代理解决方案，在系统中创建虚拟网卡，利用系统路由功能来捕获及重定向流量。目前兼容 Windows、Linux 和 macOS 平台。
 
-不同于常规的三层 VPN 技术（如 WireGuard 和 OpenVPN），Hysteria 的 TUN 模式只能处理 TCP 和 UDP 流量，不支持 ICMP 等其它协议（这意味着不支持 ping 等操作）。其会完全接管 TCP 协议栈以加速 TCP 连接。
+不同于常规的三层 VPN 技术（如 WireGuard 和 OpenVPN），Hysteria 的 TUN 模式只能处理 TCP 和 UDP 流量，不支持其它协议。ICMP 不会被转发：通过 TUN 的 ping（ICMP echo）会在本地直接应答，因此收到回复并不代表目标可达。其会完全接管 TCP 协议栈以加速 TCP 连接。
 
 与 Hysteria 1 的 TUN 实现相比，Hysteria 2 的 TUN 基于 [sing-tun](https://github.com/SagerNet/sing-tun) 的 "system" 栈，需要在虚拟网卡上配置一个 /30 的 IPv4 地址和一个 /126 的 IPv6 地址。Hysteria 会自动完成网卡、地址和路由规则的配置。
 
@@ -490,5 +490,5 @@ sysctl net.ipv4.conf.all.rp_filter=2
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | macOS               | TUN 接口的名称必须是 utun+数字， 例如 `utun123`。                                                                                                                                                                                                                                                                                         |
 | Windows Server 2022 | 需要禁用防火墙才能正常使用。                                                                                                                                                                                                                                                                                                              |
-| CentOS 7            | 需要禁用防火墙才能正常使用。<br>对于 4.17 之前的内核，自动添加的路由规则将无法正常工作（[原因](https://github.com/torvalds/linux/commit/bfff4862653bb96001ab57c1edd6d03f48e5f035)）， 可将内核升级到 4.17 或更高版本，或者在 Hysteria 客户端启动后执行 `ip rule del from all goto 9010; ip -6 rule del from all goto 9010` 来解决此问题。 |
-| FreeBSD             | 无法使用，[不被 sing-tun 支持](https://github.com/SagerNet/sing-tun/blob/v0.2.4/tun_other.go#L10)。                                                                                                                                                                                                                                       |
+| CentOS 7            | 需要禁用防火墙才能正常使用。<br>对于 4.17 之前的内核，自动添加的路由规则将无法正常工作（[原因](https://github.com/torvalds/linux/commit/bfff4862653bb96001ab57c1edd6d03f48e5f035)），请将内核升级到 4.17 或更高版本。                                                                                                                                                                             |
+| FreeBSD             | 无法使用，[不被 sing-tun 支持](https://github.com/SagerNet/sing-tun/blob/v0.9.6/tun_other.go#L10)。                                                                                                                                                                                                                                       |
