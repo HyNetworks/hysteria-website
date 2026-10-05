@@ -4,6 +4,16 @@ hide:
   - navigation
 ---
 
+## 2.13.0
+
+- Fixed QUIC [protocol sniffing](advanced/Full-Server-Config.md#protocol-sniffing) for modern browsers and QUIC libraries, whose ClientHello spans multiple packets. Domain-based [ACL](advanced/ACL.md) rules now apply to their QUIC traffic
+- `sniff.timeout` now only applies to TCP
+- Upgraded [TUN mode](advanced/Full-Client-Config.md#tun) to the latest upstream sing-tun (v0.9.6)
+- Removed the TUN `route.strict` option, which no longer had any effect
+- Updated Chrome QUIC fingerprint parroting to match Chrome 154
+- Fixed the client log reporting ECH as not accepted when Chrome parroting is enabled
+- Updated quic-go to v0.63.0
+
 ## 2.12.3
 
 - Added `hysteria ech` subcommand to generate [ECH keys and client configuration](advanced/ECH.md#generating-keys)

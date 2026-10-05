@@ -48,7 +48,7 @@ bash <(curl -fsSL https://get.hy2.sh/)
 نصب یا به‌روزرسانی به نسخه مشخص.
 
 ```sh
-bash <(curl -fsSL https://get.hy2.sh/) --version v2.12.3
+bash <(curl -fsSL https://get.hy2.sh/) --version v2.13.0
 ```
 
 ### حذف

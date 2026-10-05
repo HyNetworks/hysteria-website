@@ -4,6 +4,16 @@ hide:
   - navigation
 ---
 
+## 2.13.0
+
+- 修复 QUIC [协议嗅探](advanced/Full-Server-Config.md#sniff)无法识别将 ClientHello 分多个包发送的现代浏览器和 QUIC 库的问题。基于域名的 [ACL](advanced/ACL.md) 规则现可正常作用于这些 QUIC 流量
+- `sniff.timeout` 现在仅对 TCP 生效
+- [TUN 模式](advanced/Full-Client-Config.md#tun)升级至最新上游 sing-tun (v0.9.6)
+- 移除了 TUN 的 `route.strict` 选项，此选项不再有任何作用
+- Chrome QUIC 指纹模仿更新至 Chrome 154
+- 修复启用 Chrome 指纹模仿时，客户端日志始终显示 ECH 未开启的问题
+- quic-go 更新至 v0.63.0
+
 ## 2.12.3
 
 - 新增 `hysteria ech` 子命令，用于生成 [ECH 密钥和客户端配置](advanced/ECH.md#_2)
