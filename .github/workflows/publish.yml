@@ -34,11 +34,9 @@ jobs:
       - run: uv run --locked mkdocs build --verbose --clean --strict
 
       - name: Publish to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: hy2doc
-          directory: site
+          command: pages deploy site --project-name=hy2doc --branch=main
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
