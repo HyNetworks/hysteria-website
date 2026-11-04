@@ -22,16 +22,14 @@ hide:
     </div>
 </div>
 
-### آثار رسمی
+### گالری
 
 <div class="artworks-gal">
-    <img src="/assets/artworks/hc_name.png">
-    <img src="/assets/artworks/hc_q.png">
-    <img src="/assets/artworks/ebiblue.png">
+    <div class="artworks-item" style="--ar: 1.6000"><img src="/assets/artworks/hc_name.png" width="2048" height="1280" loading="lazy"></div>
+    <div class="artworks-item" style="--ar: 1.6000"><img src="/assets/artworks/hc_q.png" width="2048" height="1280" loading="lazy"></div>
 </div>
-
-### آثار طرفداران
-
 <div class="artworks-gal">
-    <img src="/assets/artworks/tonyzhang.png">
+    <div class="artworks-item" style="--ar: 0.8247"><img src="/assets/artworks/ebiblue.png" width="3711" height="4500" loading="lazy"></div>
+    <div class="artworks-item" style="--ar: 0.5114"><img src="/assets/artworks/i62688760.png" width="1881" height="3678" loading="lazy"></div>
+    <div class="artworks-item" style="--ar: 1.7778"><img src="/assets/artworks/tonyzhang.png" width="2000" height="1125" loading="lazy"><span class="artworks-badge">اثر طرفداران</span></div>
 </div>
