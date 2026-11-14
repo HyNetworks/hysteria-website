@@ -20,4 +20,11 @@ If you are using Chrome or Firefox with an HTTP/SOCKS5 proxy on a PC, the browse
 
 - Chrome: Go to `chrome://flags/`, find `Experimental QUIC protocol` and toggle it to `Disabled`.
 - Firefox: Go to `about:config`, find `network.http.http3.enable` and toggle it to `false`.
-- Block UDP port 443 with an ACL rule. `reject(all, udp/443)`
+- Block UDP port 443 with an [ACL](../advanced/ACL.md) rule:
+
+    ```yaml
+    acl:
+      rules:
+        - outbound: reject
+          match: proto == "udp" && dst.port == 443
+    ```

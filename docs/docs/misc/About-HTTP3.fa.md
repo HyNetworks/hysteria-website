@@ -20,4 +20,11 @@ Hysteria برای انتقال ترافیک TCP از طریق QUIC طراحی ش
 
 - Chrome: به `chrome://flags/` بروید، `Experimental QUIC protocol` را پیدا کرده و آن را روی `Disabled` قرار دهید.
 - Firefox: به `about:config` بروید، `network.http.http3.enable` را پیدا کرده و آن را روی `false` قرار دهید.
-- پورت UDP 443 را با یک قانون ACL مسدود کنید. `reject(all, udp/443)`
+- پورت UDP 443 را با یک قانون [ACL](../advanced/ACL.md) مسدود کنید:
+
+    ```yaml
+    acl:
+      rules:
+        - outbound: reject
+          match: proto == "udp" && dst.port == 443
+    ```

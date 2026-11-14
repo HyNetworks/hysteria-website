@@ -4,6 +4,16 @@ hide:
   - navigation
 ---
 
+## 2.14.0
+
+- [ACL](advanced/ACL.md) به موتور جدیدی بر پایهٔ [expr](https://expr-lang.org/) منتقل شد
+    - قوانین اکنون به‌صورت عبارت نوشته می‌شوند و با `acl.rules` یا `acl.rulesFile` تنظیم می‌شوند. علاوه بر مقصد و پروتکل، می‌توانند شناسهٔ احراز هویت و آدرس کلاینت را هم بررسی کنند، مثلاً برای عبور دادن هر کاربر از outbound جداگانه
+    - دستور `hysteria acl test` اضافه شد تا [نشان دهد یک درخواست از کدام قانون و کدام outbound استفاده می‌کند](advanced/ACL.md#testing-rules)
+    - [نحو قدیمی](advanced/ACL.md#legacy-syntax) (`acl.file` و `acl.inline`) همچنان پشتیبانی می‌شود. قوانین قدیمی را می‌توان [در `acl.rules` ترکیب کرد](advanced/ACL.md#mixing-legacy-rules-into-rules) یا با [`hysteria acl translate`](advanced/ACL.md#converting-legacy-rules) تبدیل کرد
+    - مشکل مطابقت بازه‌های پورتی که از ۰ شروع می‌شوند (مثلاً `udp/0-100`) با همهٔ پورت‌ها در نحو قدیمی برطرف شد
+- عملکرد فوروارد UDP با کاهش سربار پردازش هر بسته بهبود یافت (حدود ۳۰٪ بستهٔ بیشتر در ثانیه هنگام آپلود بسته‌های کوچک)
+- به‌روزرسانی quic-go به v0.65.0
+
 ## 2.13.0
 
 - [شناسایی پروتکل](advanced/Full-Server-Config.md#_12) QUIC برای مرورگرها و کتابخانه‌های QUIC مدرن که ClientHello آن‌ها در چند بسته پخش می‌شود برطرف شد؛ اکنون قواعد [ACL](advanced/ACL.md) مبتنی بر دامنه روی ترافیک QUIC آن‌ها اعمال می‌شود

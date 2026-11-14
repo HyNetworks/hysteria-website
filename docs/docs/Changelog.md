@@ -4,6 +4,16 @@ hide:
   - navigation
 ---
 
+## 2.14.0
+
+- Switched [ACL](advanced/ACL.md) to a new engine based on [expr](https://expr-lang.org/)
+    - Rules are now expressions, set with `acl.rules` or `acl.rulesFile`. Besides the destination and protocol, they can match on the client's authentication ID and address, e.g. to route each user through a different outbound
+    - Added `hysteria acl test` to [check which rule and outbound a request would use](advanced/ACL.md#testing-rules)
+    - The [legacy syntax](advanced/ACL.md#legacy-syntax) (`acl.file` and `acl.inline`) still works. Legacy rules can be [mixed into `acl.rules`](advanced/ACL.md#mixing-legacy-rules-into-rules), or converted with [`hysteria acl translate`](advanced/ACL.md#converting-legacy-rules)
+    - Fixed legacy port ranges starting at 0 (e.g. `udp/0-100`) matching every port
+- Improved UDP forwarding performance by reducing per-packet overhead (about 30% more packets per second for small-packet upload)
+- Updated quic-go to v0.65.0
+
 ## 2.13.0
 
 - Fixed QUIC [protocol sniffing](advanced/Full-Server-Config.md#protocol-sniffing) for modern browsers and QUIC libraries, whose ClientHello spans multiple packets. Domain-based [ACL](advanced/ACL.md) rules now apply to their QUIC traffic

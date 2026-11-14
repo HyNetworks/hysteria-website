@@ -20,4 +20,11 @@ Hysteria разработан для передачи TCP-трафика чер�
 
 - Chrome: Перейдите в `chrome://flags/`, найдите `Experimental QUIC protocol` и переключите в `Disabled`.
 - Firefox: Перейдите в `about:config`, найдите `network.http.http3.enable` и переключите в `false`.
-- Заблокируйте UDP-порт 443 правилом ACL. `reject(all, udp/443)`
+- Заблокируйте UDP-порт 443 правилом [ACL](../advanced/ACL.md):
+
+    ```yaml
+    acl:
+      rules:
+        - outbound: reject
+          match: proto == "udp" && dst.port == 443
+    ```
