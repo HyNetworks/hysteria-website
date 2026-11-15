@@ -255,6 +255,23 @@
       }
     },
     {
+      "name": "HY2 SCALE",
+      "link": "https://github.com/FrankoonG/hy2scale",
+      "types": [
+        "server",
+        "panel"
+      ],
+      "platforms": [
+        "linux"
+      ],
+      "description": {
+        "en": "Hysteria 2 mesh relay network with a web panel, NAT hole punching, multi-hop routing and per-user exits",
+        "zh": "基于 Hysteria 2 的 Mesh 中继组网与 Web 管理面板，支持 NAT 打洞、多跳路由和按用户指定出口",
+        "ru": "Mesh-сеть ретрансляции на базе Hysteria 2 с веб-панелью, обходом NAT (hole punching), многоскачковой маршрутизацией и выходом для каждого пользователя",
+        "fa": "شبکه‌ی مش رله بر پایه‌ی Hysteria 2 با پنل وب، عبور از NAT (hole punching)، مسیریابی چندمرحله‌ای و خروجی جداگانه برای هر کاربر"
+      }
+    },
+    {
       "name": "Kitty Pro",
       "link": "https://github.com/fagao-ai/kitty-pro",
       "types": [
