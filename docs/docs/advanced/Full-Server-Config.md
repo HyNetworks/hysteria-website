@@ -488,9 +488,44 @@ ACL, often used in combination with outbounds, is a very powerful feature of the
 
 For details on syntax, usage and other information, please refer to the [ACL documentation](ACL.md).
 
-You can have either `file` or `inline`, but not both.
+You can only use one of `rules`, `rulesFile`, `file` and `inline`. `file` and `inline` use the [legacy syntax](ACL.md#legacy-syntax).
 
-=== "File"
+=== "Rules"
+
+    ```yaml
+    acl:
+      rules: # (1)!
+        - outbound: reject
+          match: geoip("cn") || geosite("netflix")
+        - outbound: reject
+          match: proto == "udp" && dst.port == 443
+        - outbound: direct
+      # geoip: geoip.dat (2)
+      # geosite: geosite.dat (3)
+      # geoUpdateInterval: 168h (4)
+    ```
+
+    1. The list of ACL rules.
+    2. Optional. Uncomment to enable. The path to the GeoIP database file. **If this field is omitted, Hysteria will automatically download the latest database to your working directory.**
+    3. Optional. Uncomment to enable. The path to the GeoSite database file. **If this field is omitted, Hysteria will automatically download the latest database to your working directory.**
+    4. Optional. The interval at which to refresh the GeoIP/GeoSite databases. 168 hours (1 week) by default. Only applies if the GeoIP/GeoSite databases are automatically downloaded. (Check the note below for more information.)
+
+=== "Rules file"
+
+    ```yaml
+    acl:
+      rulesFile: acl.yaml # (1)!
+      # geoip: geoip.dat (2)
+      # geosite: geosite.dat (3)
+      # geoUpdateInterval: 168h (4)
+    ```
+
+    1. The path to a YAML file containing the list of ACL rules.
+    2. Optional. Uncomment to enable. The path to the GeoIP database file. **If this field is omitted, Hysteria will automatically download the latest database to your working directory.**
+    3. Optional. Uncomment to enable. The path to the GeoSite database file. **If this field is omitted, Hysteria will automatically download the latest database to your working directory.**
+    4. Optional. The interval at which to refresh the GeoIP/GeoSite databases. 168 hours (1 week) by default. Only applies if the GeoIP/GeoSite databases are automatically downloaded. (Check the note below for more information.)
+
+=== "File (legacy)"
 
     ```yaml
     acl:
@@ -500,12 +535,12 @@ You can have either `file` or `inline`, but not both.
       # geoUpdateInterval: 168h (4)
     ```
 
-    1. The path to the ACL file.
+    1. The path to an ACL file in the legacy syntax.
     2. Optional. Uncomment to enable. The path to the GeoIP database file. **If this field is omitted, Hysteria will automatically download the latest database to your working directory.**
     3. Optional. Uncomment to enable. The path to the GeoSite database file. **If this field is omitted, Hysteria will automatically download the latest database to your working directory.**
     4. Optional. The interval at which to refresh the GeoIP/GeoSite databases. 168 hours (1 week) by default. Only applies if the GeoIP/GeoSite databases are automatically downloaded. (Check the note below for more information.)
 
-=== "Inline"
+=== "Inline (legacy)"
 
     ```yaml
     acl:
@@ -519,7 +554,7 @@ You can have either `file` or `inline`, but not both.
       # geoUpdateInterval: 168h (4)
     ```
 
-    1. The list of inline ACL rules.
+    1. The list of inline ACL rules in the legacy syntax.
     2. Optional. Uncomment to enable. The path to the GeoIP database file. **If this field is omitted, Hysteria will automatically download the latest database to your working directory.**
     3. Optional. Uncomment to enable. The path to the GeoSite database file. **If this field is omitted, Hysteria will automatically download the latest database to your working directory.**
     4. Optional. The interval at which to refresh the GeoIP/GeoSite databases. 168 hours (1 week) by default. Only applies if the GeoIP/GeoSite databases are automatically downloaded. (Check the note below for more information.)

@@ -20,4 +20,11 @@ Hysteria 的设计思路是使用修改过的拥塞控制算法来最大化吞�
 
 - Chrome：进入 `chrome://flags/`，找到 `Experimental QUIC protocol` 将其切换为 `Disabled`。
 - Firefox：进入 `about:config`，找到 `network.http.http3.enable` 将其切换为 `false`。
-- 使用 ACL 规则阻止 UDP 端口 443。`reject(all, udp/443)`
+- 使用 [ACL](../advanced/ACL.md) 规则阻止 UDP 端口 443：
+
+    ```yaml
+    acl:
+      rules:
+        - outbound: reject
+          match: proto == "udp" && dst.port == 443
+    ```
