@@ -488,9 +488,44 @@ ACL 是 Hysteria 服务端中一个非常强大的功能，可以用来自定义
 
 关于语法、使用方法以及其他信息，请参考 [ACL 文档](ACL.md)。
 
-可以选择使用 `file` 或者 `inline`，但不能同时使用两者。
+`rules`、`rulesFile`、`file` 和 `inline` 只能使用其中一个。`file` 和 `inline` 使用[旧版语法](ACL.md#legacy-syntax)。
 
-=== "文件"
+=== "规则"
+
+    ```yaml
+    acl:
+      rules: # (1)!
+        - outbound: reject
+          match: geoip("cn") || geosite("netflix")
+        - outbound: reject
+          match: proto == "udp" && dst.port == 443
+        - outbound: direct
+      # geoip: geoip.dat (2)
+      # geosite: geosite.dat (3)
+      # geoUpdateInterval: 168h (4)
+    ```
+
+    1. ACL 规则的列表。
+    2. 可选。取消注释以启用。GeoIP 数据库文件的路径。**如果省略这个字段，Hysteria 会自动下载最新的数据库到工作目录。**
+    3. 可选。取消注释以启用。GeoSite 数据库文件的路径。**如果省略这个字段，Hysteria 会自动下载最新的数据库到工作目录。**
+    4. 可选。GeoIP/GeoSite 数据库刷新的间隔。默认为 168 小时（1 周）。仅在 GeoIP/GeoSite 数据库是自动下载的情况下生效。（另请参阅下方注意事项）
+
+=== "规则文件"
+
+    ```yaml
+    acl:
+      rulesFile: acl.yaml # (1)!
+      # geoip: geoip.dat (2)
+      # geosite: geosite.dat (3)
+      # geoUpdateInterval: 168h (4)
+    ```
+
+    1. 包含 ACL 规则列表的 YAML 文件的路径。
+    2. 可选。取消注释以启用。GeoIP 数据库文件的路径。**如果省略这个字段，Hysteria 会自动下载最新的数据库到工作目录。**
+    3. 可选。取消注释以启用。GeoSite 数据库文件的路径。**如果省略这个字段，Hysteria 会自动下载最新的数据库到工作目录。**
+    4. 可选。GeoIP/GeoSite 数据库刷新的间隔。默认为 168 小时（1 周）。仅在 GeoIP/GeoSite 数据库是自动下载的情况下生效。（另请参阅下方注意事项）
+
+=== "文件（旧版）"
 
     ```yaml
     acl:
@@ -500,12 +535,12 @@ ACL 是 Hysteria 服务端中一个非常强大的功能，可以用来自定义
       # geoUpdateInterval: 168h (4)
     ```
 
-    1. ACL 文件的路径。
+    1. 使用旧版语法的 ACL 文件的路径。
     2. 可选。取消注释以启用。GeoIP 数据库文件的路径。**如果省略这个字段，Hysteria 会自动下载最新的数据库到工作目录。**
     3. 可选。取消注释以启用。GeoSite 数据库文件的路径。**如果省略这个字段，Hysteria 会自动下载最新的数据库到工作目录。**
     4. 可选。GeoIP/GeoSite 数据库刷新的间隔。默认为 168 小时（1 周）。仅在 GeoIP/GeoSite 数据库是自动下载的情况下生效。（另请参阅下方注意事项）
 
-=== "内联"
+=== "内联（旧版）"
 
     ```yaml
     acl:
@@ -519,7 +554,7 @@ ACL 是 Hysteria 服务端中一个非常强大的功能，可以用来自定义
       # geoUpdateInterval: 168h (4)
     ```
 
-    1. 内联 ACL 规则的列表。
+    1. 使用旧版语法的内联 ACL 规则的列表。
     2. 可选。取消注释以启用。GeoIP 数据库文件的路径。**如果省略这个字段，Hysteria 会自动下载最新的数据库到工作目录。**
     3. 可选。取消注释以启用。GeoSite 数据库文件的路径。**如果省略这个字段，Hysteria 会自动下载最新的数据库到工作目录。**
     4. 可选。GeoIP/GeoSite 数据库刷新的间隔。默认为 168 小时（1 周）。仅在 GeoIP/GeoSite 数据库是自动下载的情况下生效。（另请参阅下方注意事项）

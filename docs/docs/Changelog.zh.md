@@ -4,6 +4,16 @@ hide:
   - navigation
 ---
 
+## 2.14.0
+
+- [ACL](advanced/ACL.md) 改用基于 [expr](https://expr-lang.org/) 的全新引擎
+    - 规则现在以表达式的形式编写，通过 `acl.rules` 或 `acl.rulesFile` 设置。除目标地址和协议外，还可以根据客户端的验证 ID 和地址进行匹配，例如让不同用户走不同出站
+    - 新增 `hysteria acl test`，用于[测试某个请求会使用哪条规则和哪个出站](advanced/ACL.md#testing-rules)
+    - [旧版语法](advanced/ACL.md#legacy-syntax)（`acl.file` 和 `acl.inline`）仍然可以使用。旧版规则可以[混用在 `acl.rules` 中](advanced/ACL.md#mixing-legacy-rules-into-rules)，也可以用 [`hysteria acl translate`](advanced/ACL.md#converting-legacy-rules) 转换
+    - 修复旧版语法中从 0 开始的端口范围（例如 `udp/0-100`）会匹配所有端口的 bug
+- 优化 UDP 转发的处理开销，提升性能（小包上传提升约 30%）
+- quic-go 更新至 v0.65.0
+
 ## 2.13.0
 
 - 修复 QUIC [协议嗅探](advanced/Full-Server-Config.md#sniff)无法识别将 ClientHello 分多个包发送的现代浏览器和 QUIC 库的问题。基于域名的 [ACL](advanced/ACL.md) 规则现可正常作用于这些 QUIC 流量
