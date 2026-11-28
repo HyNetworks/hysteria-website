@@ -255,6 +255,22 @@
       }
     },
     {
+      "name": "Hy2droid",
+      "link": "https://github.com/noelbennettz/Hy2droid",
+      "types": [
+        "client"
+      ],
+      "platforms": [
+        "android"
+      ],
+      "description": {
+        "en": "Native Hysteria 2 Android client — paste a share link and you're connected",
+        "zh": "原生 Hysteria 2 Android 客户端，贴一条分享链接即可连接",
+        "ru": "Нативный клиент Hysteria 2 для Android: вставьте ссылку — и можно подключаться",
+        "fa": "کلاینت بومی Hysteria 2 برای اندروید؛ یک لینک را جای‌گذاری کنید و متصل شوید"
+      }
+    },
+    {
       "name": "Kitty Pro",
       "link": "https://github.com/fagao-ai/kitty-pro",
       "types": [
